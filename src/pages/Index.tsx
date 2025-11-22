@@ -1,10 +1,15 @@
 import { Helmet } from 'react-helmet';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Shield } from 'lucide-react';
 import GoldPriceHero from '@/components/GoldPriceHero';
 import GoldPriceTable from '@/components/GoldPriceTable';
+import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldInfo from '@/components/GoldInfo';
 
 const Index = () => {
+  const navigate = useNavigate();
   const today = format(new Date(), 'MMMM dd, yyyy');
   
   const structuredData = {
@@ -53,8 +58,16 @@ const Index = () => {
         <meta name="author" content="Chennai Gold Rates" />
       </Helmet>
 
+      <div className="fixed right-4 top-4 z-50">
+        <Button onClick={() => navigate('/auth')} variant="outline" size="sm">
+          <Shield className="mr-2 h-4 w-4" />
+          Admin Login
+        </Button>
+      </div>
+
       <main>
         <GoldPriceHero />
+        <GoldPriceChart />
         <GoldPriceTable />
         <GoldInfo />
       </main>
