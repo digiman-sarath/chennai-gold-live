@@ -7,6 +7,7 @@ import GoldPriceHero from '@/components/GoldPriceHero';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldInfo from '@/components/GoldInfo';
+import GoldFAQ from '@/components/GoldFAQ';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -70,6 +71,7 @@ const Index = () => {
         <GoldPriceChart />
         <GoldPriceTable />
         <GoldInfo />
+        <GoldFAQ />
       </main>
     </>
   );
