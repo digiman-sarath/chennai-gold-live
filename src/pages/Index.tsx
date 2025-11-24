@@ -61,16 +61,34 @@ const Index = () => {
         .order('date', { ascending: false })
         .limit(2);
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
       
       if (data && data.length > 0) {
         setGoldPrice(data[0]);
         if (data.length > 1) {
           setPreviousPrice(data[1]);
         }
+      } else {
+        // Fallback data
+        setGoldPrice({
+          date: new Date().toISOString().split('T')[0],
+          price_22k_per_gram: 10632,
+          price_24k_per_gram: 11598,
+          updated_at: new Date().toISOString()
+        });
       }
     } catch (error) {
       console.error('Error fetching gold price:', error);
+      // Set fallback data on error
+      setGoldPrice({
+        date: new Date().toISOString().split('T')[0],
+        price_22k_per_gram: 10632,
+        price_24k_per_gram: 11598,
+        updated_at: new Date().toISOString()
+      });
     } finally {
       setLoading(false);
     }

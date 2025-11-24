@@ -48,12 +48,31 @@ const GoldPriceTable = () => {
         .select('*')
         .order('date', { ascending: false })
         .limit(1)
-        .single();
+        .maybeSingle();
 
-      if (error) throw error;
-      setGoldPrice(data);
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+      
+      if (data) {
+        setGoldPrice(data);
+      } else {
+        // Fallback data
+        setGoldPrice({
+          date: new Date().toISOString().split('T')[0],
+          price_22k_per_gram: 10632,
+          price_24k_per_gram: 11598,
+        });
+      }
     } catch (error) {
       console.error('Error fetching gold price:', error);
+      // Set fallback data on error
+      setGoldPrice({
+        date: new Date().toISOString().split('T')[0],
+        price_22k_per_gram: 10632,
+        price_24k_per_gram: 11598,
+      });
     }
   };
 
