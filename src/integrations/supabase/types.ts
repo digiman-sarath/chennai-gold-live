@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      ads: {
+        Row: {
+          click_count: number
+          created_at: string
+          end_date: string | null
+          id: string
+          image_url: string
+          impression_count: number
+          is_active: boolean
+          link_url: string | null
+          position: Database["public"]["Enums"]["ad_position"]
+          priority: number
+          start_date: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          click_count?: number
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          image_url: string
+          impression_count?: number
+          is_active?: boolean
+          link_url?: string | null
+          position: Database["public"]["Enums"]["ad_position"]
+          priority?: number
+          start_date?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          click_count?: number
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          image_url?: string
+          impression_count?: number
+          is_active?: boolean
+          link_url?: string | null
+          position?: Database["public"]["Enums"]["ad_position"]
+          priority?: number
+          start_date?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       gold_prices: {
         Row: {
           created_at: string
@@ -122,8 +170,16 @@ export type Database = {
         }
         Returns: boolean
       }
+      increment_ad_click: { Args: { ad_id: string }; Returns: undefined }
+      increment_ad_impression: { Args: { ad_id: string }; Returns: undefined }
     }
     Enums: {
+      ad_position:
+        | "top_banner"
+        | "sidebar"
+        | "in_content"
+        | "bottom_banner"
+        | "mobile_sticky"
       app_role: "admin" | "user"
     }
     CompositeTypes: {
@@ -252,6 +308,13 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      ad_position: [
+        "top_banner",
+        "sidebar",
+        "in_content",
+        "bottom_banner",
+        "mobile_sticky",
+      ],
       app_role: ["admin", "user"],
     },
   },
