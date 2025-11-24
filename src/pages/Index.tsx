@@ -16,6 +16,7 @@ import TamilNaduCities from '@/components/TamilNaduCities';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import AdDisplay from '@/components/AdDisplay';
 import { formatDistanceToNow } from 'date-fns';
+import { GoldRateSummary } from '@/components/GoldRateSummary';
 
 interface GoldPrice {
   date: string;
@@ -283,6 +284,16 @@ const Index = () => {
           <AdDisplay position="top_banner" />
         </div>
       </div>
+
+      {/* TL;DR Summary */}
+      {goldPrice && (
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <GoldRateSummary 
+            price24k={goldPrice.price_24k_per_gram} 
+            price22k={goldPrice.price_22k_per_gram}
+          />
+        </div>
+      )}
 
       <main className="min-h-screen">
         {/* Hero Section */}

@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { ArrowLeft, Calendar, TrendingDown, TrendingUp } from 'lucide-react';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { GoldRateSummary } from '@/components/GoldRateSummary';
 
 interface GoldPrice {
   date: string;
@@ -244,6 +245,13 @@ const ModernGoldRates = () => {
       
       <div className="min-h-screen bg-background">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 py-6 sm:py-8">
+        
+        {/* TL;DR Summary */}
+        <GoldRateSummary 
+          price24k={price24k} 
+          price22k={price22k}
+          city={selectedCity}
+        />
         {/* Header */}
         <button 
           onClick={() => navigate('/')}
