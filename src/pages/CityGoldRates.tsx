@@ -402,7 +402,6 @@ const CityGoldRates = () => {
 
   return (
     <>
-      <Header />
       <Helmet>
         <title>Gold Rate in {cityName} Today - {displayDate} | 22K ₹{price22k.toLocaleString('en-IN')} & 24K ₹{price24k.toLocaleString('en-IN')}</title>
         <meta 
@@ -416,6 +415,102 @@ const CityGoldRates = () => {
         
         <meta name="twitter:title" content={`${cityName} Gold Rate ${displayDate}`} />
         <meta name="twitter:description" content={`22K: ₹${price22k.toLocaleString('en-IN')}, 24K: ₹${price24k.toLocaleString('en-IN')}/gram`} />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": `What is the gold rate in ${cityName} today?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `Today's gold rate in ${cityName} is ₹${price22k.toLocaleString('en-IN')} per gram for 22 Karat gold and ₹${price24k.toLocaleString('en-IN')} per gram for 24 Karat gold as of ${displayDate}.`
+                }
+              },
+              {
+                "@type": "Question",
+                "name": `Where can I buy gold in ${cityName}?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `You can buy gold in ${cityName} from reputed jewelers in areas like ${cityInfo.popularAreas.join(', ')}. Always check for BIS hallmark certification.`
+                }
+              }
+            ]
+          })}
+        </script>
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://chennai-gold-rates.lovable.app"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Tamil Nadu Gold Rates",
+                "item": "https://chennai-gold-rates.lovable.app/rates"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": `${cityName} Gold Rates`,
+                "item": `https://chennai-gold-rates.lovable.app/gold-rates/${city}`
+              }
+            ]
+          })}
+        </script>
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": `22 Karat Gold - ${cityName}`,
+            "description": `22 Karat gold rate in ${cityName} - ₹${price22k.toLocaleString('en-IN')} per gram as of ${displayDate}`,
+            "category": "Precious Metals",
+            "brand": {
+              "@type": "Brand",
+              "name": `${cityName} Gold Market`
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": price22k,
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock",
+              "priceValidUntil": goldPrice.date,
+              "url": `https://chennai-gold-rates.lovable.app/gold-rates/${city}`
+            }
+          })}
+        </script>
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": `24 Karat Gold - ${cityName}`,
+            "description": `24 Karat gold rate in ${cityName} - ₹${price24k.toLocaleString('en-IN')} per gram as of ${displayDate}`,
+            "category": "Precious Metals",
+            "brand": {
+              "@type": "Brand",
+              "name": `${cityName} Gold Market`
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": price24k,
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock",
+              "priceValidUntil": goldPrice.date,
+              "url": `https://chennai-gold-rates.lovable.app/gold-rates/${city}`
+            }
+          })}
+        </script>
         
         <link rel="canonical" href={`https://chennai-gold-rates.lovable.app/gold-rates/${city}`} />
       </Helmet>

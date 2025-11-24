@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
@@ -117,8 +118,107 @@ const ModernGoldRates = () => {
   const change22k = calculateChange(price22k, previousPrice?.price_22k_per_gram);
   const change18k = calculateChange(price18k, previousPrice ? calculate18KPrice(previousPrice.price_24k_per_gram) : undefined);
 
+  const displayDate = format(new Date(goldPrice.date), 'MMMM dd, yyyy');
+
   return (
     <>
+      <Helmet>
+        <title>Gold Rates Tamil Nadu - Live Gold Prices Across All Cities | {displayDate}</title>
+        <meta 
+          name="description" 
+          content={`Live gold rates across Tamil Nadu cities. Current 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram. Compare prices in Chennai, Coimbatore, Madurai, and 35 more cities.`}
+        />
+        <meta name="keywords" content="tamil nadu gold rates, gold price comparison, chennai coimbatore madurai gold rates, live gold prices tamil nadu, gold rate today all cities" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What are the gold rates across Tamil Nadu cities?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `Gold rates are consistent across Tamil Nadu. Current 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram as of ${displayDate}.`
+                }
+              }
+            ]
+          })}
+        </script>
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://chennai-gold-rates.lovable.app",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://chennai-gold-rates.lovable.app/gold-rates/{city}"
+              },
+              "query-input": "required name=city"
+            }
+          })}
+        </script>
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://chennai-gold-rates.lovable.app"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Tamil Nadu Gold Rates",
+                "item": "https://chennai-gold-rates.lovable.app/rates"
+              }
+            ]
+          })}
+        </script>
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "22 Karat Gold Tamil Nadu",
+            "description": `22 Karat gold rate across Tamil Nadu cities - ₹${price22k.toLocaleString('en-IN')} per gram as of ${displayDate}`,
+            "category": "Precious Metals",
+            "offers": {
+              "@type": "AggregateOffer",
+              "price": price22k,
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock",
+              "priceValidUntil": goldPrice.date
+            }
+          })}
+        </script>
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "24 Karat Gold Tamil Nadu",
+            "description": `24 Karat gold rate across Tamil Nadu cities - ₹${price24k.toLocaleString('en-IN')} per gram as of ${displayDate}`,
+            "category": "Precious Metals",
+            "offers": {
+              "@type": "AggregateOffer",
+              "price": price24k,
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock",
+              "priceValidUntil": goldPrice.date
+            }
+          })}
+        </script>
+      </Helmet>
+      
       <Header />
       
       {/* Top Banner Ad */}

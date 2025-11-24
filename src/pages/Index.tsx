@@ -99,35 +99,117 @@ const Index = () => {
     ? calculateChange(goldPrice.price_24k_per_gram, previousPrice.price_24k_per_gram)
     : null;
   
-  const structuredData = {
+  const faqStructuredData = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": `Today Gold Rate in Chennai - ${displayDate}`,
-    "description": `Live gold rates in Chennai updated daily from GoldAPI.io. Current 22K gold: ₹${price22k}/gram, 24K gold: ₹${price24k}/gram. Track gold price trends and make informed investment decisions.`,
-    "url": "https://chennai-gold-rates.lovable.app",
-    "dateModified": goldPrice?.updated_at || new Date().toISOString(),
-    "mainEntity": {
-      "@type": "Product",
-      "name": "Gold Rate Chennai",
-      "description": `Current gold prices in Chennai for 22K and 24K gold as of ${displayDate}`,
-      "category": "Precious Metals",
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "22 Karat Gold",
-          "price": goldPrice?.price_22k_per_gram || 0,
-          "priceCurrency": "INR",
-          "priceValidUntil": goldPrice?.date || new Date().toISOString().split('T')[0]
-        },
-        {
-          "@type": "Offer",
-          "name": "24 Karat Gold",
-          "price": goldPrice?.price_24k_per_gram || 0,
-          "priceCurrency": "INR",
-          "priceValidUntil": goldPrice?.date || new Date().toISOString().split('T')[0]
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the gold rate in Chennai today?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Today's gold rate in Chennai is ₹${price22k} per gram for 22 Karat gold and ₹${price24k} per gram for 24 Karat gold as of ${displayDate}.`
         }
-      ]
+      },
+      {
+        "@type": "Question",
+        "name": "How often are gold prices updated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gold prices are updated daily from live API sources (GoldAPI.io) to ensure you get the most accurate and current gold rates in Chennai."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between 22K and 24K gold?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "24K gold is 99.9% pure gold, while 22K gold is 91.6% pure with other metals added for durability. 24K gold is softer and more expensive, while 22K is commonly used for jewelry."
+        }
+      }
+    ]
+  };
+
+  const sitelinkSearchBoxData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://chennai-gold-rates.lovable.app",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://chennai-gold-rates.lovable.app/gold-rates/{city}"
+      },
+      "query-input": "required name=city"
     }
+  };
+
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://chennai-gold-rates.lovable.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Chennai Gold Rates",
+        "item": "https://chennai-gold-rates.lovable.app/gold-rates/chennai"
+      }
+    ]
+  };
+
+  const productData22k = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "22 Karat Gold",
+    "description": `22 Karat gold rate in Chennai - ${price22k} per gram as of ${displayDate}`,
+    "category": "Precious Metals",
+    "brand": {
+      "@type": "Brand",
+      "name": "Chennai Gold Market"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": goldPrice?.price_22k_per_gram || 0,
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": goldPrice?.date || new Date().toISOString().split('T')[0],
+      "url": "https://chennai-gold-rates.lovable.app"
+    }
+  };
+
+  const productData24k = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "24 Karat Gold",
+    "description": `24 Karat gold rate in Chennai - ${price24k} per gram as of ${displayDate}`,
+    "category": "Precious Metals",
+    "brand": {
+      "@type": "Brand",
+      "name": "Chennai Gold Market"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": goldPrice?.price_24k_per_gram || 0,
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": goldPrice?.date || new Date().toISOString().split('T')[0],
+      "url": "https://chennai-gold-rates.lovable.app"
+    }
+  };
+
+  const goldPriceData = {
+    "@context": "https://schema.org",
+    "@type": "MonetaryAmount",
+    "currency": "INR",
+    "value": goldPrice?.price_22k_per_gram || 0,
+    "name": "Gold Rate Chennai",
+    "description": `Current gold price in Chennai for ${displayDate}`
   };
 
   return (
@@ -150,7 +232,22 @@ const Index = () => {
         <meta name="twitter:description" content={`Live gold rates in Chennai updated from GoldAPI.io. 22K: ₹${price22k}, 24K: ₹${price24k} per gram.`} />
         
         <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
+          {JSON.stringify(faqStructuredData)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(sitelinkSearchBoxData)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbData)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(productData22k)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(productData24k)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(goldPriceData)}
         </script>
         
         <link rel="canonical" href="https://chennai-gold-rates.lovable.app" />
