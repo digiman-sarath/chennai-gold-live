@@ -32,6 +32,45 @@ const AdAnalytics = () => {
   useEffect(() => {
     fetchAds();
     fetchAnalytics();
+
+    // Subscribe to real-time updates for ads table
+    const adsChannel = supabase
+      .channel('ads-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'ads'
+        },
+        (payload) => {
+          console.log('Ads table changed:', payload);
+          fetchAds(); // Refresh ads data
+        }
+      )
+      .subscribe();
+
+    // Subscribe to real-time updates for ad_analytics table
+    const analyticsChannel = supabase
+      .channel('analytics-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'ad_analytics'
+        },
+        (payload) => {
+          console.log('Analytics table changed:', payload);
+          fetchAnalytics(); // Refresh analytics data
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(adsChannel);
+      supabase.removeChannel(analyticsChannel);
+    };
   }, []);
 
   const fetchAds = async () => {

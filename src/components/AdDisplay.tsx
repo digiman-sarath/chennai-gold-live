@@ -24,6 +24,30 @@ const AdDisplay = ({ position, className = '' }: AdDisplayProps) => {
 
   useEffect(() => {
     fetchAd();
+
+    // Subscribe to real-time updates for ads
+    const channel = supabase
+      .channel('ads-display-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'ads'
+        },
+        (payload) => {
+          console.log('Ad updated:', payload);
+          // Refresh if it affects current position
+          if (payload.new && (payload.new as any).position === position) {
+            fetchAd();
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [position]);
 
   useEffect(() => {
