@@ -606,7 +606,10 @@ const CityGoldRates = () => {
           </div>
 
           {/* Gold Calculator */}
-          <GoldCalculator goldPrice={goldPrice} />
+          <GoldCalculator 
+            price22k={goldPrice.price_22k_per_gram} 
+            price24k={goldPrice.price_24k_per_gram} 
+          />
 
           {/* Data Source Info */}
           <Card className="p-4 bg-muted/30">
