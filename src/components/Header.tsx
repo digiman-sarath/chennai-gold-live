@@ -4,6 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { TrendingUp, TrendingDown, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 interface GoldPrice {
   price_22k_per_gram: number;
@@ -163,6 +164,7 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
+            <LanguageSwitcher />
             <Button
               onClick={() => navigate('/rates')}
               size="sm"
@@ -173,36 +175,39 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu */}
-          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-64">
-              <nav className="flex flex-col space-y-4 mt-8">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-muted"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-                <Button
-                  onClick={() => {
-                    navigate('/rates');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="mx-4"
-                >
-                  Check Rates
+          <div className="flex md:hidden items-center gap-2">
+            <LanguageSwitcher />
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
                 </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-64">
+                <nav className="flex flex-col space-y-4 mt-8">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-muted"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                  <Button
+                    onClick={() => {
+                      navigate('/rates');
+                      setMobileMenuOpen(false);
+                    }}
+                    className="mx-4"
+                  >
+                    Check Rates
+                  </Button>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
