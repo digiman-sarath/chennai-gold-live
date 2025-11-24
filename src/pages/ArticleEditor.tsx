@@ -11,13 +11,28 @@ import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Save, ArrowLeft } from 'lucide-react';
+import { Save, ArrowLeft, Upload, Link2, Image, Bold, Italic, List } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 const ArticleEditor = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [showLinkDialog, setShowLinkDialog] = useState(false);
+  const [showImageDialog, setShowImageDialog] = useState(false);
+  const [linkUrl, setLinkUrl] = useState('');
+  const [linkText, setLinkText] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [imageAlt, setImageAlt] = useState('');
   const [article, setArticle] = useState({
     title: '',
     slug: '',
@@ -85,6 +100,108 @@ const ArticleEditor = () => {
     if (!id || id === 'new') {
       setArticle((prev) => ({ ...prev, slug: generateSlug(value) }));
     }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, isFeatured = true) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast({
+        title: 'Error',
+        description: 'Please select an image file',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: 'Error',
+        description: 'Image size should be less than 5MB',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('article-images')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('article-images')
+        .getPublicUrl(filePath);
+
+      if (isFeatured) {
+        setArticle({ ...article, featured_image_url: publicUrl });
+      } else {
+        setImageUrl(publicUrl);
+      }
+
+      toast({
+        title: 'Success',
+        description: 'Image uploaded successfully',
+      });
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const insertAtCursor = (before: string, after: string = '') => {
+    const textarea = document.getElementById('content') as HTMLTextAreaElement;
+    if (!textarea) return;
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selectedText = article.content.substring(start, end);
+    const newText =
+      article.content.substring(0, start) +
+      before +
+      selectedText +
+      after +
+      article.content.substring(end);
+
+    setArticle({ ...article, content: newText });
+
+    // Reset cursor position
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(start + before.length, start + before.length + selectedText.length);
+    }, 0);
+  };
+
+  const insertLink = () => {
+    if (!linkUrl) return;
+    const linkMarkdown = `[${linkText || linkUrl}](${linkUrl})`;
+    insertAtCursor(linkMarkdown);
+    setShowLinkDialog(false);
+    setLinkUrl('');
+    setLinkText('');
+  };
+
+  const insertImage = () => {
+    if (!imageUrl) return;
+    const imageMarkdown = `![${imageAlt || 'Image'}](${imageUrl})`;
+    insertAtCursor(imageMarkdown);
+    setShowImageDialog(false);
+    setImageUrl('');
+    setImageAlt('');
   };
 
   const handleSave = async () => {
@@ -221,27 +338,101 @@ const ArticleEditor = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="featured_image">Featured Image URL</Label>
-                  <Input
-                    id="featured_image"
-                    value={article.featured_image_url}
-                    onChange={(e) =>
-                      setArticle({ ...article, featured_image_url: e.target.value })
-                    }
-                    placeholder="https://example.com/image.jpg"
-                  />
+                  <Label>Featured Image</Label>
+                  <div className="flex gap-2 mt-2">
+                    <Input
+                      value={article.featured_image_url}
+                      onChange={(e) =>
+                        setArticle({ ...article, featured_image_url: e.target.value })
+                      }
+                      placeholder="https://example.com/image.jpg or upload below"
+                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => document.getElementById('featured-upload')?.click()}
+                      disabled={uploading}
+                    >
+                      <Upload className="mr-2 h-4 w-4" />
+                      {uploading ? 'Uploading...' : 'Upload'}
+                    </Button>
+                    <input
+                      id="featured-upload"
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => handleImageUpload(e, true)}
+                    />
+                  </div>
+                  {article.featured_image_url && (
+                    <img
+                      src={article.featured_image_url}
+                      alt="Featured"
+                      className="mt-2 max-h-40 rounded-lg object-cover"
+                    />
+                  )}
                 </div>
 
                 <div>
                   <Label htmlFor="content">Content *</Label>
+                  <div className="flex gap-2 mb-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => insertAtCursor('**', '**')}
+                      title="Bold"
+                    >
+                      <Bold className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => insertAtCursor('*', '*')}
+                      title="Italic"
+                    >
+                      <Italic className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => insertAtCursor('\n- ')}
+                      title="List"
+                    >
+                      <List className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setShowLinkDialog(true)}
+                      title="Insert Link"
+                    >
+                      <Link2 className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setShowImageDialog(true)}
+                      title="Insert Image"
+                    >
+                      <Image className="h-4 w-4" />
+                    </Button>
+                  </div>
                   <Textarea
                     id="content"
                     value={article.content}
                     onChange={(e) => setArticle({ ...article, content: e.target.value })}
-                    placeholder="Write your article content here..."
+                    placeholder="Write your article content here... Supports Markdown formatting"
                     rows={20}
                     className="font-mono"
                   />
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Supports Markdown: **bold**, *italic*, [links](url), ![images](url)
+                  </p>
                 </div>
               </div>
             </Card>
@@ -318,6 +509,106 @@ const ArticleEditor = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Link Dialog */}
+      <Dialog open={showLinkDialog} onOpenChange={setShowLinkDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Insert Link</DialogTitle>
+            <DialogDescription>
+              Add a hyperlink to your article content
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="link-text">Link Text</Label>
+              <Input
+                id="link-text"
+                value={linkText}
+                onChange={(e) => setLinkText(e.target.value)}
+                placeholder="Click here"
+              />
+            </div>
+            <div>
+              <Label htmlFor="link-url">URL</Label>
+              <Input
+                id="link-url"
+                value={linkUrl}
+                onChange={(e) => setLinkUrl(e.target.value)}
+                placeholder="https://example.com"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowLinkDialog(false)}>
+              Cancel
+            </Button>
+            <Button onClick={insertLink}>Insert Link</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Image Dialog */}
+      <Dialog open={showImageDialog} onOpenChange={setShowImageDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Insert Image</DialogTitle>
+            <DialogDescription>
+              Add an image to your article content
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="image-url">Image URL</Label>
+              <div className="flex gap-2">
+                <Input
+                  id="image-url"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  placeholder="https://example.com/image.jpg or upload"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => document.getElementById('content-image-upload')?.click()}
+                  disabled={uploading}
+                >
+                  <Upload className="h-4 w-4" />
+                </Button>
+                <input
+                  id="content-image-upload"
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => handleImageUpload(e, false)}
+                />
+              </div>
+            </div>
+            <div>
+              <Label htmlFor="image-alt">Alt Text</Label>
+              <Input
+                id="image-alt"
+                value={imageAlt}
+                onChange={(e) => setImageAlt(e.target.value)}
+                placeholder="Description of the image"
+              />
+            </div>
+            {imageUrl && (
+              <img
+                src={imageUrl}
+                alt="Preview"
+                className="max-h-40 rounded-lg object-cover"
+              />
+            )}
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowImageDialog(false)}>
+              Cancel
+            </Button>
+            <Button onClick={insertImage}>Insert Image</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
