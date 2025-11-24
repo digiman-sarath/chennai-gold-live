@@ -5,10 +5,11 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, Calendar, TrendingDown, TrendingUp, MapPin } from 'lucide-react';
+import { ArrowLeft, Calendar, TrendingDown, TrendingUp, MapPin, Store } from 'lucide-react';
 import { format } from 'date-fns';
 import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
+import JewelerDirectory from '@/components/JewelerDirectory';
 
 interface GoldPrice {
   date: string;
@@ -322,6 +323,20 @@ const CityGoldRates = () => {
               </div>
             </div>
           </Card>
+
+          {/* Trusted Jewelers Directory */}
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Store className="h-6 w-6 text-primary" />
+              <h2 className="text-2xl font-bold text-foreground">
+                Trusted Jewelers in {cityName}
+              </h2>
+            </div>
+            <p className="text-muted-foreground mb-6">
+              Find reliable and certified jewelers in {cityName} for authentic gold purchases
+            </p>
+            <JewelerDirectory city={city || 'chennai'} />
+          </div>
 
           {/* Price History Chart */}
           <div className="mb-8">
