@@ -14,6 +14,7 @@ import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldCalculator from '@/components/GoldCalculator';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import CitySpecificFAQ, { generateCityFAQs } from '@/components/CitySpecificFAQ';
+import RecentArticles from '@/components/RecentArticles';
 import AdDisplay from '@/components/AdDisplay';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
 import { GoldPriceComparison } from '@/components/GoldPriceComparison';
@@ -769,6 +770,9 @@ const CityGoldRates = () => {
       </section>
 
       <CitySpecificFAQ city={cityName} />
+
+      {/* Recent Articles */}
+      <RecentArticles />
 
       {/* Bottom Banner Ad */}
       <div className="bg-muted/30 py-8">

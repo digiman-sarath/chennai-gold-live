@@ -12,6 +12,7 @@ import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldInfo from '@/components/GoldInfo';
 import GoldFAQ, { goldFAQData } from '@/components/GoldFAQ';
+import RecentArticles from '@/components/RecentArticles';
 import TamilNaduCities from '@/components/TamilNaduCities';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import AdDisplay from '@/components/AdDisplay';
@@ -470,6 +471,9 @@ const Index = () => {
 
         {/* FAQ Section */}
         <GoldFAQ />
+
+        {/* Recent Articles */}
+        <RecentArticles />
 
         {/* Bottom Banner Ad */}
         <div className="bg-muted/30 py-4 sm:py-8">

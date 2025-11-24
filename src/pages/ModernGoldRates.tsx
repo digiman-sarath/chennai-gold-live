@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import AdDisplay from '@/components/AdDisplay';
+import RecentArticles from '@/components/RecentArticles';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -443,6 +444,9 @@ const ModernGoldRates = () => {
 
       {/* Bottom Banner Ad */}
       <AdDisplay position="bottom_banner" />
+
+      {/* Recent Articles */}
+      <RecentArticles />
 
       {/* Mobile Sticky Ad */}
       <AdDisplay position="mobile_sticky" />
