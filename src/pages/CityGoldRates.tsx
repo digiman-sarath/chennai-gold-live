@@ -533,6 +533,9 @@ const CityGoldRates = () => {
         </script>
         
         <link rel="canonical" href={`https://chennaigoldprice.com/gold-rates/${city}`} />
+        <link rel="alternate" hrefLang="en" href={`https://chennaigoldprice.com/gold-rates/${city}`} />
+        <link rel="alternate" hrefLang="x-default" href={`https://chennaigoldprice.com/gold-rates/${city}`} />
+        {/* Add Tamil version when available: <link rel="alternate" hrefLang="ta" href={`https://chennaigoldprice.com/ta/gold-rates/${city}`} /> */}
         
         <link rel="canonical" href={`https://chennai-gold-rates.lovable.app/gold-rates/${city}`} />
       </Helmet>

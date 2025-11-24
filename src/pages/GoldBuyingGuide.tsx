@@ -48,6 +48,9 @@ const GoldBuyingGuide = () => {
         </script>
         
         <link rel="canonical" href="https://chennaigoldprice.com/buying-guide" />
+        <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/buying-guide" />
+        <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/buying-guide" />
+        {/* Add Tamil version when available: <link rel="alternate" hrefLang="ta" href="https://chennaigoldprice.com/ta/buying-guide" /> */}
       </Helmet>
 
       <Header />
