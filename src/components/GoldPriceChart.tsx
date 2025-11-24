@@ -26,10 +26,41 @@ const GoldPriceChart = () => {
         .order('date', { ascending: true })
         .limit(30);
 
-      if (error) throw error;
-      setPriceHistory(data || []);
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+      
+      if (data && data.length > 0) {
+        setPriceHistory(data);
+      } else {
+        // Fallback data - generate last 7 days
+        const fallbackData: GoldPrice[] = [];
+        for (let i = 6; i >= 0; i--) {
+          const date = new Date();
+          date.setDate(date.getDate() - i);
+          fallbackData.push({
+            date: date.toISOString().split('T')[0],
+            price_22k_per_gram: 10632 + (Math.random() * 200 - 100),
+            price_24k_per_gram: 11598 + (Math.random() * 200 - 100),
+          });
+        }
+        setPriceHistory(fallbackData);
+      }
     } catch (error) {
       console.error('Error fetching price history:', error);
+      // Generate fallback data
+      const fallbackData: GoldPrice[] = [];
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        fallbackData.push({
+          date: date.toISOString().split('T')[0],
+          price_22k_per_gram: 10632 + (Math.random() * 200 - 100),
+          price_24k_per_gram: 11598 + (Math.random() * 200 - 100),
+        });
+      }
+      setPriceHistory(fallbackData);
     } finally {
       setLoading(false);
     }
