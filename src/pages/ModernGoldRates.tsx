@@ -361,10 +361,15 @@ const ModernGoldRates = () => {
           </div>
 
           {/* Description */}
-          <div className="text-muted-foreground leading-relaxed">
+          <div className="text-muted-foreground leading-relaxed space-y-4">
             <p>
               The price of gold in Chennai today is <strong className="text-foreground">₹{price24k.toLocaleString('en-IN')}</strong> per gram for 24 karat gold, <strong className="text-foreground">₹{price22k.toLocaleString('en-IN')}</strong> per gram for 22 karat gold and <strong className="text-foreground">₹{price18k.toLocaleString('en-IN')}</strong> per gram for 18 karat gold (also called 999 gold, 916 gold, and 750 gold respectively).
             </p>
+            <div className="mt-4 p-4 bg-muted/50 rounded-lg border-l-4 border-primary">
+              <p className="text-sm">
+                <strong className="text-foreground">Quick Links:</strong> <a href="/" className="text-primary hover:underline font-medium">Chennai Gold Rates Today</a> | <a href="/gold-rates/salem" className="text-primary hover:underline font-medium">Salem Gold Prices</a> | <a href="/gold-rates/tiruchirappalli" className="text-primary hover:underline font-medium">Trichy Gold Rates</a> | <a href="https://www.lbma.org.uk" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium">LBMA Gold Price<span className="sr-only"> (opens in new tab)</span></a> | <a href="https://www.mcxindia.com" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium">MCX Gold Futures<span className="sr-only"> (opens in new tab)</span></a>
+              </p>
+            </div>
             <button 
               onClick={() => navigate('/')}
               className="text-foreground font-medium underline mt-2 hover:text-primary transition-colors"
@@ -375,7 +380,7 @@ const ModernGoldRates = () => {
 
           {/* Data Source Info */}
           <div className="mt-8 p-4 bg-muted/30 rounded-lg border border-border">
-            <div className="flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-sm flex-wrap gap-2">
               <span className="text-muted-foreground">
                 Source: <strong className="text-primary">GoldAPI.io</strong> - Live Market Rates
               </span>

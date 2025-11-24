@@ -708,6 +708,12 @@ const CityGoldRates = () => {
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-foreground mb-4">Gold Price Breakdown - {cityName}</h2>
             <GoldPriceTable />
+            
+            <div className="mt-6 p-4 sm:p-6 bg-card rounded-xl border-l-4 border-primary">
+              <p className="text-sm sm:text-base text-muted-foreground">
+                <strong className="text-foreground">Related Pages:</strong> <a href="/" className="text-primary hover:underline font-medium mx-2">Chennai Gold Rates</a> | <a href="/rates" className="text-primary hover:underline font-medium mx-2">Compare All Tamil Nadu Cities</a> | <a href="/gold-rates/coimbatore" className="text-primary hover:underline font-medium mx-2">Coimbatore Prices</a> | <a href="https://consumeraffairs.nic.in" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium mx-2">Consumer Affairs India<span className="sr-only"> (opens in new tab)</span></a> | <a href="https://www.goodreturns.in/gold-rates/" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium mx-2">Gold Rate Reference<span className="sr-only"> (opens in new tab)</span></a>
+              </p>
+            </div>
           </div>
 
           {/* In-Content Ad */}
