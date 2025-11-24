@@ -546,13 +546,6 @@ const CityGoldRates = () => {
 
       <div className="min-h-screen bg-background">
         <div className="container mx-auto max-w-6xl p-6">
-          {/* TL;DR Summary */}
-          <GoldRateSummary 
-            price24k={price24k} 
-            price22k={price22k}
-            city={cityName}
-          />
-          
           {/* Header */}
           <button 
             onClick={() => navigate('/')}
@@ -688,6 +681,15 @@ const CityGoldRates = () => {
                 </div>
               </div>
             </Card>
+          </div>
+
+          {/* TL;DR Summary - Bottom of Hero */}
+          <div className="mb-8">
+            <GoldRateSummary 
+              price24k={price24k} 
+              price22k={price22k}
+              city={cityName}
+            />
           </div>
 
           {/* Historical Price Comparison */}
