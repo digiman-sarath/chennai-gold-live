@@ -47,22 +47,22 @@ const TamilNaduCities = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-8 sm:py-12 lg:py-16 bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-              <MapPin className="h-8 w-8 text-primary" />
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 mb-3 sm:mb-4">
+              <MapPin className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
             </div>
-            <h2 className="text-3xl font-bold text-foreground mb-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2 sm:mb-3 px-4">
               Gold Rates Across Tamil Nadu
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4">
               Check today's gold rates in major cities across Tamil Nadu
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {cities.map((city) => (
               <Card 
                 key={city.id}

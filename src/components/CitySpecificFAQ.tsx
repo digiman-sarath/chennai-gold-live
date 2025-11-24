@@ -137,42 +137,42 @@ const CitySpecificFAQ = ({ city }: CitySpecificFAQProps) => {
   const faqs = generateCityFAQs(city);
 
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-8 sm:py-12 lg:py-16 bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-              <HelpCircle className="h-8 w-8 text-primary" />
+          <div className="mb-8 sm:mb-12 text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 mb-3 sm:mb-4">
+              <HelpCircle className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
             </div>
-            <h2 className="text-3xl font-bold text-foreground mb-3">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2 sm:mb-3 px-4">
               Frequently Asked Questions About Gold Rates in {city}
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4">
               Everything you need to know about buying and investing in gold in {city}
             </p>
           </div>
 
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion type="single" collapsible className="w-full space-y-3 sm:space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="border border-border rounded-lg px-6 bg-card shadow-sm hover:shadow-md transition-shadow"
+                className="border border-border rounded-lg px-4 sm:px-6 bg-card shadow-sm hover:shadow-md transition-shadow"
               >
-                <AccordionTrigger className="text-left hover:no-underline py-4">
-                  <span className="font-semibold text-foreground pr-4">
+                <AccordionTrigger className="text-left hover:no-underline py-3 sm:py-4">
+                  <span className="text-sm sm:text-base font-semibold text-foreground pr-4">
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
+                <AccordionContent className="text-xs sm:text-sm text-muted-foreground pb-3 sm:pb-4 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
 
-          <div className="mt-8 p-4 bg-primary/5 rounded-lg border border-primary/20 text-center">
-            <p className="text-sm text-muted-foreground">
+          <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-primary/5 rounded-lg border border-primary/20 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               <strong className="text-foreground">Have more questions about gold rates in {city}?</strong> Visit our jewelers in {city} for personalized assistance and expert guidance on gold investments.
             </p>
           </div>

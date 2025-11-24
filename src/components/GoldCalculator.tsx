@@ -56,15 +56,15 @@ const GoldCalculator = ({ price22k, price24k }: GoldCalculatorProps) => {
 
   return (
     <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Calculator className="h-5 w-5 text-primary" />
+      <CardHeader className="p-4 sm:p-6">
+        <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+          <Calculator className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           Gold Price Calculator
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
         {/* Input Section */}
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <div className="space-y-2">
             <Label htmlFor="weight">Weight</Label>
             <Input
@@ -121,12 +121,12 @@ const GoldCalculator = ({ price22k, price24k }: GoldCalculatorProps) => {
         </div>
 
         {/* Conversion Display */}
-        <div className="bg-muted/30 rounded-lg p-4 space-y-3">
+        <div className="bg-muted/30 rounded-lg p-3 sm:p-4 space-y-2 sm:space-y-3">
           <div className="flex items-center gap-2 mb-2">
             <Scale className="h-4 w-4 text-primary" />
-            <h4 className="font-semibold text-foreground">Weight Conversions</h4>
+            <h4 className="text-sm sm:text-base font-semibold text-foreground">Weight Conversions</h4>
           </div>
-          <div className="grid grid-cols-3 gap-4 text-sm">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 text-xs sm:text-sm">
             <div>
               <p className="text-muted-foreground">Grams</p>
               <p className="font-semibold text-foreground">{weightInGrams.toFixed(2)}</p>
@@ -143,10 +143,10 @@ const GoldCalculator = ({ price22k, price24k }: GoldCalculatorProps) => {
         </div>
 
         {/* Price Breakdown */}
-        <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-4 space-y-3 border border-primary/20">
-          <h4 className="font-semibold text-foreground mb-3">Price Breakdown</h4>
+        <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-3 sm:p-4 space-y-2 sm:space-y-3 border border-primary/20">
+          <h4 className="text-sm sm:text-base font-semibold text-foreground mb-2 sm:mb-3">Price Breakdown</h4>
           
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-xs sm:text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Gold Rate ({purity.toUpperCase()})</span>
               <span className="font-medium text-foreground">₹{pricePerGram.toLocaleString('en-IN')}/gram</span>
@@ -164,8 +164,8 @@ const GoldCalculator = ({ price22k, price24k }: GoldCalculatorProps) => {
             
             <div className="border-t border-border pt-2 mt-2">
               <div className="flex justify-between items-center">
-                <span className="font-semibold text-foreground">Total Price</span>
-                <span className="text-2xl font-bold text-primary">₹{totalPrice.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</span>
+                <span className="text-sm sm:text-base font-semibold text-foreground">Total Price</span>
+                <span className="text-lg sm:text-xl lg:text-2xl font-bold text-primary">₹{totalPrice.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</span>
               </div>
             </div>
           </div>

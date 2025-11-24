@@ -388,8 +388,8 @@ const ModernGoldRates = () => {
       </div>
 
       {/* Comprehensive SEO Content */}
-      <section className="bg-background py-16">
-        <div className="container mx-auto px-4">
+      <section className="bg-background py-8 sm:py-12 lg:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <ComprehensiveGoldGuide city="Chennai" />
           </div>
