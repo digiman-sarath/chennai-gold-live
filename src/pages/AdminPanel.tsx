@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AdManagement from '@/components/admin/AdManagement';
+import AdAnalytics from '@/components/admin/AdAnalytics';
 import { DollarSign, TrendingUp, Users, Settings } from 'lucide-react';
 
 const AdminPanel = () => {
@@ -102,38 +103,7 @@ const AdminPanel = () => {
             </TabsContent>
 
             <TabsContent value="stats">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Website Statistics</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <Card>
-                      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          Total Page Views
-                        </CardTitle>
-                        <TrendingUp className="h-4 w-4 text-muted-foreground" />
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">Coming Soon</div>
-                      </CardContent>
-                    </Card>
-                    
-                    <Card>
-                      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          Active Users
-                        </CardTitle>
-                        <Users className="h-4 w-4 text-muted-foreground" />
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">Coming Soon</div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CardContent>
-              </Card>
+              <AdAnalytics />
             </TabsContent>
 
             <TabsContent value="users">
