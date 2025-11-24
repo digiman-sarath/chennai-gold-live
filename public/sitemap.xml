@@ -24,6 +24,22 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://chennaigoldprice.com/privacy-policy</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Disclaimer -->
+  <url>
+    <loc>https://chennaigoldprice.com/disclaimer</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   
   <!-- Chennai -->
   <url>
