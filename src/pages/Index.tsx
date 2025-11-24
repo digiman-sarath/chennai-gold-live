@@ -472,6 +472,26 @@ const Index = () => {
         {/* Gold Info */}
         <GoldInfo />
 
+        {/* Quick Link to Buying Guide */}
+        <section className="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-foreground mb-4">New to Gold Buying?</h2>
+              <p className="text-muted-foreground mb-6">
+                Learn everything about gold purity, making charges, GST calculations, and the best times to buy gold
+              </p>
+              <Button 
+                size="lg" 
+                onClick={() => navigate('/buying-guide')}
+                className="group"
+              >
+                Read Complete Buying Guide
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <GoldFAQ />
 
