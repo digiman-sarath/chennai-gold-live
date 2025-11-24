@@ -12,6 +12,10 @@ import CityGoldRates from "./pages/CityGoldRates";
 import GoldBuyingGuide from "./pages/GoldBuyingGuide";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Disclaimer from "./pages/Disclaimer";
+import Articles from "./pages/Articles";
+import Article from "./pages/Article";
+import ArticleManagement from "./pages/ArticleManagement";
+import ArticleEditor from "./pages/ArticleEditor";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,9 +33,14 @@ const App = () => (
           <Route path="/buying-guide" element={<GoldBuyingGuide />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:slug" element={<Article />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-panel" element={<AdminPanel />} />
+          <Route path="/admin/articles" element={<ArticleManagement />} />
+          <Route path="/admin/articles/new" element={<ArticleEditor />} />
+          <Route path="/admin/articles/edit/:id" element={<ArticleEditor />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
