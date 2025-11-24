@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, LogOut, ArrowLeft } from 'lucide-react';
+import { Loader2, LogOut, ArrowLeft, RefreshCw, Sparkles } from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 
 const Admin = () => {
@@ -16,6 +16,7 @@ const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [price22k, setPrice22k] = useState('');
   const [price24k, setPrice24k] = useState('');
@@ -87,6 +88,35 @@ const Admin = () => {
     navigate('/');
   };
 
+  const handleRefreshLivePrices = async () => {
+    setRefreshing(true);
+
+    try {
+      // Call the edge function to fetch live prices from GoldAPI
+      const { data, error } = await supabase.functions.invoke('update-gold-price', {
+        body: {},
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: 'Success!',
+        description: 'Live gold prices fetched and updated from GoldAPI.io',
+      });
+
+      console.log('Live prices updated:', data);
+    } catch (error: any) {
+      console.error('Error fetching live prices:', error);
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to fetch live prices. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
@@ -150,11 +180,46 @@ const Admin = () => {
           </Button>
         </div>
 
+        <Card className="shadow-elegant mb-6">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold flex items-center gap-2">
+              <Sparkles className="h-6 w-6 text-primary" />
+              Fetch Live Gold Prices
+            </CardTitle>
+            <CardDescription>
+              Get real-time gold rates from GoldAPI.io instantly
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              onClick={handleRefreshLivePrices} 
+              disabled={refreshing}
+              className="w-full"
+              size="lg"
+            >
+              {refreshing ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Fetching Live Prices...
+                </>
+              ) : (
+                <>
+                  <RefreshCw className="mr-2 h-5 w-5" />
+                  Fetch Live Prices from GoldAPI
+                </>
+              )}
+            </Button>
+            <p className="mt-3 text-xs text-muted-foreground text-center">
+              Instantly updates today's gold rates with live market data
+            </p>
+          </CardContent>
+        </Card>
+
         <Card className="shadow-elegant">
           <CardHeader>
-            <CardTitle className="text-3xl font-bold">Update Gold Prices</CardTitle>
+            <CardTitle className="text-3xl font-bold">Manual Price Update</CardTitle>
             <CardDescription>
-              Set daily gold rates for Chennai market
+              Manually set daily gold rates for Chennai market
             </CardDescription>
           </CardHeader>
           <CardContent>
