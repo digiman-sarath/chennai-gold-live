@@ -51,11 +51,16 @@ const GoldInfo = () => {
               <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-bold text-foreground">Understanding Gold Prices in Chennai</h2>
               <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
                 <p>
-                  Chennai, the capital city of Tamil Nadu, has long been recognized as one of India's premier gold markets. The city's rich cultural heritage and traditional affinity for gold jewelry make it a significant hub for gold trading in South India. Today's gold rate in Chennai is influenced by various factors including international gold prices, currency exchange rates, local demand and supply, and various taxes and duties imposed by the government.
+                  Chennai, the capital city of Tamil Nadu, has long been recognized as one of India&apos;s premier gold markets. The city&apos;s rich cultural heritage and traditional affinity for gold jewelry make it a significant hub for gold trading in South India. Today&apos;s gold rate in Chennai is influenced by various factors including international gold prices, currency exchange rates, local demand and supply, and various taxes and duties imposed by the government.
                 </p>
                 <p>
-                  Gold has been an integral part of Indian culture for centuries, symbolizing prosperity, purity, and auspiciousness. In Chennai, gold holds special significance during weddings, festivals, and religious ceremonies. The city's jewelry markets in areas like T Nagar, George Town, and Sowcarpet are renowned across the country for their exquisite craftsmanship and competitive pricing.
+                  Gold has been an integral part of Indian culture for centuries, symbolizing prosperity, purity, and auspiciousness. In Chennai, gold holds special significance during weddings, festivals, and religious ceremonies. The city&apos;s jewelry markets in areas like <a href="/gold-rates/chennai" className="text-primary hover:underline font-medium">T Nagar, George Town, and Sowcarpet</a> are renowned across the country for their exquisite craftsmanship and competitive pricing.
                 </p>
+                <div className="mt-4 p-4 bg-muted/50 rounded-lg border-l-4 border-primary">
+                  <p className="text-sm">
+                    <strong className="text-foreground">Useful Resources:</strong> Compare <a href="/rates" className="text-primary hover:underline font-medium">gold rates across Tamil Nadu cities</a> | Check <a href="/gold-rates/coimbatore" className="text-primary hover:underline font-medium">Coimbatore gold rates</a> | View <a href="/gold-rates/madurai" className="text-primary hover:underline font-medium">Madurai gold prices</a> | Official <a href="https://www.bis.gov.in" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium">BIS Hallmark certification<span className="sr-only"> (opens in new tab)</span></a> | <a href="https://www.rbi.org.in" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium">RBI Gold Policy<span className="sr-only"> (opens in new tab)</span></a>
+                  </p>
+                </div>
               </div>
             </div>
 

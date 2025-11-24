@@ -409,8 +409,14 @@ const Index = () => {
 
         {/* Price Breakdown Table */}
         <section className="py-16">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <GoldPriceTable />
+            
+            <div className="max-w-4xl mx-auto mt-8 p-4 sm:p-6 bg-card rounded-xl shadow-elegant border border-border">
+              <p className="text-sm sm:text-base text-muted-foreground text-center">
+                <strong className="text-foreground">Explore More:</strong> <a href="/gold-rates/tirunelveli" className="text-primary hover:underline font-medium mx-2">Tirunelveli Gold Rates</a> | <a href="/gold-rates/vellore" className="text-primary hover:underline font-medium mx-2">Vellore Gold Prices</a> | <a href="/gold-rates/erode" className="text-primary hover:underline font-medium mx-2">Erode Gold Rates</a> | <a href="https://www.india.gov.in" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium mx-2">India.gov.in<span className="sr-only"> (opens in new tab)</span></a> | <a href="https://goldprice.org" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium mx-2">Global Gold Price<span className="sr-only"> (opens in new tab)</span></a>
+              </p>
+            </div>
           </div>
         </section>
 
