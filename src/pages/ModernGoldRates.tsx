@@ -205,6 +205,9 @@ const ModernGoldRates = () => {
         </script>
         
         <link rel="canonical" href="https://chennaigoldprice.com/rates" />
+        <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/rates" />
+        <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/rates" />
+        {/* Add Tamil version when available: <link rel="alternate" hrefLang="ta" href="https://chennaigoldprice.com/ta/rates" /> */}
         
         <script type="application/ld+json">
           {JSON.stringify({

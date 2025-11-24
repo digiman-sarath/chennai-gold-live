@@ -271,8 +271,11 @@ const Index = () => {
         </script>
         
         <link rel="canonical" href="https://chennaigoldprice.com" />
+        <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com" />
+        {/* Add Tamil version when available: <link rel="alternate" hrefLang="ta" href="https://chennaigoldprice.com/ta" /> */}
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="Chennai Gold Rates" />
+        <meta name="author" content="Chennai Gold Price" />
         <meta name="last-modified" content={goldPrice?.updated_at || new Date().toISOString()} />
       </Helmet>
 
