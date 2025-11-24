@@ -470,19 +470,19 @@ const CityGoldRates = () => {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://chennai-gold-rates.lovable.app"
+                "item": "https://chennaigoldprice.com"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Tamil Nadu Gold Rates",
-                "item": "https://chennai-gold-rates.lovable.app/rates"
+                "item": "https://chennaigoldprice.com/rates"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": `${cityName} Gold Rates`,
-                "item": `https://chennai-gold-rates.lovable.app/gold-rates/${city}`
+                "item": `https://chennaigoldprice.com/gold-rates/${city}`
               }
             ]
           })}
@@ -505,7 +505,7 @@ const CityGoldRates = () => {
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
               "priceValidUntil": goldPrice.date,
-              "url": `https://chennai-gold-rates.lovable.app/gold-rates/${city}`
+              "url": `https://chennaigoldprice.com/gold-rates/${city}`
             }
           })}
         </script>
@@ -527,10 +527,12 @@ const CityGoldRates = () => {
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
               "priceValidUntil": goldPrice.date,
-              "url": `https://chennai-gold-rates.lovable.app/gold-rates/${city}`
+              "url": `https://chennaigoldprice.com/gold-rates/${city}`
             }
           })}
         </script>
+        
+        <link rel="canonical" href={`https://chennaigoldprice.com/gold-rates/${city}`} />
         
         <link rel="canonical" href={`https://chennai-gold-rates.lovable.app/gold-rates/${city}`} />
       </Helmet>

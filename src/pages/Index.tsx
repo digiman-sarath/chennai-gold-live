@@ -153,12 +153,12 @@ const Index = () => {
   const sitelinkSearchBoxData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "https://chennai-gold-rates.lovable.app",
+    "url": "https://chennaigoldprice.com",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://chennai-gold-rates.lovable.app/gold-rates/{city}"
+        "urlTemplate": "https://chennaigoldprice.com/gold-rates/{city}"
       },
       "query-input": "required name=city"
     }
@@ -172,13 +172,13 @@ const Index = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://chennai-gold-rates.lovable.app"
+        "item": "https://chennaigoldprice.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Chennai Gold Rates",
-        "item": "https://chennai-gold-rates.lovable.app/gold-rates/chennai"
+        "item": "https://chennaigoldprice.com/gold-rates/chennai"
       }
     ]
   };
@@ -199,7 +199,7 @@ const Index = () => {
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
       "priceValidUntil": goldPrice?.date || new Date().toISOString().split('T')[0],
-      "url": "https://chennai-gold-rates.lovable.app"
+      "url": "https://chennaigoldprice.com"
     }
   };
 
@@ -219,7 +219,7 @@ const Index = () => {
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
       "priceValidUntil": goldPrice?.date || new Date().toISOString().split('T')[0],
-      "url": "https://chennai-gold-rates.lovable.app"
+      "url": "https://chennaigoldprice.com"
     }
   };
 
@@ -245,7 +245,7 @@ const Index = () => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`Today Gold Rate in Chennai - ${displayDate} | 22K ₹${price22k} & 24K ₹${price24k}`} />
         <meta property="og:description" content={`Live gold rates in Chennai updated daily from GoldAPI.io. 22K: ₹${price22k}/gram, 24K: ₹${price24k}/gram. Get current gold prices per gram.`} />
-        <meta property="og:url" content="https://chennai-gold-rates.lovable.app" />
+        <meta property="og:url" content="https://chennaigoldprice.com" />
         
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`Chennai Gold Rate ${displayDate} | 22K ₹${price22k} 24K ₹${price24k}`} />
@@ -270,7 +270,7 @@ const Index = () => {
           {JSON.stringify(goldPriceData)}
         </script>
         
-        <link rel="canonical" href="https://chennai-gold-rates.lovable.app" />
+        <link rel="canonical" href="https://chennaigoldprice.com" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Chennai Gold Rates" />
         <meta name="last-modified" content={goldPrice?.updated_at || new Date().toISOString()} />

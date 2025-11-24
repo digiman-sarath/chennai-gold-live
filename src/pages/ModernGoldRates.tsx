@@ -171,12 +171,12 @@ const ModernGoldRates = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "url": "https://chennai-gold-rates.lovable.app",
+            "url": "https://chennaigoldprice.com",
             "potentialAction": {
               "@type": "SearchAction",
               "target": {
                 "@type": "EntryPoint",
-                "urlTemplate": "https://chennai-gold-rates.lovable.app/gold-rates/{city}"
+                "urlTemplate": "https://chennaigoldprice.com/gold-rates/{city}"
               },
               "query-input": "required name=city"
             }
@@ -192,17 +192,19 @@ const ModernGoldRates = () => {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://chennai-gold-rates.lovable.app"
+                "item": "https://chennaigoldprice.com"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Tamil Nadu Gold Rates",
-                "item": "https://chennai-gold-rates.lovable.app/rates"
+                "item": "https://chennaigoldprice.com/rates"
               }
             ]
           })}
         </script>
+        
+        <link rel="canonical" href="https://chennaigoldprice.com/rates" />
         
         <script type="application/ld+json">
           {JSON.stringify({
