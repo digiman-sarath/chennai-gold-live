@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { TrendingUp, Calendar } from 'lucide-react';
-import { format } from 'date-fns';
+import { TrendingUp, Calendar, RefreshCw, Database } from 'lucide-react';
+import { format, formatDistanceToNow } from 'date-fns';
 import goldHero from '@/assets/gold-hero.jpg';
 
 interface GoldPrice {
   date: string;
   price_22k_per_gram: number;
   price_24k_per_gram: number;
+  updated_at: string;
 }
 
 const GoldPriceHero = () => {
@@ -86,11 +87,28 @@ const GoldPriceHero = () => {
             </div>
           ) : goldPrice ? (
             <>
-              <div className="mb-8 flex items-center justify-center gap-2 text-muted-foreground">
-                <Calendar className="h-4 w-4" />
-                <time dateTime={goldPrice.date}>
-                  {format(new Date(goldPrice.date), 'MMMM dd, yyyy')}
-                </time>
+              <div className="mb-6 space-y-2">
+                <div className="flex items-center justify-center gap-2 text-muted-foreground">
+                  <Calendar className="h-4 w-4" />
+                  <time dateTime={goldPrice.date}>
+                    {format(new Date(goldPrice.date), 'MMMM dd, yyyy')}
+                  </time>
+                </div>
+                <div className="flex flex-col items-center gap-2 text-xs text-muted-foreground sm:flex-row sm:justify-center">
+                  <div className="flex items-center gap-1.5">
+                    <Database className="h-3.5 w-3.5 text-primary" />
+                    <span className="font-medium">Source:</span>
+                    <span className="text-primary">GoldAPI.io - Live Market Rates</span>
+                  </div>
+                  <span className="hidden sm:inline">•</span>
+                  <div className="flex items-center gap-1.5">
+                    <RefreshCw className="h-3.5 w-3.5 text-primary" />
+                    <span className="font-medium">Updated:</span>
+                    <time dateTime={goldPrice.updated_at} className="text-primary">
+                      {formatDistanceToNow(new Date(goldPrice.updated_at), { addSuffix: true })}
+                    </time>
+                  </div>
+                </div>
               </div>
               
               <div className="mt-12 grid gap-6 md:grid-cols-2">
