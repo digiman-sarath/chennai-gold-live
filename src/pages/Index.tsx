@@ -10,6 +10,7 @@ import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldInfo from '@/components/GoldInfo';
 import GoldFAQ from '@/components/GoldFAQ';
+import TamilNaduCities from '@/components/TamilNaduCities';
 
 interface GoldPrice {
   date: string;
@@ -151,6 +152,7 @@ const Index = () => {
         <GoldPriceHero />
         <GoldPriceChart />
         <GoldPriceTable />
+        <TamilNaduCities />
         <GoldInfo />
         <GoldFAQ />
       </main>
