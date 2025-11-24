@@ -11,13 +11,14 @@ import { supabase } from '@/integrations/supabase/client';
 import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldInfo from '@/components/GoldInfo';
-import GoldFAQ from '@/components/GoldFAQ';
+import GoldFAQ, { goldFAQData } from '@/components/GoldFAQ';
 import TamilNaduCities from '@/components/TamilNaduCities';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import AdDisplay from '@/components/AdDisplay';
 import { formatDistanceToNow } from 'date-fns';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
 import { GoldPriceComparison } from '@/components/GoldPriceComparison';
+import { generateFAQSchema } from '@/lib/faq-schema';
 
 interface GoldPrice {
   date: string;
@@ -119,36 +120,8 @@ const Index = () => {
     ? calculateChange(goldPrice.price_24k_per_gram, previousPrice.price_24k_per_gram)
     : null;
   
-  const faqStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the gold rate in Chennai today?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Today's gold rate in Chennai is ₹${price22k} per gram for 22 Karat gold and ₹${price24k} per gram for 24 Karat gold as of ${displayDate}.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How often are gold prices updated?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Gold prices are updated daily from live API sources (GoldAPI.io) to ensure you get the most accurate and current gold rates in Chennai."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between 22K and 24K gold?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "24K gold is 99.9% pure gold, while 22K gold is 91.6% pure with other metals added for durability. 24K gold is softer and more expensive, while 22K is commonly used for jewelry."
-        }
-      }
-    ]
-  };
+  // Generate FAQ schema from actual FAQ content
+  const faqStructuredData = generateFAQSchema(goldFAQData);
 
   const sitelinkSearchBoxData = {
     "@context": "https://schema.org",

@@ -5,13 +5,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
+import { FAQItem } from "@/lib/faq-schema";
 
-const GoldFAQ = () => {
-  const faqs = [
-    {
-      question: "What is today's gold rate in Chennai?",
-      answer: "Today's gold rate in Chennai is updated daily on our website. The price varies for 22K and 24K gold and is displayed per gram. Check the live rates at the top of this page for the most current pricing."
-    },
+export const goldFAQData: FAQItem[] = [
+  {
+    question: "What is today's gold rate in Chennai?",
+    answer: "Today's gold rate in Chennai is updated daily on our website. The price varies for 22K and 24K gold and is displayed per gram. Check the live rates at the top of this page for the most current pricing."
+  },
     {
       question: "What is the difference between 22K and 24K gold?",
       answer: "22K gold contains 91.67% pure gold mixed with other metals for durability, ideal for jewelry. 24K gold is 99.99% pure gold, softer, and preferred for investment purposes like coins and bars."
@@ -394,6 +394,7 @@ const GoldFAQ = () => {
     }
   ];
 
+const GoldFAQ = () => {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
@@ -411,7 +412,7 @@ const GoldFAQ = () => {
           </div>
 
           <Accordion type="single" collapsible className="w-full space-y-2">
-            {faqs.map((faq, index) => (
+            {goldFAQData.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}

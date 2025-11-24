@@ -5,13 +5,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
+import { FAQItem } from "@/lib/faq-schema";
 
 interface CitySpecificFAQProps {
   city: string;
 }
 
-const CitySpecificFAQ = ({ city }: CitySpecificFAQProps) => {
-  const generateCityFAQs = (cityName: string) => [
+export const generateCityFAQs = (cityName: string): FAQItem[] => [
     {
       question: `What is today's gold rate in ${cityName}?`,
       answer: `Today's gold rate in ${cityName} is updated daily on this page and matches the live market rates sourced from GoldAPI.io. The price varies for 22K and 24K gold and is displayed per gram. Check the live rates at the top of this page for the most current pricing in ${cityName}.`
@@ -134,6 +134,7 @@ const CitySpecificFAQ = ({ city }: CitySpecificFAQProps) => {
     }
   ];
 
+const CitySpecificFAQ = ({ city }: CitySpecificFAQProps) => {
   const faqs = generateCityFAQs(city);
 
   return (
