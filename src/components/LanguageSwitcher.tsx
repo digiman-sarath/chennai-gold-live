@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Globe, Check } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 type Language = 'en' | 'ta';
 
@@ -43,15 +44,36 @@ const detectBrowserLanguage = (): Language => {
 
 export const LanguageSwitcher = () => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
+  const { toast } = useToast();
 
   useEffect(() => {
+    // Check if this is the first visit (no saved preference)
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    const hasSeenLanguageDetection = localStorage.getItem('hasSeenLanguageDetection');
+    
     // Auto-detect language on component mount
     const detectedLang = detectBrowserLanguage();
     setCurrentLanguage(detectedLang);
     
-    // Show notification if Tamil is detected but not yet available
-    if (detectedLang === 'ta') {
-      console.log('Tamil language detected from browser. Tamil version coming soon!');
+    // Show notification only on first visit and if Tamil is detected
+    if (!hasSeenLanguageDetection && !savedLanguage && detectedLang === 'ta') {
+      toast({
+        title: "Tamil Language Detected",
+        description: "We noticed your browser is set to Tamil. Tamil version coming soon!",
+        action: (
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => handleLanguageChange('en')}
+          >
+            Use English
+          </Button>
+        ),
+        duration: 8000,
+      });
+      
+      // Mark that user has seen the language detection notification
+      localStorage.setItem('hasSeenLanguageDetection', 'true');
     }
   }, []);
 
@@ -60,6 +82,14 @@ export const LanguageSwitcher = () => {
     
     // Store preference in localStorage
     localStorage.setItem('preferredLanguage', langCode);
+    
+    // Show confirmation toast
+    const langName = languages.find(l => l.code === langCode)?.nativeName;
+    toast({
+      title: "Language Changed",
+      description: `Switched to ${langName}`,
+      duration: 3000,
+    });
     
     // Future: Navigate to translated version or trigger i18n change
     if (langCode === 'ta') {
