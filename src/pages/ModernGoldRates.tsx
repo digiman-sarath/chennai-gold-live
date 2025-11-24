@@ -125,7 +125,7 @@ const ModernGoldRates = () => {
       <AdDisplay position="top_banner" />
       
       <div className="min-h-screen bg-background">
-        <div className="container mx-auto max-w-4xl p-6">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 py-6 sm:py-8">
         {/* Header */}
         <button 
           onClick={() => navigate('/')}
@@ -135,11 +135,11 @@ const ModernGoldRates = () => {
           <span className="font-medium">Gold Rates</span>
         </button>
 
-        <h1 className="text-3xl font-bold text-foreground mb-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
           Gold Rate in Chennai
         </h1>
 
-        <div className="flex items-center gap-2 text-muted-foreground mb-6">
+        <div className="flex flex-wrap items-center gap-2 text-muted-foreground mb-6">
           <Calendar className="h-4 w-4" />
           <time className="text-lg font-medium">
             {format(new Date(goldPrice.date), 'dd MMMM yyyy')}
@@ -147,11 +147,11 @@ const ModernGoldRates = () => {
         </div>
 
         {/* Metal Type Tabs */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6">
           <Button
             onClick={() => setSelectedMetal('gold')}
             className={selectedMetal === 'gold' ? 'bg-green-600 hover:bg-green-700' : 'bg-green-100 text-green-700 hover:bg-green-200'}
-            size="lg"
+            size="sm"
           >
             Gold
           </Button>
@@ -159,7 +159,7 @@ const ModernGoldRates = () => {
             onClick={() => setSelectedMetal('silver')}
             variant="outline"
             className={selectedMetal === 'silver' ? 'bg-accent' : 'bg-muted/30 border-muted'}
-            size="lg"
+            size="sm"
             disabled
           >
             Silver
@@ -168,7 +168,7 @@ const ModernGoldRates = () => {
             onClick={() => setSelectedMetal('platinum')}
             variant="outline"
             className={selectedMetal === 'platinum' ? 'bg-accent' : 'bg-muted/30 border-muted'}
-            size="lg"
+            size="sm"
             disabled
           >
             Platinum
@@ -197,8 +197,8 @@ const ModernGoldRates = () => {
         </div>
 
         {/* Price Cards */}
-        <div className="container mx-auto max-w-4xl px-6">
-          <div className="grid md:grid-cols-3 gap-4 mb-8">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
           {/* 24K Gold */}
           <Card className="p-6 bg-green-50 dark:bg-green-950/20 border-green-100 dark:border-green-900">
             <div className="space-y-3">

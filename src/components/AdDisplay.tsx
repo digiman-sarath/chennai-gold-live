@@ -117,15 +117,15 @@ const AdDisplay = ({ position, className = '' }: AdDisplayProps) => {
   const getPositionClasses = () => {
     switch (position) {
       case 'top_banner':
-        return 'w-full max-w-6xl mx-auto mb-4';
+        return 'w-full max-w-6xl mx-auto mb-4 sm:mb-6';
       case 'sidebar':
-        return 'w-full sticky top-4';
+        return 'w-full sticky top-4 hidden lg:block';
       case 'in_content':
-        return 'w-full my-8';
+        return 'w-full my-6 sm:my-8';
       case 'bottom_banner':
-        return 'w-full max-w-6xl mx-auto mt-4';
+        return 'w-full max-w-6xl mx-auto mt-4 sm:mt-6';
       case 'mobile_sticky':
-        return 'fixed bottom-0 left-0 right-0 z-50 md:hidden bg-background border-t shadow-lg';
+        return 'fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-background border-t shadow-lg';
       default:
         return '';
     }
@@ -137,21 +137,27 @@ const AdDisplay = ({ position, className = '' }: AdDisplayProps) => {
         {position === 'mobile_sticky' && (
           <button
             onClick={handleDismiss}
-            className="absolute -top-2 right-2 z-10 bg-background border rounded-full p-1 shadow-md"
+            className="absolute -top-2 right-2 z-10 bg-background border rounded-full p-1 sm:p-1.5 shadow-md hover:bg-muted transition-colors"
             aria-label="Close ad"
           >
-            <X className="h-4 w-4" />
+            <X className="h-3 w-3 sm:h-4 sm:w-4" />
           </button>
         )}
         
         <div
-          className="cursor-pointer overflow-hidden rounded-lg"
+          className="cursor-pointer overflow-hidden rounded-lg sm:rounded-xl"
           onClick={handleAdClick}
         >
           <img
             src={ad.image_url}
             alt={ad.title}
             className="w-full h-auto object-cover transition-transform hover:scale-105"
+            style={{
+              maxHeight: position === 'mobile_sticky' ? '80px' : 
+                        position === 'top_banner' || position === 'bottom_banner' ? '200px' : 
+                        position === 'sidebar' ? '600px' : '400px'
+            }}
+            loading="lazy"
           />
         </div>
 

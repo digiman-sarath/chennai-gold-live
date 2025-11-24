@@ -175,13 +175,13 @@ const AdAnalytics = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-foreground">Ad Performance Analytics</h2>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground">Ad Performance Analytics</h2>
         <select
           value={selectedAd}
           onChange={(e) => setSelectedAd(e.target.value)}
-          className="px-4 py-2 border border-border rounded-md bg-background text-foreground"
+          className="w-full sm:w-auto px-4 py-2 border border-border rounded-md bg-background text-foreground text-sm sm:text-base"
         >
           <option value="all">All Ads</option>
           {ads.map((ad) => (
@@ -193,7 +193,7 @@ const AdAnalytics = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Impressions</CardTitle>
@@ -227,7 +227,7 @@ const AdAnalytics = () => {
 
       {/* Charts */}
       <Tabs defaultValue="line" className="space-y-4">
-        <TabsList>
+        <TabsList className="w-full sm:w-auto grid grid-cols-2 sm:flex">
           <TabsTrigger value="line">
             <TrendingUp className="h-4 w-4 mr-2" />
             Trends
@@ -241,10 +241,10 @@ const AdAnalytics = () => {
         <TabsContent value="line">
           <Card>
             <CardHeader>
-              <CardTitle>Performance Over Time (Last 30 Days)</CardTitle>
+              <CardTitle className="text-base sm:text-lg">Performance Over Time (Last 30 Days)</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ChartContainer config={chartConfig} className="h-[400px] w-full">
+            <CardContent className="p-2 sm:p-6">
+              <ChartContainer config={chartConfig} className="h-[300px] sm:h-[400px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
@@ -280,10 +280,10 @@ const AdAnalytics = () => {
         <TabsContent value="bar">
           <Card>
             <CardHeader>
-              <CardTitle>Daily Comparison (Last 30 Days)</CardTitle>
+              <CardTitle className="text-base sm:text-lg">Daily Comparison (Last 30 Days)</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ChartContainer config={chartConfig} className="h-[400px] w-full">
+            <CardContent className="p-2 sm:p-6">
+              <ChartContainer config={chartConfig} className="h-[300px] sm:h-[400px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
