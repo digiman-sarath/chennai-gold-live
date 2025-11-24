@@ -3,12 +3,12 @@ import { Shield, TrendingUp, Clock, Target, LineChart, Coins, Calculator, MapPin
 
 const GoldInfo = () => {
   return (
-    <section className="bg-muted/30 py-16">
-      <div className="container mx-auto px-4">
+    <section className="bg-muted/30 py-8 sm:py-12 lg:py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-12 text-center text-3xl font-bold text-foreground">Today Gold Rate in Chennai - Your Complete Guide</h2>
+          <h2 className="mb-8 sm:mb-12 text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground">Today Gold Rate in Chennai - Your Complete Guide</h2>
           
-          <div className="grid gap-8 md:grid-cols-3 mb-12">
+          <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8 sm:mb-12">
             <Card className="border-primary/20 shadow-elegant transition-all hover:shadow-gold">
               <CardContent className="pt-6">
                 <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
@@ -46,10 +46,10 @@ const GoldInfo = () => {
             </Card>
           </div>
 
-          <article className="space-y-8 mb-12">
-            <div className="rounded-2xl bg-card p-8 shadow-elegant">
-              <h2 className="mb-6 text-2xl font-bold text-foreground">Understanding Gold Prices in Chennai</h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <article className="space-y-6 sm:space-y-8 mb-8 sm:mb-12">
+            <div className="rounded-xl sm:rounded-2xl bg-card p-4 sm:p-6 lg:p-8 shadow-elegant">
+              <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-bold text-foreground">Understanding Gold Prices in Chennai</h2>
+              <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
                 <p>
                   Chennai, the capital city of Tamil Nadu, has long been recognized as one of India's premier gold markets. The city's rich cultural heritage and traditional affinity for gold jewelry make it a significant hub for gold trading in South India. Today's gold rate in Chennai is influenced by various factors including international gold prices, currency exchange rates, local demand and supply, and various taxes and duties imposed by the government.
                 </p>
@@ -59,14 +59,14 @@ const GoldInfo = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl bg-card p-8 shadow-elegant">
-              <h3 className="mb-4 text-2xl font-bold text-foreground flex items-center gap-3">
-                <Coins className="h-7 w-7 text-primary" />
+            <div className="rounded-xl sm:rounded-2xl bg-card p-4 sm:p-6 lg:p-8 shadow-elegant">
+              <h3 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2 sm:gap-3">
+                <Coins className="h-6 w-6 sm:h-7 sm:w-7 text-primary" />
                 Understanding Gold Purity - 22K vs 24K Gold
               </h3>
-              <div className="space-y-6 text-muted-foreground">
-                <div className="border-l-4 border-primary pl-6">
-                  <h4 className="mb-3 text-xl font-semibold text-foreground">22 Karat Gold (91.67% Pure)</h4>
+              <div className="space-y-4 sm:space-y-6 text-sm sm:text-base text-muted-foreground">
+                <div className="border-l-4 border-primary pl-4 sm:pl-6">
+                  <h4 className="mb-2 sm:mb-3 text-lg sm:text-xl font-semibold text-foreground">22 Karat Gold (91.67% Pure)</h4>
                   <p className="mb-3">
                     22 karat gold contains 91.67% pure gold mixed with other metals like copper, silver, or zinc for added durability and strength. This composition makes it ideal for crafting intricate jewelry designs that require structural integrity. The addition of alloy metals gives 22K gold its characteristic hardness, making it less prone to scratches and deformation during daily wear.
                   </p>
@@ -78,8 +78,8 @@ const GoldInfo = () => {
                   </p>
                 </div>
                 
-                <div className="border-l-4 border-accent pl-6">
-                  <h4 className="mb-3 text-xl font-semibold text-foreground">24 Karat Gold (99.99% Pure)</h4>
+                <div className="border-l-4 border-accent pl-4 sm:pl-6">
+                  <h4 className="mb-2 sm:mb-3 text-lg sm:text-xl font-semibold text-foreground">24 Karat Gold (99.99% Pure)</h4>
                   <p className="mb-3">
                     24 karat gold represents the purest form of gold available, containing 99.99% pure gold with minimal to no alloy metals. This makes it the preferred choice for investment purposes such as gold coins, bars, and biscuits. Due to its high purity, 24K gold has a distinctive bright yellow color that's highly valued by investors and collectors.
                   </p>
@@ -102,7 +102,7 @@ const GoldInfo = () => {
                 <p>
                   The gold rate in Chennai today is determined by a complex interplay of global and local factors. Understanding these factors can help you make informed decisions about when to buy or sell gold.
                 </p>
-                <div className="grid md:grid-cols-2 gap-6 mt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
                   <div className="bg-muted/50 p-4 rounded-lg">
                     <h5 className="font-semibold text-foreground mb-2">International Gold Prices</h5>
                     <p className="text-sm">Global gold prices set by the London Bullion Market Association (LBMA) directly impact Chennai's local rates. Fluctuations in international markets are immediately reflected in the local pricing.</p>

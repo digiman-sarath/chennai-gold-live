@@ -213,7 +213,7 @@ const Index = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
         <title>Today Gold Rate in Chennai - {displayDate} | Live 22K ₹{price22k} & 24K ₹{price24k} Prices</title>
         <meta 
@@ -260,25 +260,25 @@ const Index = () => {
       <Header />
 
       {/* Top Banner Ad */}
-      <div className="bg-background py-4">
-        <div className="container mx-auto px-4">
+      <div className="bg-background py-2 sm:py-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <AdDisplay position="top_banner" />
         </div>
       </div>
 
       <main className="min-h-screen">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-background via-primary/5 to-accent/5 py-16 md:py-24">
+        <section className="relative overflow-hidden bg-gradient-to-br from-background via-primary/5 to-accent/5 py-8 sm:py-12 md:py-16 lg:py-24">
           <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-          <div className="container relative mx-auto px-4">
+          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
-              <div className="text-center mb-12 animate-fade-in">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary border border-primary/20">
-                  <TrendingUp className="h-4 w-4 animate-pulse" />
+              <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+                <div className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-primary border border-primary/20">
+                  <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 animate-pulse" />
                   Live Gold Rates - Updated Daily
                 </div>
                 
-                <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                <h1 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-foreground px-4">
                   Today's Gold Rate in{' '}
                   <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
                     Chennai
@@ -433,19 +433,19 @@ const Index = () => {
         <GoldFAQ />
 
         {/* Bottom Banner Ad */}
-        <div className="bg-muted/30 py-8">
-          <div className="container mx-auto px-4">
+        <div className="bg-muted/30 py-4 sm:py-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <AdDisplay position="bottom_banner" />
           </div>
         </div>
-
-        {/* Mobile Sticky Ad */}
-        <AdDisplay position="mobile_sticky" />
-
-        {/* Footer */}
-        <Footer />
       </main>
-    </>
+
+      {/* Mobile Sticky Ad */}
+      <AdDisplay position="mobile_sticky" />
+
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 };
 

@@ -20,20 +20,20 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-br from-muted/50 to-muted/30 border-t border-border">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand Section */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent">
-                <span className="text-xl font-bold text-primary-foreground">TN</span>
+              <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-primary to-accent">
+                <span className="text-lg sm:text-xl font-bold text-primary-foreground">TN</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-foreground leading-none">Tamil Nadu</span>
+                <span className="text-base sm:text-lg font-bold text-foreground leading-none">Tamil Nadu</span>
                 <span className="text-xs text-muted-foreground leading-none">Gold Rates</span>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Get live and accurate gold rates across all districts of Tamil Nadu. Updated daily with real-time market data.
             </p>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -43,8 +43,8 @@ const Footer = () => {
           </div>
 
           {/* Popular Cities */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold text-foreground flex items-center gap-2">
               <MapPin className="h-5 w-5 text-primary" />
               Popular Cities
             </h3>
@@ -64,8 +64,8 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold text-foreground flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-primary" />
               Quick Links
             </h3>
@@ -85,8 +85,8 @@ const Footer = () => {
           </div>
 
           {/* Information */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold text-foreground flex items-center gap-2">
               <Mail className="h-5 w-5 text-primary" />
               Information
             </h3>
@@ -107,8 +107,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
             <p>
               Disclaimer: Gold rates are indicative and may vary by jeweler. Always verify with your local jeweler before making a purchase.
             </p>
