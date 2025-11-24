@@ -46,6 +46,8 @@ const GoldBuyingGuide = () => {
             ]
           })}
         </script>
+        
+        <link rel="canonical" href="https://chennaigoldprice.com/buying-guide" />
       </Helmet>
 
       <Header />
