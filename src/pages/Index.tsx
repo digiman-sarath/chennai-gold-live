@@ -17,6 +17,7 @@ import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import AdDisplay from '@/components/AdDisplay';
 import { formatDistanceToNow } from 'date-fns';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
+import { GoldPriceComparison } from '@/components/GoldPriceComparison';
 
 interface GoldPrice {
   date: string;
@@ -418,6 +419,13 @@ const Index = () => {
                 </Button>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Historical Price Comparison */}
+        <section className="py-12 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <GoldPriceComparison />
           </div>
         </section>
 
