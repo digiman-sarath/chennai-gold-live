@@ -6,7 +6,6 @@ import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Calendar, User } from 'lucide-react';
 
 interface Article {
@@ -60,6 +59,107 @@ const Article = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Convert Markdown to HTML-like structure (basic rendering)
+  const renderMarkdown = (content: string) => {
+    return content
+      .split('\n')
+      .map((line, index) => {
+        // Headers
+        if (line.startsWith('# ')) {
+          return <h1 key={index} className="text-4xl font-bold mb-4 mt-8">{line.substring(2)}</h1>;
+        }
+        if (line.startsWith('## ')) {
+          return <h2 key={index} className="text-3xl font-bold mb-3 mt-6">{line.substring(3)}</h2>;
+        }
+        if (line.startsWith('### ')) {
+          return <h3 key={index} className="text-2xl font-bold mb-2 mt-4">{line.substring(4)}</h3>;
+        }
+
+        // Lists
+        if (line.startsWith('- ')) {
+          return <li key={index} className="ml-6 list-disc">{parseInlineMarkdown(line.substring(2))}</li>;
+        }
+
+        // Images
+        const imgMatch = line.match(/!\[(.*?)\]\((.*?)\)/);
+        if (imgMatch) {
+          return (
+            <img
+              key={index}
+              src={imgMatch[2]}
+              alt={imgMatch[1]}
+              className="my-4 rounded-lg max-w-full h-auto"
+            />
+          );
+        }
+
+        // Empty lines
+        if (line.trim() === '') {
+          return <br key={index} />;
+        }
+
+        // Regular paragraphs
+        return <p key={index} className="mb-4">{parseInlineMarkdown(line)}</p>;
+      });
+  };
+
+  const parseInlineMarkdown = (text: string) => {
+    const parts: (string | JSX.Element)[] = [];
+    let remaining = text;
+    let key = 0;
+
+    while (remaining.length > 0) {
+      // Bold
+      const boldMatch = remaining.match(/\*\*(.*?)\*\*/);
+      if (boldMatch && boldMatch.index !== undefined) {
+        if (boldMatch.index > 0) {
+          parts.push(remaining.substring(0, boldMatch.index));
+        }
+        parts.push(<strong key={`bold-${key++}`}>{boldMatch[1]}</strong>);
+        remaining = remaining.substring(boldMatch.index + boldMatch[0].length);
+        continue;
+      }
+
+      // Italic
+      const italicMatch = remaining.match(/\*(.*?)\*/);
+      if (italicMatch && italicMatch.index !== undefined) {
+        if (italicMatch.index > 0) {
+          parts.push(remaining.substring(0, italicMatch.index));
+        }
+        parts.push(<em key={`italic-${key++}`}>{italicMatch[1]}</em>);
+        remaining = remaining.substring(italicMatch.index + italicMatch[0].length);
+        continue;
+      }
+
+      // Links
+      const linkMatch = remaining.match(/\[(.*?)\]\((.*?)\)/);
+      if (linkMatch && linkMatch.index !== undefined) {
+        if (linkMatch.index > 0) {
+          parts.push(remaining.substring(0, linkMatch.index));
+        }
+        parts.push(
+          <a
+            key={`link-${key++}`}
+            href={linkMatch[2]}
+            className="text-primary underline hover:text-primary/80"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {linkMatch[1]}
+          </a>
+        );
+        remaining = remaining.substring(linkMatch.index + linkMatch[0].length);
+        continue;
+      }
+
+      // No more matches, add remaining text
+      parts.push(remaining);
+      break;
+    }
+
+    return <>{parts}</>;
   };
 
   if (loading) {
@@ -208,11 +308,8 @@ const Article = () => {
 
         {/* Article Content */}
         <Card className="p-8">
-          <div
-            className="prose prose-lg max-w-none dark:prose-invert"
-            style={{ whiteSpace: 'pre-wrap' }}
-          >
-            {article.content}
+          <div className="prose prose-lg max-w-none dark:prose-invert article-content">
+            {renderMarkdown(article.content)}
           </div>
         </Card>
 
