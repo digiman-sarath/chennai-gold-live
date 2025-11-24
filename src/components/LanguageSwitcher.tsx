@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -21,8 +21,39 @@ const languages: LanguageOption[] = [
   { code: 'ta', name: 'Tamil', nativeName: 'தமிழ்' },
 ];
 
+const detectBrowserLanguage = (): Language => {
+  // Check localStorage first
+  const savedLanguage = localStorage.getItem('preferredLanguage') as Language;
+  if (savedLanguage && languages.some(lang => lang.code === savedLanguage)) {
+    return savedLanguage;
+  }
+
+  // Detect from browser settings
+  const browserLang = navigator.language || navigator.languages?.[0] || 'en';
+  const langCode = browserLang.toLowerCase().split('-')[0];
+  
+  // Check if detected language is Tamil
+  if (langCode === 'ta') {
+    return 'ta';
+  }
+  
+  // Default to English
+  return 'en';
+};
+
 export const LanguageSwitcher = () => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
+
+  useEffect(() => {
+    // Auto-detect language on component mount
+    const detectedLang = detectBrowserLanguage();
+    setCurrentLanguage(detectedLang);
+    
+    // Show notification if Tamil is detected but not yet available
+    if (detectedLang === 'ta') {
+      console.log('Tamil language detected from browser. Tamil version coming soon!');
+    }
+  }, []);
 
   const handleLanguageChange = (langCode: Language) => {
     setCurrentLanguage(langCode);
