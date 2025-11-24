@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { supabase } from '@/integrations/supabase/client';
@@ -397,6 +399,7 @@ const CityGoldRates = () => {
 
   return (
     <>
+      <Header />
       <Helmet>
         <title>Gold Rate in {cityName} Today - {displayDate} | 22K ₹{price22k.toLocaleString('en-IN')} & 24K ₹{price24k.toLocaleString('en-IN')}</title>
         <meta 
@@ -613,6 +616,7 @@ const CityGoldRates = () => {
           </Card>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -1,4 +1,6 @@
 import { Helmet } from 'react-helmet';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -156,23 +158,7 @@ const Index = () => {
       </Helmet>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-primary" />
-            <h2 className="text-xl font-bold text-foreground">Chennai Gold Rates</h2>
-          </div>
-          <div className="flex gap-2">
-            <Button onClick={() => navigate('/rates')} variant="ghost" size="sm">
-              Modern View
-            </Button>
-            <Button onClick={() => navigate('/auth')} variant="outline" size="sm">
-              <Shield className="mr-2 h-4 w-4" />
-              Admin
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="min-h-screen">
         {/* Hero Section */}
@@ -327,12 +313,7 @@ const Index = () => {
         <GoldFAQ />
 
         {/* Footer */}
-        <footer className="bg-muted/30 border-t border-border py-8">
-          <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-            <p>© 2025 Chennai Gold Rates. All rights reserved.</p>
-            <p className="mt-2">Live gold prices powered by GoldAPI.io</p>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   );

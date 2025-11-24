@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -89,15 +91,19 @@ const ModernGoldRates = () => {
 
   if (loading || !goldPrice) {
     return (
-      <div className="min-h-screen bg-background p-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="animate-pulse space-y-4">
-            <div className="h-8 bg-muted rounded w-32" />
-            <div className="h-12 bg-muted rounded w-64" />
-            <div className="h-48 bg-muted rounded" />
+      <>
+        <Header />
+        <div className="min-h-screen bg-background p-4">
+          <div className="container mx-auto max-w-4xl">
+            <div className="animate-pulse space-y-4">
+              <div className="h-8 bg-muted rounded w-32" />
+              <div className="h-12 bg-muted rounded w-64" />
+              <div className="h-48 bg-muted rounded" />
+            </div>
           </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 
@@ -110,8 +116,10 @@ const ModernGoldRates = () => {
   const change18k = calculateChange(price18k, previousPrice ? calculate18KPrice(previousPrice.price_24k_per_gram) : undefined);
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto max-w-4xl p-6">
+    <>
+      <Header />
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto max-w-4xl p-6">
         {/* Header */}
         <button 
           onClick={() => navigate('/')}
@@ -263,8 +271,10 @@ const ModernGoldRates = () => {
             </span>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
