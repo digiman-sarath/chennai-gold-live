@@ -15,6 +15,7 @@ import GoldCalculator from '@/components/GoldCalculator';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import CitySpecificFAQ from '@/components/CitySpecificFAQ';
 import AdDisplay from '@/components/AdDisplay';
+import { GoldRateSummary } from '@/components/GoldRateSummary';
 
 
 interface GoldPrice {
@@ -544,6 +545,13 @@ const CityGoldRates = () => {
 
       <div className="min-h-screen bg-background">
         <div className="container mx-auto max-w-6xl p-6">
+          {/* TL;DR Summary */}
+          <GoldRateSummary 
+            price24k={price24k} 
+            price22k={price22k}
+            city={cityName}
+          />
+          
           {/* Header */}
           <button 
             onClick={() => navigate('/')}
