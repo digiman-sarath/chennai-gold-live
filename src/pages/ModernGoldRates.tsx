@@ -12,6 +12,7 @@ import { ArrowLeft, Calendar, TrendingDown, TrendingUp } from 'lucide-react';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
+import { GoldPriceComparison } from '@/components/GoldPriceComparison';
 
 interface GoldPrice {
   date: string;
@@ -384,6 +385,11 @@ const ModernGoldRates = () => {
               </div>
             </div>
           </Card>
+          </div>
+
+          {/* Historical Price Comparison */}
+          <div className="mb-8">
+            <GoldPriceComparison />
           </div>
 
           {/* Description */}

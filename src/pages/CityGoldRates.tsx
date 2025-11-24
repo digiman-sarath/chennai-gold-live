@@ -16,6 +16,7 @@ import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import CitySpecificFAQ from '@/components/CitySpecificFAQ';
 import AdDisplay from '@/components/AdDisplay';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
+import { GoldPriceComparison } from '@/components/GoldPriceComparison';
 
 
 interface GoldPrice {
@@ -687,6 +688,11 @@ const CityGoldRates = () => {
                 </div>
               </div>
             </Card>
+          </div>
+
+          {/* Historical Price Comparison */}
+          <div className="mb-8">
+            <GoldPriceComparison />
           </div>
 
           {/* City Description */}
