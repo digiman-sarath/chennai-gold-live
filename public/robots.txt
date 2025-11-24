@@ -45,7 +45,7 @@ User-agent: WhatsApp
 Allow: /
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://chennaigoldprice.com/sitemap.xml
 
 # Disallow admin and authentication pages
 Disallow: /admin
