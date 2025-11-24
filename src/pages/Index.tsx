@@ -13,6 +13,7 @@ import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldInfo from '@/components/GoldInfo';
 import GoldFAQ from '@/components/GoldFAQ';
 import TamilNaduCities from '@/components/TamilNaduCities';
+import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import { formatDistanceToNow } from 'date-fns';
 
 interface GoldPrice {
@@ -305,6 +306,15 @@ const Index = () => {
 
         {/* Tamil Nadu Cities */}
         <TamilNaduCities />
+
+        {/* Comprehensive Content - 5000+ words */}
+        <section className="bg-background">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-6xl">
+              <ComprehensiveGoldGuide city="Chennai" />
+            </div>
+          </div>
+        </section>
 
         {/* Gold Info */}
         <GoldInfo />

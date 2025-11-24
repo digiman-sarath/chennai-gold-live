@@ -12,6 +12,8 @@ import { format } from 'date-fns';
 import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldCalculator from '@/components/GoldCalculator';
+import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
+import GoldFAQ from '@/components/GoldFAQ';
 
 
 interface GoldPrice {
@@ -603,6 +605,9 @@ const CityGoldRates = () => {
             <GoldPriceTable />
           </div>
 
+          {/* Gold Calculator */}
+          <GoldCalculator goldPrice={goldPrice} />
+
           {/* Data Source Info */}
           <Card className="p-4 bg-muted/30">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-sm">
@@ -616,6 +621,17 @@ const CityGoldRates = () => {
           </Card>
         </div>
       </div>
+
+      {/* Comprehensive SEO Content - 5000+ words */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-6xl">
+            <ComprehensiveGoldGuide city={cityName} />
+          </div>
+        </div>
+      </section>
+
+      <GoldFAQ />
       <Footer />
     </>
   );
