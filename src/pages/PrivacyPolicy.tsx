@@ -17,6 +17,58 @@ const PrivacyPolicy = () => {
         <link rel="canonical" href="https://chennaigoldprice.com/privacy-policy" />
         <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/privacy-policy" />
         <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/privacy-policy" />
+        
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Privacy Policy",
+            "description": "Privacy Policy for Chennai Gold Price. Learn how we collect, use, and protect your personal information when you use our gold rate tracking service.",
+            "url": "https://chennaigoldprice.com/privacy-policy",
+            "inLanguage": "en",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Chennai Gold Price",
+              "url": "https://chennaigoldprice.com"
+            },
+            "datePublished": "2025-01-24",
+            "dateModified": "2025-01-24",
+            "mainEntity": {
+              "@type": "Article",
+              "headline": "Privacy Policy - Chennai Gold Price",
+              "author": {
+                "@type": "Organization",
+                "name": "Chennai Gold Price",
+                "url": "https://chennaigoldprice.com"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Chennai Gold Price",
+                "url": "https://chennaigoldprice.com"
+              },
+              "datePublished": "2025-01-24",
+              "dateModified": "2025-01-24"
+            },
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://chennaigoldprice.com"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Privacy Policy",
+                  "item": "https://chennaigoldprice.com/privacy-policy"
+                }
+              ]
+            }
+          })}
+        </script>
       </Helmet>
 
       <Header />
