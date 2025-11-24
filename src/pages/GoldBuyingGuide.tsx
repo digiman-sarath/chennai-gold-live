@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import RecentArticles from '@/components/RecentArticles';
 import { Card } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
@@ -443,6 +444,8 @@ const GoldBuyingGuide = () => {
           </div>
         </div>
       </div>
+
+      <RecentArticles />
 
       <Footer />
     </div>
