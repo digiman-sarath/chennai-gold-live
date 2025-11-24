@@ -14,6 +14,7 @@ import GoldInfo from '@/components/GoldInfo';
 import GoldFAQ from '@/components/GoldFAQ';
 import TamilNaduCities from '@/components/TamilNaduCities';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
+import AdDisplay from '@/components/AdDisplay';
 import { formatDistanceToNow } from 'date-fns';
 
 interface GoldPrice {
@@ -161,6 +162,13 @@ const Index = () => {
       {/* Header */}
       <Header />
 
+      {/* Top Banner Ad */}
+      <div className="bg-background py-4">
+        <div className="container mx-auto px-4">
+          <AdDisplay position="top_banner" />
+        </div>
+      </div>
+
       <main className="min-h-screen">
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-br from-background via-primary/5 to-accent/5 py-16 md:py-24">
@@ -297,6 +305,11 @@ const Index = () => {
           </div>
         </section>
 
+        {/* In-Content Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdDisplay position="in_content" />
+        </div>
+
         {/* Price Breakdown Table */}
         <section className="py-16">
           <div className="container mx-auto px-4">
@@ -321,6 +334,16 @@ const Index = () => {
 
         {/* FAQ Section */}
         <GoldFAQ />
+
+        {/* Bottom Banner Ad */}
+        <div className="bg-muted/30 py-8">
+          <div className="container mx-auto px-4">
+            <AdDisplay position="bottom_banner" />
+          </div>
+        </div>
+
+        {/* Mobile Sticky Ad */}
+        <AdDisplay position="mobile_sticky" />
 
         {/* Footer */}
         <Footer />
