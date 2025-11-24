@@ -12,7 +12,7 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
       <section className="rounded-2xl bg-card p-8 shadow-elegant">
         <h2 className="mb-6 text-3xl font-bold text-foreground flex items-center gap-3">
           <BookOpen className="h-8 w-8 text-primary" />
-          Complete Gold Investment Guide for {city} Residents - 2024 Edition
+          Complete Gold Investment Guide for {city} Residents - 2025 Edition
         </h2>
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p className="text-lg">
@@ -203,7 +203,7 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
                   <strong>Tax Rate:</strong> 20% with indexation benefit (adjusts purchase price for inflation)
                 </p>
                 <p className="text-sm">
-                  <strong>Example:</strong> Gold purchased in {city} for ₹300,000 in 2019 and sold for ₹500,000 in 2024. With indexation, purchase price might adjust to ₹380,000, making taxable gain ₹120,000. Tax = ₹24,000 (20% of ₹120,000).
+                  <strong>Example:</strong> Gold purchased in {city} for ₹300,000 in 2020 and sold for ₹500,000 in 2025. With indexation, purchase price might adjust to ₹385,000, making taxable gain ₹115,000. Tax = ₹23,000 (20% of ₹115,000).
                 </p>
               </div>
             </div>
@@ -698,7 +698,7 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
               <CardContent className="pt-6">
                 <h4 className="font-semibold text-foreground mb-3 text-lg">Digital Transformation</h4>
                 <p className="text-sm">
-                  Digital gold platforms are revolutionizing how {city} residents invest in gold. Apps allowing purchases starting from ₹1, backed by 24K physical gold in vaults, attract young investors. This trend will accelerate as fintech penetration increases, potentially accounting for 10-15% of gold investments by 2030.
+                  Digital gold platforms are revolutionizing how {city} residents invest in gold. Apps allowing purchases starting from ₹1, backed by 24K physical gold in vaults, attract young investors. This trend will accelerate as fintech penetration increases, potentially accounting for 15-20% of gold investments by 2030.
                 </p>
               </CardContent>
             </Card>
@@ -750,7 +750,7 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
               </li>
             </ul>
             <p className="mt-4 text-sm">
-              Analysts suggest gold could reach $3,000-3,500 per ounce by 2030 under favorable conditions. For {city} investors, this translates to potential appreciation, though rupee depreciation could offset some gains. A balanced approach combining physical gold, SGBs, and Gold ETFs positions investors well for various scenarios.
+              Analysts suggest gold could reach $3,500-4,000 per ounce by 2030-2035 under favorable conditions. For {city} investors, this translates to potential appreciation, though rupee depreciation could offset some gains. A balanced approach combining physical gold, SGBs, and Gold ETFs positions investors well for various scenarios.
             </p>
           </div>
 
