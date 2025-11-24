@@ -13,7 +13,7 @@ import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldCalculator from '@/components/GoldCalculator';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
-import GoldFAQ from '@/components/GoldFAQ';
+import CitySpecificFAQ from '@/components/CitySpecificFAQ';
 
 
 interface GoldPrice {
@@ -634,7 +634,7 @@ const CityGoldRates = () => {
         </div>
       </section>
 
-      <GoldFAQ />
+      <CitySpecificFAQ city={cityName} />
       <Footer />
     </>
   );
