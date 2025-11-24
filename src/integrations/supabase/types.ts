@@ -41,6 +41,54 @@ export type Database = {
         }
         Relationships: []
       }
+      jewelers: {
+        Row: {
+          address: string
+          city: string
+          created_at: string
+          description: string | null
+          email: string | null
+          established_year: number | null
+          id: string
+          name: string
+          phone: string | null
+          rating: number | null
+          specialties: string[] | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          address: string
+          city: string
+          created_at?: string
+          description?: string | null
+          email?: string | null
+          established_year?: number | null
+          id?: string
+          name: string
+          phone?: string | null
+          rating?: number | null
+          specialties?: string[] | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          address?: string
+          city?: string
+          created_at?: string
+          description?: string | null
+          email?: string | null
+          established_year?: number | null
+          id?: string
+          name?: string
+          phone?: string | null
+          rating?: number | null
+          specialties?: string[] | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
