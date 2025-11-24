@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
+import AdDisplay from '@/components/AdDisplay';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -119,6 +120,10 @@ const ModernGoldRates = () => {
   return (
     <>
       <Header />
+      
+      {/* Top Banner Ad */}
+      <AdDisplay position="top_banner" />
+      
       <div className="min-h-screen bg-background">
         <div className="container mx-auto max-w-4xl p-6">
         {/* Header */}
@@ -184,9 +189,16 @@ const ModernGoldRates = () => {
             </SelectContent>
           </Select>
         </div>
+        </div>
+
+        {/* In-Content Ad */}
+        <div className="container mx-auto px-6 my-8">
+          <AdDisplay position="in_content" />
+        </div>
 
         {/* Price Cards */}
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
+        <div className="container mx-auto max-w-4xl px-6">
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
           {/* 24K Gold */}
           <Card className="p-6 bg-green-50 dark:bg-green-950/20 border-green-100 dark:border-green-900">
             <div className="space-y-3">
@@ -246,43 +258,50 @@ const ModernGoldRates = () => {
               </div>
             </div>
           </Card>
-        </div>
-
-        {/* Description */}
-        <div className="text-muted-foreground leading-relaxed">
-          <p>
-            The price of gold in Chennai today is <strong className="text-foreground">₹{price24k.toLocaleString('en-IN')}</strong> per gram for 24 karat gold, <strong className="text-foreground">₹{price22k.toLocaleString('en-IN')}</strong> per gram for 22 karat gold and <strong className="text-foreground">₹{price18k.toLocaleString('en-IN')}</strong> per gram for 18 karat gold (also called 999 gold, 916 gold, and 750 gold respectively).
-          </p>
-          <button 
-            onClick={() => navigate('/')}
-            className="text-foreground font-medium underline mt-2 hover:text-primary transition-colors"
-          >
-            Read More...
-          </button>
-        </div>
-
-        {/* Data Source Info */}
-        <div className="mt-8 p-4 bg-muted/30 rounded-lg border border-border">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">
-              Source: <strong className="text-primary">GoldAPI.io</strong> - Live Market Rates
-            </span>
-            <span className="text-muted-foreground">
-              Updated: <strong className="text-foreground">{format(new Date(goldPrice.updated_at), 'h:mm a')}</strong>
-            </span>
           </div>
-        </div>
-        </div>
 
-        {/* Comprehensive SEO Content */}
-        <section className="bg-background py-16">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-6xl">
-              <ComprehensiveGoldGuide city="Chennai" />
+          {/* Description */}
+          <div className="text-muted-foreground leading-relaxed">
+            <p>
+              The price of gold in Chennai today is <strong className="text-foreground">₹{price24k.toLocaleString('en-IN')}</strong> per gram for 24 karat gold, <strong className="text-foreground">₹{price22k.toLocaleString('en-IN')}</strong> per gram for 22 karat gold and <strong className="text-foreground">₹{price18k.toLocaleString('en-IN')}</strong> per gram for 18 karat gold (also called 999 gold, 916 gold, and 750 gold respectively).
+            </p>
+            <button 
+              onClick={() => navigate('/')}
+              className="text-foreground font-medium underline mt-2 hover:text-primary transition-colors"
+            >
+              Read More...
+            </button>
+          </div>
+
+          {/* Data Source Info */}
+          <div className="mt-8 p-4 bg-muted/30 rounded-lg border border-border">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">
+                Source: <strong className="text-primary">GoldAPI.io</strong> - Live Market Rates
+              </span>
+              <span className="text-muted-foreground">
+                Updated: <strong className="text-foreground">{format(new Date(goldPrice.updated_at), 'h:mm a')}</strong>
+              </span>
             </div>
           </div>
-        </section>
+        </div>
       </div>
+
+      {/* Comprehensive SEO Content */}
+      <section className="bg-background py-16">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-6xl">
+            <ComprehensiveGoldGuide city="Chennai" />
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom Banner Ad */}
+      <AdDisplay position="bottom_banner" />
+
+      {/* Mobile Sticky Ad */}
+      <AdDisplay position="mobile_sticky" />
+      
       <Footer />
     </>
   );
