@@ -144,11 +144,11 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent">
-              <span className="text-xl font-bold text-primary-foreground">TN</span>
+              <span className="text-xl font-bold text-primary-foreground">CG</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold text-foreground leading-none">Tamil Nadu</span>
-              <span className="text-xs text-muted-foreground leading-none">Gold Rates</span>
+              <span className="text-lg font-bold text-foreground leading-none">Chennai Gold</span>
+              <span className="text-xs text-muted-foreground leading-none">Price</span>
             </div>
           </Link>
 
