@@ -9,6 +9,7 @@ import Admin from "./pages/Admin";
 import AdminPanel from "./pages/AdminPanel";
 import ModernGoldRates from "./pages/ModernGoldRates";
 import CityGoldRates from "./pages/CityGoldRates";
+import GoldBuyingGuide from "./pages/GoldBuyingGuide";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/rates" element={<ModernGoldRates />} />
           <Route path="/gold-rates/:city" element={<CityGoldRates />} />
+          <Route path="/buying-guide" element={<GoldBuyingGuide />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-panel" element={<AdminPanel />} />
