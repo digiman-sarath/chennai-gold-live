@@ -27,6 +27,20 @@ interface CityInfo {
 }
 
 const cityData: Record<string, CityInfo> = {
+  ariyalur: {
+    name: 'Ariyalur',
+    description: 'Ariyalur, known for its cement industry, has a developing gold market serving the local population with quality jewelry options.',
+    marketInfo: 'The gold market in Ariyalur features traditional South Indian designs with modern craftsmanship. Local jewelers offer competitive pricing and personalized service.',
+    popularAreas: ['Main Bazaar', 'Bus Stand Area', 'Collectorate Road'],
+    highlights: ['Emerging market', 'Local craftsmanship', 'Competitive rates', 'Personal service']
+  },
+  chengalpattu: {
+    name: 'Chengalpattu',
+    description: 'Chengalpattu, a historic town near Chennai, has a well-established gold market with traditional jewelers serving generations.',
+    marketInfo: 'The town\'s gold market is known for authentic South Indian temple jewelry and traditional ornaments with excellent craftsmanship.',
+    popularAreas: ['GST Road', 'Main Bazaar', 'Station Road'],
+    highlights: ['Historic market', 'Temple jewelry', 'Traditional designs', 'Family jewelers']
+  },
   chennai: {
     name: 'Chennai',
     description: 'Chennai, the capital of Tamil Nadu, is one of India\'s major gold markets. The city\'s T Nagar, George Town, and Sowcarpet areas are renowned for their extensive gold jewelry collections and competitive pricing.',
@@ -41,6 +55,27 @@ const cityData: Record<string, CityInfo> = {
     popularAreas: ['RS Puram', 'Town Hall', 'Oppanakara Street', 'Cross Cut Road', 'Brooke Bond'],
     highlights: ['Traditional craftsmanship', 'South Indian designs', 'Family-owned jewelers', 'Quality assurance']
   },
+  cuddalore: {
+    name: 'Cuddalore',
+    description: 'Cuddalore, a coastal district headquarters, has a traditional gold market with reliable jewelers offering both classic and contemporary designs.',
+    marketInfo: 'The gold market serves a diverse customer base with traditional South Indian jewelry and modern lightweight ornaments.',
+    popularAreas: ['Bazaar Street', 'Manjakuppam', 'Thirupapuliyur'],
+    highlights: ['Coastal market', 'Traditional designs', 'Quality jewelry', 'Trusted jewelers']
+  },
+  dharmapuri: {
+    name: 'Dharmapuri',
+    description: 'Dharmapuri, located in northern Tamil Nadu, has a growing gold market with modern showrooms and traditional jewelry shops.',
+    marketInfo: 'The market offers a blend of traditional South Indian and contemporary jewelry with competitive pricing for the region.',
+    popularAreas: ['Bazaar Street', 'Salem Main Road', 'Collectorate Area'],
+    highlights: ['Growing market', 'Modern shops', 'Competitive pricing', 'Traditional & modern mix']
+  },
+  dindigul: {
+    name: 'Dindigul',
+    description: 'Dindigul, famous for its locks and tannery industry, also has a vibrant gold market with traditional jewelers.',
+    marketInfo: 'The town\'s gold market is known for temple jewelry and traditional South Indian ornaments with excellent workmanship.',
+    popularAreas: ['Big Bazaar Street', 'Gandhi Road', 'Palani Road'],
+    highlights: ['Traditional market', 'Temple jewelry', 'Quality workmanship', 'Heritage designs']
+  },
   erode: {
     name: 'Erode',
     description: 'Erode, strategically located in western Tamil Nadu, has a growing gold market serving the agricultural heartland. The city offers both traditional and contemporary gold jewelry with competitive rates.',
@@ -48,12 +83,40 @@ const cityData: Record<string, CityInfo> = {
     popularAreas: ['Brough Road', 'Bazaar Street', 'Rangampalayam', 'Perundurai Road'],
     highlights: ['Growing market', 'Competitive pricing', 'Modern showrooms', 'Agricultural hub advantage']
   },
-  salem: {
-    name: 'Salem',
-    description: 'Salem, known as the "Steel City," also has a prominent position in Tamil Nadu\'s gold market. The city offers a mix of traditional and modern gold jewelry with excellent craftsmanship.',
-    marketInfo: 'Salem\'s jewelry market is known for trustworthy dealers and quality gold ornaments. Cherry Road and Bazaar areas house numerous gold shops offering both traditional South Indian and contemporary designs.',
-    popularAreas: ['Cherry Road', 'Bazaar Street', 'Fort Main Road', 'Five Roads'],
-    highlights: ['Trusted dealers', 'Quality ornaments', 'Traditional & modern mix', 'Steel city prestige']
+  kallakurichi: {
+    name: 'Kallakurichi',
+    description: 'Kallakurichi, one of Tamil Nadu\'s newer districts, has a developing gold retail market with quality jewelers.',
+    marketInfo: 'The market features traditional South Indian jewelry with modern retail experiences and competitive pricing.',
+    popularAreas: ['Sankarapuram Road', 'Main Bazaar', 'Bus Stand Area'],
+    highlights: ['New market', 'Quality jewelry', 'Modern retail', 'Local service']
+  },
+  kancheepuram: {
+    name: 'Kancheepuram',
+    description: 'Kancheepuram, the temple city famous for silk sarees, also has a rich heritage in gold jewelry, particularly temple ornaments.',
+    marketInfo: 'The gold market is deeply connected to the city\'s temple culture, offering exquisite temple jewelry and traditional designs.',
+    popularAreas: ['Big Street', 'Gandhi Road', 'Temple Area'],
+    highlights: ['Temple jewelry capital', 'Heritage designs', 'Spiritual significance', 'Traditional craftsmanship']
+  },
+  kanniyakumari: {
+    name: 'Kanniyakumari',
+    description: 'Kanniyakumari, at India\'s southern tip, has a unique gold market influenced by coastal and traditional cultures.',
+    marketInfo: 'The market offers a mix of Kerala and Tamil Nadu style jewelry with traditional and contemporary designs.',
+    popularAreas: ['Main Road', 'Nagercoil Junction', 'Beach Road'],
+    highlights: ['Unique designs', 'Coastal influence', 'Cultural blend', 'Tourist destination']
+  },
+  karur: {
+    name: 'Karur',
+    description: 'Karur, known for its textile industry, has a strong gold market with traditional jewelers and modern showrooms.',
+    marketInfo: 'The market is characterized by quality South Indian jewelry with competitive pricing and excellent craftsmanship.',
+    popularAreas: ['Kovai Road', 'Thanthoni Road', 'Bazaar Street'],
+    highlights: ['Textile hub', 'Quality jewelry', 'Traditional designs', 'Competitive rates']
+  },
+  krishnagiri: {
+    name: 'Krishnagiri',
+    description: 'Krishnagiri, a border district with Karnataka, has a modern gold market serving a diverse customer base.',
+    marketInfo: 'The market features both traditional South Indian and contemporary designs with modern retail facilities.',
+    popularAreas: ['Rayakottai Road', 'Bargur Road', 'Main Bazaar'],
+    highlights: ['Border district', 'Modern facilities', 'Diverse designs', 'Quality service']
   },
   madurai: {
     name: 'Madurai',
@@ -62,12 +125,173 @@ const cityData: Record<string, CityInfo> = {
     popularAreas: ['Town Hall Road', 'Avani Moola Street', 'West Masi Street', 'North Masi Street'],
     highlights: ['Temple jewelry capital', 'Cultural heritage', 'Authentic designs', 'Religious significance']
   },
-  trichy: {
-    name: 'Trichy',
+  mayiladuthurai: {
+    name: 'Mayiladuthurai',
+    description: 'Mayiladuthurai, a historic temple town, has a traditional gold market known for temple jewelry and classic designs.',
+    marketInfo: 'The market serves pilgrims and locals with traditional temple jewelry and South Indian ornaments.',
+    popularAreas: ['Bazaar Street', 'Kutchery Road', 'Temple Street'],
+    highlights: ['Temple town', 'Traditional jewelry', 'Classic designs', 'Pilgrim destination']
+  },
+  nagapattinam: {
+    name: 'Nagapattinam',
+    description: 'Nagapattinam, a coastal district, has a traditional gold market with reliable jewelers serving the fishing and agricultural communities.',
+    marketInfo: 'The market offers traditional South Indian jewelry with coastal influences and competitive pricing.',
+    popularAreas: ['Main Road', 'Bazaar Street', 'VOC Street'],
+    highlights: ['Coastal market', 'Traditional designs', 'Reliable jewelers', 'Community service']
+  },
+  namakkal: {
+    name: 'Namakkal',
+    description: 'Namakkal, known for its transportation and poultry industry, has a vibrant gold market with quality jewelers.',
+    marketInfo: 'The market features traditional and modern jewelry with excellent service and competitive rates.',
+    popularAreas: ['Bazaar Street', 'Paramathi Road', 'Salem Road'],
+    highlights: ['Business hub', 'Quality jewelry', 'Modern & traditional', 'Competitive pricing']
+  },
+  perambalur: {
+    name: 'Perambalur',
+    description: 'Perambalur has a traditional gold market serving the local community with quality jewelry and personalized service.',
+    marketInfo: 'The market offers South Indian traditional designs with modern craftsmanship and family-oriented service.',
+    popularAreas: ['Main Road', 'Bazaar Street', 'Collectorate Area'],
+    highlights: ['Traditional market', 'Family service', 'Quality designs', 'Local craftsmanship']
+  },
+  pudukkottai: {
+    name: 'Pudukkottai',
+    description: 'Pudukkottai, a heritage town, has a traditional gold market known for antique and temple jewelry.',
+    marketInfo: 'The market is characterized by traditional temple jewelry and heritage designs with excellent craftsmanship.',
+    popularAreas: ['East Main Street', 'West Main Street', 'Bazaar Street'],
+    highlights: ['Heritage town', 'Antique jewelry', 'Temple designs', 'Traditional craftsmanship']
+  },
+  ramanathapuram: {
+    name: 'Ramanathapuram',
+    description: 'Ramanathapuram, a coastal district with religious significance, has a traditional gold market serving pilgrims and locals.',
+    marketInfo: 'The market offers temple jewelry and traditional South Indian designs with coastal influences.',
+    popularAreas: ['Bazaar Street', 'Rameswaram Road', 'Main Road'],
+    highlights: ['Coastal district', 'Temple jewelry', 'Pilgrim destination', 'Traditional designs']
+  },
+  ranipet: {
+    name: 'Ranipet',
+    description: 'Ranipet, an industrial town, has a growing gold market with modern showrooms and traditional jewelers.',
+    marketInfo: 'The market serves the industrial workforce with both traditional and contemporary jewelry options.',
+    popularAreas: ['Bazaar Street', 'Arcot Road', 'Main Road'],
+    highlights: ['Industrial town', 'Modern shops', 'Growing market', 'Diverse designs']
+  },
+  salem: {
+    name: 'Salem',
+    description: 'Salem, known as the "Steel City," also has a prominent position in Tamil Nadu\'s gold market. The city offers a mix of traditional and modern gold jewelry with excellent craftsmanship.',
+    marketInfo: 'Salem\'s jewelry market is known for trustworthy dealers and quality gold ornaments. Cherry Road and Bazaar areas house numerous gold shops offering both traditional South Indian and contemporary designs.',
+    popularAreas: ['Cherry Road', 'Bazaar Street', 'Fort Main Road', 'Five Roads'],
+    highlights: ['Trusted dealers', 'Quality ornaments', 'Traditional & modern mix', 'Steel city prestige']
+  },
+  sivaganga: {
+    name: 'Sivaganga',
+    description: 'Sivaganga has a traditional gold market known for heritage jewelry and South Indian designs.',
+    marketInfo: 'The market offers traditional temple jewelry and classic South Indian ornaments with personalized service.',
+    popularAreas: ['Bazaar Street', 'Madurai Road', 'Main Road'],
+    highlights: ['Traditional market', 'Heritage designs', 'Temple jewelry', 'Personal service']
+  },
+  tenkasi: {
+    name: 'Tenkasi',
+    description: 'Tenkasi, a temple town in southern Tamil Nadu, has a traditional gold market serving the local and pilgrim community.',
+    marketInfo: 'The market features temple jewelry and traditional South Indian designs with quality craftsmanship.',
+    popularAreas: ['Bazaar Street', 'Courtallam Road', 'Main Road'],
+    highlights: ['Temple town', 'Traditional jewelry', 'Quality craftsmanship', 'Pilgrim service']
+  },
+  thanjavur: {
+    name: 'Thanjavur',
+    description: 'Thanjavur, the cultural capital of Tamil Nadu, is famous for its antique jewelry and traditional craftsmanship.',
+    marketInfo: 'The market is renowned for Thanjavur-style temple jewelry, antique ornaments, and traditional South Indian designs.',
+    popularAreas: ['South Main Street', 'Bazaar Street', 'Gandhi Road'],
+    highlights: ['Cultural capital', 'Antique jewelry', 'Traditional craftsmanship', 'Temple jewelry heritage']
+  },
+  'the-nilgiris': {
+    name: 'The Nilgiris',
+    description: 'The Nilgiris, a picturesque hill station district, has unique gold retail outlets serving tourists and locals.',
+    marketInfo: 'The market offers a blend of traditional South Indian and contemporary designs in a scenic hill station setting.',
+    popularAreas: ['Commercial Street', 'Main Bazaar', 'Coonoor Road'],
+    highlights: ['Hill station', 'Tourist destination', 'Unique setting', 'Quality jewelry']
+  },
+  theni: {
+    name: 'Theni',
+    description: 'Theni, located in the western region, has a traditional gold market serving the agricultural community.',
+    marketInfo: 'The market features traditional South Indian jewelry with modern influences and competitive pricing.',
+    popularAreas: ['Bazaar Street', 'Periyakulam Road', 'Main Road'],
+    highlights: ['Western region', 'Agricultural hub', 'Traditional designs', 'Competitive rates']
+  },
+  thiruvallur: {
+    name: 'Thiruvallur',
+    description: 'Thiruvallur, a northern district near Chennai, has a growing gold market with modern and traditional jewelers.',
+    marketInfo: 'The market serves the expanding suburban population with quality jewelry and modern retail experiences.',
+    popularAreas: ['Bazaar Street', 'Chennai Road', 'Main Road'],
+    highlights: ['Suburban market', 'Modern facilities', 'Growing district', 'Quality service']
+  },
+  thiruvarur: {
+    name: 'Thiruvarur',
+    description: 'Thiruvarur, in the Cauvery delta region, has a traditional gold market known for temple jewelry.',
+    marketInfo: 'The market offers traditional temple jewelry and classic South Indian designs with heritage craftsmanship.',
+    popularAreas: ['Main Street', 'Bazaar Street', 'Temple Street'],
+    highlights: ['Delta region', 'Temple jewelry', 'Heritage craftsmanship', 'Traditional market']
+  },
+  thoothukkudi: {
+    name: 'Thoothukkudi',
+    description: 'Thoothukkudi (Tuticorin), a major port city, has a diverse gold market influenced by coastal trade.',
+    marketInfo: 'The market offers a wide variety of designs from traditional temple jewelry to contemporary ornaments.',
+    popularAreas: ['Palayamkottai Road', 'Bazaar Street', 'Main Road'],
+    highlights: ['Port city', 'Diverse designs', 'Coastal trade', 'Modern facilities']
+  },
+  vellore: {
+    name: 'Vellore',
+    description: 'Vellore, the fort city, has a well-established gold market with traditional jewelers and modern showrooms.',
+    marketInfo: 'The market is known for quality jewelry, traditional South Indian designs, and excellent customer service.',
+    popularAreas: ['Bazaar Street', 'Katpadi Road', 'Long Bazaar'],
+    highlights: ['Fort city', 'Established market', 'Quality jewelry', 'Traditional & modern']
+  },
+  viluppuram: {
+    name: 'Viluppuram',
+    description: 'Viluppuram, a major junction town, has a traditional gold market serving multiple districts.',
+    marketInfo: 'The market offers traditional South Indian jewelry with competitive pricing and quality service.',
+    popularAreas: ['Bazaar Street', 'Mundiyambakkam Road', 'Main Road'],
+    highlights: ['Junction town', 'Multi-district service', 'Traditional jewelry', 'Competitive rates']
+  },
+  virudhunagar: {
+    name: 'Virudhunagar',
+    description: 'Virudhunagar, a business hub in southern Tamil Nadu, has a vibrant gold market with quality jewelers.',
+    marketInfo: 'The market is known for traditional South Indian designs, temple jewelry, and competitive pricing.',
+    popularAreas: ['Bazaar Street', 'Sivakasi Road', 'Main Road'],
+    highlights: ['Business hub', 'Traditional designs', 'Temple jewelry', 'Quality service']
+  },
+  tiruchirappalli: {
+    name: 'Tiruchirappalli',
     description: 'Tiruchirappalli (Trichy), with its strategic central location, is an important gold market in Tamil Nadu. The city combines traditional values with modern shopping experiences.',
     marketInfo: 'Trichy\'s gold market is concentrated in areas like Big Bazaar Street, China Bazaar, and NSB Road. The city is known for reliable jewelers and a good mix of traditional temple jewelry and contemporary designs.',
     popularAreas: ['Big Bazaar Street', 'China Bazaar', 'NSB Road', 'Thillai Nagar'],
     highlights: ['Central location', 'Reliable jewelers', 'Temple & modern jewelry', 'Historic market']
+  },
+  tirunelveli: {
+    name: 'Tirunelveli',
+    description: 'Tirunelveli, a major southern metropolis, has a rich gold market tradition with renowned jewelers.',
+    marketInfo: 'The market is famous for traditional South Indian temple jewelry, antique designs, and quality craftsmanship.',
+    popularAreas: ['Town Bazaar', 'High Ground Road', 'Junction'],
+    highlights: ['Southern metropolis', 'Temple jewelry', 'Antique designs', 'Quality craftsmanship']
+  },
+  tirupathur: {
+    name: 'Tirupathur',
+    description: 'Tirupathur, a developing district, has a growing gold retail market with modern showrooms.',
+    marketInfo: 'The market serves the local population with traditional and contemporary jewelry options.',
+    popularAreas: ['Bazaar Street', 'Ambur Road', 'Main Road'],
+    highlights: ['Developing market', 'Modern showrooms', 'Growing district', 'Quality jewelry']
+  },
+  tiruppur: {
+    name: 'Tiruppur',
+    description: 'Tiruppur, the textile export capital, has a thriving gold market serving the prosperous textile industry workers.',
+    marketInfo: 'The market features both traditional South Indian and contemporary designs with modern retail facilities.',
+    popularAreas: ['Bazaar Street', 'Palladam Road', 'Avinashi Road'],
+    highlights: ['Textile capital', 'Prosperous market', 'Modern facilities', 'Diverse designs']
+  },
+  tiruvannamalai: {
+    name: 'Tiruvannamalai',
+    description: 'Tiruvannamalai, a sacred temple town, has a traditional gold market deeply connected to spiritual tourism.',
+    marketInfo: 'The market specializes in temple jewelry and traditional South Indian ornaments for pilgrims and devotees.',
+    popularAreas: ['Bazaar Street', 'Girivalam Path', 'Polur Road'],
+    highlights: ['Sacred temple town', 'Spiritual jewelry', 'Pilgrim destination', 'Traditional designs']
   }
 };
 
@@ -220,12 +444,44 @@ const CityGoldRates = () => {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="ariyalur">Ariyalur</SelectItem>
+                <SelectItem value="chengalpattu">Chengalpattu</SelectItem>
                 <SelectItem value="chennai">Chennai</SelectItem>
                 <SelectItem value="coimbatore">Coimbatore</SelectItem>
+                <SelectItem value="cuddalore">Cuddalore</SelectItem>
+                <SelectItem value="dharmapuri">Dharmapuri</SelectItem>
+                <SelectItem value="dindigul">Dindigul</SelectItem>
                 <SelectItem value="erode">Erode</SelectItem>
-                <SelectItem value="salem">Salem</SelectItem>
+                <SelectItem value="kallakurichi">Kallakurichi</SelectItem>
+                <SelectItem value="kancheepuram">Kancheepuram</SelectItem>
+                <SelectItem value="kanniyakumari">Kanniyakumari</SelectItem>
+                <SelectItem value="karur">Karur</SelectItem>
+                <SelectItem value="krishnagiri">Krishnagiri</SelectItem>
                 <SelectItem value="madurai">Madurai</SelectItem>
-                <SelectItem value="trichy">Trichy</SelectItem>
+                <SelectItem value="mayiladuthurai">Mayiladuthurai</SelectItem>
+                <SelectItem value="nagapattinam">Nagapattinam</SelectItem>
+                <SelectItem value="namakkal">Namakkal</SelectItem>
+                <SelectItem value="perambalur">Perambalur</SelectItem>
+                <SelectItem value="pudukkottai">Pudukkottai</SelectItem>
+                <SelectItem value="ramanathapuram">Ramanathapuram</SelectItem>
+                <SelectItem value="ranipet">Ranipet</SelectItem>
+                <SelectItem value="salem">Salem</SelectItem>
+                <SelectItem value="sivaganga">Sivaganga</SelectItem>
+                <SelectItem value="tenkasi">Tenkasi</SelectItem>
+                <SelectItem value="thanjavur">Thanjavur</SelectItem>
+                <SelectItem value="the-nilgiris">The Nilgiris</SelectItem>
+                <SelectItem value="theni">Theni</SelectItem>
+                <SelectItem value="thiruvallur">Thiruvallur</SelectItem>
+                <SelectItem value="thiruvarur">Thiruvarur</SelectItem>
+                <SelectItem value="thoothukkudi">Thoothukkudi</SelectItem>
+                <SelectItem value="vellore">Vellore</SelectItem>
+                <SelectItem value="viluppuram">Viluppuram</SelectItem>
+                <SelectItem value="virudhunagar">Virudhunagar</SelectItem>
+                <SelectItem value="tiruchirappalli">Tiruchirappalli</SelectItem>
+                <SelectItem value="tirunelveli">Tirunelveli</SelectItem>
+                <SelectItem value="tirupathur">Tirupathur</SelectItem>
+                <SelectItem value="tiruppur">Tiruppur</SelectItem>
+                <SelectItem value="tiruvannamalai">Tiruvannamalai</SelectItem>
               </SelectContent>
             </Select>
           </div>
