@@ -13,10 +13,11 @@ import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldCalculator from '@/components/GoldCalculator';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
-import CitySpecificFAQ from '@/components/CitySpecificFAQ';
+import CitySpecificFAQ, { generateCityFAQs } from '@/components/CitySpecificFAQ';
 import AdDisplay from '@/components/AdDisplay';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
 import { GoldPriceComparison } from '@/components/GoldPriceComparison';
+import { generateFAQSchema } from '@/lib/faq-schema';
 
 
 interface GoldPrice {
@@ -436,29 +437,9 @@ const CityGoldRates = () => {
         <meta name="twitter:title" content={`${cityName} Gold Rate ${displayDate}`} />
         <meta name="twitter:description" content={`22K: ₹${price22k.toLocaleString('en-IN')}, 24K: ₹${price24k.toLocaleString('en-IN')}/gram`} />
         
+        {/* FAQ Schema - Generated from actual page content */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": `What is the gold rate in ${cityName} today?`,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": `Today's gold rate in ${cityName} is ₹${price22k.toLocaleString('en-IN')} per gram for 22 Karat gold and ₹${price24k.toLocaleString('en-IN')} per gram for 24 Karat gold as of ${displayDate}.`
-                }
-              },
-              {
-                "@type": "Question",
-                "name": `Where can I buy gold in ${cityName}?`,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": `You can buy gold in ${cityName} from reputed jewelers in areas like ${cityInfo.popularAreas.join(', ')}. Always check for BIS hallmark certification.`
-                }
-              }
-            ]
-          })}
+          {JSON.stringify(generateFAQSchema(generateCityFAQs(cityName)))}
         </script>
         
         <script type="application/ld+json">
