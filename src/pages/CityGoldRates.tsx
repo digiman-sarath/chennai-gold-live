@@ -14,6 +14,7 @@ import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldCalculator from '@/components/GoldCalculator';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import CitySpecificFAQ from '@/components/CitySpecificFAQ';
+import AdDisplay from '@/components/AdDisplay';
 
 
 interface GoldPrice {
@@ -419,6 +420,15 @@ const CityGoldRates = () => {
         <link rel="canonical" href={`https://chennai-gold-rates.lovable.app/gold-rates/${city}`} />
       </Helmet>
 
+      <Header />
+
+      {/* Top Banner Ad */}
+      <div className="bg-background py-4">
+        <div className="container mx-auto px-4">
+          <AdDisplay position="top_banner" />
+        </div>
+      </div>
+
       <div className="min-h-screen bg-background">
         <div className="container mx-auto max-w-6xl p-6">
           {/* Header */}
@@ -605,6 +615,9 @@ const CityGoldRates = () => {
             <GoldPriceTable />
           </div>
 
+          {/* In-Content Ad */}
+          <AdDisplay position="in_content" />
+
           {/* Gold Calculator */}
           <GoldCalculator 
             price22k={goldPrice.price_22k_per_gram} 
@@ -635,6 +648,17 @@ const CityGoldRates = () => {
       </section>
 
       <CitySpecificFAQ city={cityName} />
+
+      {/* Bottom Banner Ad */}
+      <div className="bg-muted/30 py-8">
+        <div className="container mx-auto px-4">
+          <AdDisplay position="bottom_banner" />
+        </div>
+      </div>
+
+      {/* Mobile Sticky Ad */}
+      <AdDisplay position="mobile_sticky" />
+
       <Footer />
     </>
   );
