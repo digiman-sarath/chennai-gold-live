@@ -247,12 +247,6 @@ const ModernGoldRates = () => {
       <div className="min-h-screen bg-background">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 py-6 sm:py-8">
         
-        {/* TL;DR Summary */}
-        <GoldRateSummary 
-          price24k={price24k} 
-          price22k={price22k}
-          city={selectedCity}
-        />
         {/* Header */}
         <button 
           onClick={() => navigate('/')}
@@ -385,6 +379,15 @@ const ModernGoldRates = () => {
               </div>
             </div>
           </Card>
+          </div>
+
+          {/* TL;DR Summary - Bottom of Hero */}
+          <div className="mb-8">
+            <GoldRateSummary 
+              price24k={price24k} 
+              price22k={price22k}
+              city={selectedCity}
+            />
           </div>
 
           {/* Historical Price Comparison */}

@@ -286,16 +286,6 @@ const Index = () => {
         </div>
       </div>
 
-      {/* TL;DR Summary */}
-      {goldPrice && (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <GoldRateSummary 
-            price24k={goldPrice.price_24k_per_gram} 
-            price22k={goldPrice.price_22k_per_gram}
-          />
-        </div>
-      )}
-
       <main className="min-h-screen">
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-br from-background via-primary/5 to-accent/5 py-8 sm:py-12 md:py-16 lg:py-24">
@@ -418,6 +408,16 @@ const Index = () => {
                   Compare Cities
                 </Button>
               </div>
+
+              {/* TL;DR Summary - Bottom of Hero */}
+              {goldPrice && (
+                <div className="mt-12">
+                  <GoldRateSummary 
+                    price24k={goldPrice.price_24k_per_gram} 
+                    price22k={goldPrice.price_22k_per_gram}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>
