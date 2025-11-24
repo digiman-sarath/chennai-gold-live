@@ -17,6 +17,58 @@ const Disclaimer = () => {
         <link rel="canonical" href="https://chennaigoldprice.com/disclaimer" />
         <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/disclaimer" />
         <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/disclaimer" />
+        
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Disclaimer",
+            "description": "Disclaimer for Chennai Gold Price. Important information about gold rate accuracy, investment advice, and usage of our gold price tracking service.",
+            "url": "https://chennaigoldprice.com/disclaimer",
+            "inLanguage": "en",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Chennai Gold Price",
+              "url": "https://chennaigoldprice.com"
+            },
+            "datePublished": "2025-01-24",
+            "dateModified": "2025-01-24",
+            "mainEntity": {
+              "@type": "Article",
+              "headline": "Disclaimer - Chennai Gold Price",
+              "author": {
+                "@type": "Organization",
+                "name": "Chennai Gold Price",
+                "url": "https://chennaigoldprice.com"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Chennai Gold Price",
+                "url": "https://chennaigoldprice.com"
+              },
+              "datePublished": "2025-01-24",
+              "dateModified": "2025-01-24"
+            },
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://chennaigoldprice.com"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Disclaimer",
+                  "item": "https://chennaigoldprice.com/disclaimer"
+                }
+              ]
+            }
+          })}
+        </script>
       </Helmet>
 
       <Header />
