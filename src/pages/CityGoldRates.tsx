@@ -9,6 +9,7 @@ import { ArrowLeft, Calendar, TrendingDown, TrendingUp, MapPin } from 'lucide-re
 import { format } from 'date-fns';
 import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
+import GoldCalculator from '@/components/GoldCalculator';
 
 
 interface GoldPrice {
@@ -505,7 +506,13 @@ const CityGoldRates = () => {
                   {change24k.isPositive ? '+' : '-'} ₹{Math.round(change24k.amount)} ({change24k.percentage.toFixed(2)}%)
                 </div>
               </div>
-            </Card>
+          </Card>
+
+          {/* Gold Calculator */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-foreground mb-4">Gold Price Calculator</h2>
+            <GoldCalculator price22k={price22k} price24k={price24k} />
+          </div>
 
             <Card className="p-6 bg-gradient-to-br from-accent/10 to-accent/5 border-accent/20">
               <div className="space-y-3">
