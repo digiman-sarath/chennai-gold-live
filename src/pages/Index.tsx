@@ -137,7 +137,10 @@ const Index = () => {
         <meta name="last-modified" content={goldPrice?.updated_at || new Date().toISOString()} />
       </Helmet>
 
-      <div className="fixed right-4 top-4 z-50">
+      <div className="fixed right-4 top-4 z-50 flex gap-2">
+        <Button onClick={() => navigate('/rates')} variant="default" size="sm">
+          Modern View
+        </Button>
         <Button onClick={() => navigate('/auth')} variant="outline" size="sm">
           <Shield className="mr-2 h-4 w-4" />
           Admin Login
