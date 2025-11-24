@@ -14,6 +14,41 @@ export type Database = {
   }
   public: {
     Tables: {
+      ad_analytics: {
+        Row: {
+          ad_id: string
+          clicks: number
+          created_at: string
+          date: string
+          id: string
+          impressions: number
+        }
+        Insert: {
+          ad_id: string
+          clicks?: number
+          created_at?: string
+          date: string
+          id?: string
+          impressions?: number
+        }
+        Update: {
+          ad_id?: string
+          clicks?: number
+          created_at?: string
+          date?: string
+          id?: string
+          impressions?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ad_analytics_ad_id_fkey"
+            columns: ["ad_id"]
+            isOneToOne: false
+            referencedRelation: "ads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ads: {
         Row: {
           click_count: number
@@ -172,6 +207,7 @@ export type Database = {
       }
       increment_ad_click: { Args: { ad_id: string }; Returns: undefined }
       increment_ad_impression: { Args: { ad_id: string }; Returns: undefined }
+      record_ad_daily_stats: { Args: never; Returns: undefined }
     }
     Enums: {
       ad_position:
