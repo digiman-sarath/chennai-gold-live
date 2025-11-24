@@ -5,6 +5,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import RelatedArticles from '@/components/RelatedArticles';
 import { Card } from '@/components/ui/card';
 import { Calendar, User } from 'lucide-react';
 
@@ -327,6 +328,11 @@ const Article = () => {
           </div>
         </footer>
       </article>
+
+      <RelatedArticles 
+        currentArticleId={article.id}
+        currentArticleKeywords={article.seo_keywords}
+      />
 
       <Footer />
     </div>
