@@ -248,8 +248,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
-        <title>Chennai Gold Rate {seoDate} 22K₹{price22k} 24K₹{price24k}</title>
-        <meta 
+        <title>{`Chennai Gold Rate ${seoDate} 22K₹${price22k} 24K₹${price24k}`}</title>
+        <meta
           name="description" 
           content={`Current gold rate in Chennai today ${displayDate} from GoldAPI.io. Live 22K gold: ₹${price22k}/gram, 24K gold: ₹${price24k}/gram. Real-time updates for accurate gold price tracking in Chennai market.`}
         />

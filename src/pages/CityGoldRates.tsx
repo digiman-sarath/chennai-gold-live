@@ -428,8 +428,8 @@ const CityGoldRates = () => {
   return (
     <>
       <Helmet>
-        <title>{cityName} Gold {seoDate} 22K₹{price22k} 24K₹{price24k}</title>
-        <meta 
+        <title>{`${cityName} Gold ${seoDate} 22K₹${price22k} 24K₹${price24k}`}</title>
+        <meta
           name="description" 
           content={`Current gold rate in ${cityName} today ${displayDate}. Live 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram. Get accurate ${cityName} gold prices with daily updates from GoldAPI.io.`}
         />
