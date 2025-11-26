@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AdManagement from '@/components/admin/AdManagement';
 import AdAnalytics from '@/components/admin/AdAnalytics';
-import { DollarSign, TrendingUp, Users, Settings } from 'lucide-react';
+import { DollarSign, TrendingUp, Users, Settings, FileText, MapPin } from 'lucide-react';
 
 const AdminPanel = () => {
   const navigate = useNavigate();
@@ -118,14 +118,56 @@ const AdminPanel = () => {
             </TabsContent>
 
             <TabsContent value="settings">
-              <Card>
-                <CardHeader>
-                  <CardTitle>System Settings</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">Settings panel coming soon...</p>
-                </CardContent>
-              </Card>
+              <div className="grid gap-6 md:grid-cols-2">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <FileText className="h-5 w-5" />
+                      Content Management
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h3 className="font-semibold mb-2">Article Management</h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Create, edit, and manage blog articles with SEO optimization
+                      </p>
+                      <Button onClick={() => navigate('/admin/articles')} className="w-full">
+                        Manage Articles
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MapPin className="h-5 w-5" />
+                      District Content
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h3 className="font-semibold mb-2">District Content Variations</h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Customize TL;DR content for all 38 Tamil Nadu districts
+                      </p>
+                      <Button onClick={() => navigate('/admin/district-content')} className="w-full">
+                        Manage District Content
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>System Settings</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">Additional settings coming soon...</p>
+                  </CardContent>
+                </Card>
+              </div>
             </TabsContent>
           </Tabs>
         </div>

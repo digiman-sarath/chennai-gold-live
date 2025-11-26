@@ -1,4 +1,5 @@
 import { getISTDateForSEO } from './date-utils';
+import { supabase } from '@/integrations/supabase/client';
 
 interface CityMarketData {
   variations: Array<(price24k: string, price22k: string, price18k: string, date: string) => string>;
@@ -494,11 +495,33 @@ const defaultVariations: CityMarketData = {
   ]
 };
 
-export const getCitySpecificContent = (
+// Fetch content from database with fallback to hardcoded content
+const fetchDatabaseContent = async (city: string): Promise<string[]> => {
+  try {
+    const { data, error } = await supabase
+      .from('district_content_variations')
+      .select('variation_text')
+      .eq('district_name', city)
+      .eq('is_active', true)
+      .order('priority', { ascending: false });
+
+    if (error) throw error;
+    
+    if (data && data.length > 0) {
+      return data.map(item => item.variation_text);
+    }
+  } catch (error) {
+    console.error('Error fetching database content:', error);
+  }
+  
+  return [];
+};
+
+export const getCitySpecificContent = async (
   city: string,
   price24k: number,
   price22k: number
-): string => {
+): Promise<string> => {
   const price18k = Math.round(price24k * 0.75);
   const currentDate = getISTDateForSEO();
   
@@ -507,12 +530,28 @@ export const getCitySpecificContent = (
   const formattedPrice22k = `₹${price22k.toLocaleString('en-IN')}`;
   const formattedPrice18k = `₹${price18k.toLocaleString('en-IN')}`;
   
-  // Get city-specific variations or use default
-  const cityData = cityMarketContent[city] || defaultVariations;
+  // Try to fetch from database first
+  const dbVariations = await fetchDatabaseContent(city);
   
-  // Select a random variation
-  const randomIndex = Math.floor(Math.random() * cityData.variations.length);
-  const selectedVariation = cityData.variations[randomIndex];
+  let selectedText: string;
   
-  return selectedVariation(formattedPrice24k, formattedPrice22k, formattedPrice18k, currentDate);
+  if (dbVariations.length > 0) {
+    // Use database content
+    const randomIndex = Math.floor(Math.random() * dbVariations.length);
+    selectedText = dbVariations[randomIndex];
+  } else {
+    // Fallback to hardcoded content
+    const cityData = cityMarketContent[city] || defaultVariations;
+    const randomIndex = Math.floor(Math.random() * cityData.variations.length);
+    const selectedVariation = cityData.variations[randomIndex];
+    selectedText = selectedVariation(formattedPrice24k, formattedPrice22k, formattedPrice18k, currentDate);
+    return selectedText;
+  }
+  
+  // Replace placeholders in database content
+  return selectedText
+    .replace(/\{p24k\}/g, formattedPrice24k)
+    .replace(/\{p22k\}/g, formattedPrice22k)
+    .replace(/\{p18k\}/g, formattedPrice18k)
+    .replace(/\{date\}/g, currentDate);
 };
