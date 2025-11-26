@@ -151,6 +151,39 @@ export type Database = {
         }
         Relationships: []
       }
+      district_content_variations: {
+        Row: {
+          created_at: string
+          district_name: string
+          id: string
+          is_active: boolean
+          priority: number
+          season_tag: string | null
+          updated_at: string
+          variation_text: string
+        }
+        Insert: {
+          created_at?: string
+          district_name: string
+          id?: string
+          is_active?: boolean
+          priority?: number
+          season_tag?: string | null
+          updated_at?: string
+          variation_text: string
+        }
+        Update: {
+          created_at?: string
+          district_name?: string
+          id?: string
+          is_active?: boolean
+          priority?: number
+          season_tag?: string | null
+          updated_at?: string
+          variation_text?: string
+        }
+        Relationships: []
+      }
       gold_prices: {
         Row: {
           created_at: string
