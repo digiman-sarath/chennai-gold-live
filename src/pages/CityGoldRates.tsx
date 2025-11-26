@@ -10,7 +10,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { ArrowLeft, Calendar, TrendingDown, TrendingUp, MapPin } from 'lucide-react';
 import { format } from 'date-fns';
 import { formatISTDate, getISTDateForSEO } from '@/lib/date-utils';
-import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldCalculator from '@/components/GoldCalculator';
 import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
@@ -765,12 +764,6 @@ const CityGoldRates = () => {
             </div>
           </Card>
 
-
-          {/* Price History Chart */}
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Price History - {cityName}</h2>
-            <GoldPriceChart />
-          </div>
 
           {/* Price Breakdown Table */}
           <div className="mb-8">

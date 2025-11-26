@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Shield, TrendingUp, Calendar, RefreshCw, Database, Sparkles, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldInfo from '@/components/GoldInfo';
 import GoldFAQ, { goldFAQData } from '@/components/GoldFAQ';
@@ -442,16 +441,6 @@ const Index = () => {
         <section className="py-12 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <GoldPriceComparison />
-          </div>
-        </section>
-
-        {/* Price Chart Section */}
-        <section className="py-16 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-6xl">
-              <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Price Trend Analysis</h2>
-              <GoldPriceChart />
-            </div>
           </div>
         </section>
 
