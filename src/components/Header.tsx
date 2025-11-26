@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
-import { TrendingUp, TrendingDown, Menu, X } from 'lucide-react';
+import { TrendingUp, TrendingDown, Menu, X, RefreshCw, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { formatDistanceToNow } from 'date-fns';
+import { formatISTDate } from '@/lib/date-utils';
 
 interface GoldPrice {
   price_22k_per_gram: number;
@@ -16,6 +18,8 @@ const Header = () => {
   const [goldPrice, setGoldPrice] = useState<GoldPrice | null>(null);
   const [previousPrice, setPreviousPrice] = useState<GoldPrice | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [lastUpdateTime, setLastUpdateTime] = useState<string>('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,15 +35,25 @@ const Header = () => {
           table: 'gold_prices'
         },
         () => {
+          setIsRefreshing(true);
           fetchPrices();
+          setTimeout(() => setIsRefreshing(false), 1000);
         }
       )
       .subscribe();
 
+    // Update relative time every minute
+    const timeInterval = setInterval(() => {
+      if (goldPrice?.updated_at) {
+        setLastUpdateTime(formatDistanceToNow(new Date(goldPrice.updated_at), { addSuffix: true }));
+      }
+    }, 60000); // Update every minute
+
     return () => {
       supabase.removeChannel(channel);
+      clearInterval(timeInterval);
     };
-  }, []);
+  }, [goldPrice?.updated_at]);
 
   const fetchPrices = async () => {
     try {
@@ -56,25 +70,30 @@ const Header = () => {
       
       if (data && data.length > 0) {
         setGoldPrice(data[0]);
+        setLastUpdateTime(formatDistanceToNow(new Date(data[0].updated_at), { addSuffix: true }));
         if (data.length > 1) {
           setPreviousPrice(data[1]);
         }
       } else {
         // Fallback data
-        setGoldPrice({
+        const fallbackData = {
           price_22k_per_gram: 10632,
           price_24k_per_gram: 11598,
           updated_at: new Date().toISOString()
-        });
+        };
+        setGoldPrice(fallbackData);
+        setLastUpdateTime(formatDistanceToNow(new Date(fallbackData.updated_at), { addSuffix: true }));
       }
     } catch (error) {
       console.error('Error fetching gold prices:', error);
       // Set fallback data on error
-      setGoldPrice({
+      const fallbackData = {
         price_22k_per_gram: 10632,
         price_24k_per_gram: 11598,
         updated_at: new Date().toISOString()
-      });
+      };
+      setGoldPrice(fallbackData);
+      setLastUpdateTime(formatDistanceToNow(new Date(fallbackData.updated_at), { addSuffix: true }));
     }
   };
 
@@ -131,9 +150,13 @@ const Header = () => {
 
               <div className="hidden md:block h-4 w-px bg-border" />
               
-              <span className="hidden md:inline text-xs text-muted-foreground whitespace-nowrap">
-                Live Updates
-              </span>
+              <div className="hidden md:flex items-center gap-2 text-xs text-muted-foreground whitespace-nowrap">
+                <RefreshCw className={`h-3 w-3 ${isRefreshing ? 'animate-spin text-primary' : ''}`} />
+                <span className="flex items-center gap-1">
+                  <Clock className="h-3 w-3" />
+                  {lastUpdateTime || 'Just now'}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -176,6 +199,12 @@ const Header = () => {
 
           {/* Mobile Menu */}
           <div className="flex md:hidden items-center gap-2">
+            {/* Mobile Last Updated Indicator */}
+            {goldPrice && (
+              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <RefreshCw className={`h-3 w-3 ${isRefreshing ? 'animate-spin text-primary' : ''}`} />
+              </div>
+            )}
             <LanguageSwitcher />
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
