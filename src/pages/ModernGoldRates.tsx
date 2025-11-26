@@ -147,8 +147,8 @@ const ModernGoldRates = () => {
   return (
     <>
       <Helmet>
-        <title>TN Gold {seoDate} 22K₹{price22k} 24K₹{price24k} Live</title>
-        <meta 
+        <title>{`TN Gold ${seoDate} 22K₹${price22k} 24K₹${price24k} Live`}</title>
+        <meta
           name="description" 
           content={`Live gold rates across Tamil Nadu cities. Current 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram. Compare prices in Chennai, Coimbatore, Madurai, and 35 more cities.`}
         />

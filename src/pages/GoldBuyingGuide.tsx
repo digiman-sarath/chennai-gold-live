@@ -18,8 +18,8 @@ const GoldBuyingGuide = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Gold Buying Guide {seoDate} - Purity GST & Tips</title>
-        <meta 
+        <title>{`Gold Buying Guide ${seoDate} - Purity GST & Tips`}</title>
+        <meta
           name="description" 
           content="Expert gold buying guide covering purity hallmarks, making charge calculations, GST rates, best buying times, and tips to get the best value when purchasing gold jewelry in India."
         />

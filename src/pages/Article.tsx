@@ -186,7 +186,7 @@ const Article = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{seoTitle} | Chennai Gold Price</title>
+        <title>{`${seoTitle} | Chennai Gold Price`}</title>
         <meta name="description" content={seoDescription} />
         {article.seo_keywords && <meta name="keywords" content={article.seo_keywords} />}
         <meta name="robots" content="index, follow" />
