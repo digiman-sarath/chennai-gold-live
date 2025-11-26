@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { format } from 'date-fns';
+import { formatISTDate, getISTDateForSEO } from '@/lib/date-utils';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -108,8 +109,10 @@ const Index = () => {
   };
 
   const displayDate = goldPrice 
-    ? format(new Date(goldPrice.date), 'MMMM dd, yyyy')
-    : format(new Date(), 'MMMM dd, yyyy');
+    ? formatISTDate(goldPrice.date)
+    : formatISTDate(new Date());
+  
+  const seoDate = getISTDateForSEO();
 
   const price22k = goldPrice?.price_22k_per_gram.toLocaleString('en-IN') || 'N/A';
   const price24k = goldPrice?.price_24k_per_gram.toLocaleString('en-IN') || 'N/A';
@@ -245,7 +248,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
-        <title>Today Gold Rate in Chennai - {displayDate} | Live 22K ₹{price22k} & 24K ₹{price24k} Prices</title>
+        <title>Chennai Gold Rate {seoDate} 22K₹{price22k} 24K₹{price24k}</title>
         <meta 
           name="description" 
           content={`Current gold rate in Chennai today ${displayDate} from GoldAPI.io. Live 22K gold: ₹${price22k}/gram, 24K gold: ₹${price24k}/gram. Real-time updates for accurate gold price tracking in Chennai market.`}

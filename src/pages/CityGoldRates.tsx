@@ -9,6 +9,7 @@ import { Card } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowLeft, Calendar, TrendingDown, TrendingUp, MapPin } from 'lucide-react';
 import { format } from 'date-fns';
+import { formatISTDate, getISTDateForSEO } from '@/lib/date-utils';
 import GoldPriceChart from '@/components/GoldPriceChart';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldCalculator from '@/components/GoldCalculator';
@@ -19,6 +20,7 @@ import AdDisplay from '@/components/AdDisplay';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
 import { GoldPriceComparison } from '@/components/GoldPriceComparison';
 import { generateFAQSchema } from '@/lib/faq-schema';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 
 interface GoldPrice {
@@ -420,12 +422,13 @@ const CityGoldRates = () => {
   const change22k = calculateChange(price22k, previousPrice?.price_22k_per_gram);
   const change18k = calculateChange(price18k, previousPrice ? calculate18KPrice(previousPrice.price_24k_per_gram) : undefined);
 
-  const displayDate = format(new Date(goldPrice.date), 'MMMM dd, yyyy');
+  const displayDate = formatISTDate(goldPrice.date);
+  const seoDate = getISTDateForSEO();
 
   return (
     <>
       <Helmet>
-        <title>Gold Rate in {cityName} Today - {displayDate} | 22K ₹{price22k.toLocaleString('en-IN')} & 24K ₹{price24k.toLocaleString('en-IN')}</title>
+        <title>{cityName} Gold {seoDate} 22K₹{price22k} 24K₹{price24k}</title>
         <meta 
           name="description" 
           content={`Current gold rate in ${cityName} today ${displayDate}. Live 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram. Get accurate ${cityName} gold prices with daily updates from GoldAPI.io.`}
@@ -569,8 +572,16 @@ const CityGoldRates = () => {
 
       <div className="min-h-screen bg-background">
         <div className="container mx-auto max-w-6xl p-6">
+          {/* Breadcrumb Navigation */}
+          <Breadcrumb 
+            items={[
+              { label: 'Tamil Nadu Rates', path: '/rates' },
+              { label: `${cityName} Gold Rates`, path: `/gold-rates/${city}` }
+            ]}
+          />
+
           {/* Header */}
-          <button 
+          <button
             onClick={() => navigate('/')}
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
           >
