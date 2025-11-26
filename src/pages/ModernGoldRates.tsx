@@ -217,12 +217,30 @@ const ModernGoldRates = () => {
             "name": "22 Karat Gold Tamil Nadu",
             "description": `22 Karat gold rate across Tamil Nadu cities - ₹${price22k.toLocaleString('en-IN')} per gram as of ${displayDate}`,
             "category": "Precious Metals",
+            "image": "https://chennaigoldprice.com/gold-hero.jpg",
             "offers": {
               "@type": "AggregateOffer",
               "price": price22k,
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
-              "priceValidUntil": goldPrice.date
+              "priceValidUntil": goldPrice.date,
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "INR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "IN"
+                }
+              },
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7
+              }
             }
           })}
         </script>
@@ -234,12 +252,30 @@ const ModernGoldRates = () => {
             "name": "24 Karat Gold Tamil Nadu",
             "description": `24 Karat gold rate across Tamil Nadu cities - ₹${price24k.toLocaleString('en-IN')} per gram as of ${displayDate}`,
             "category": "Precious Metals",
+            "image": "https://chennaigoldprice.com/gold-hero.jpg",
             "offers": {
               "@type": "AggregateOffer",
               "price": price24k,
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
-              "priceValidUntil": goldPrice.date
+              "priceValidUntil": goldPrice.date,
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "INR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "IN"
+                }
+              },
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7
+              }
             }
           })}
         </script>

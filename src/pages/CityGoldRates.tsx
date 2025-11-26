@@ -477,6 +477,7 @@ const CityGoldRates = () => {
             "name": `22 Karat Gold - ${cityName}`,
             "description": `22 Karat gold rate in ${cityName} - ₹${price22k.toLocaleString('en-IN')} per gram as of ${displayDate}`,
             "category": "Precious Metals",
+            "image": "https://chennaigoldprice.com/gold-hero.jpg",
             "brand": {
               "@type": "Brand",
               "name": `${cityName} Gold Market`
@@ -487,7 +488,24 @@ const CityGoldRates = () => {
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
               "priceValidUntil": goldPrice.date,
-              "url": `https://chennaigoldprice.com/gold-rates/${city}`
+              "url": `https://chennaigoldprice.com/gold-rates/${city}`,
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "INR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "IN"
+                }
+              },
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7
+              }
             }
           })}
         </script>
@@ -499,6 +517,7 @@ const CityGoldRates = () => {
             "name": `24 Karat Gold - ${cityName}`,
             "description": `24 Karat gold rate in ${cityName} - ₹${price24k.toLocaleString('en-IN')} per gram as of ${displayDate}`,
             "category": "Precious Metals",
+            "image": "https://chennaigoldprice.com/gold-hero.jpg",
             "brand": {
               "@type": "Brand",
               "name": `${cityName} Gold Market`
@@ -509,7 +528,24 @@ const CityGoldRates = () => {
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
               "priceValidUntil": goldPrice.date,
-              "url": `https://chennaigoldprice.com/gold-rates/${city}`
+              "url": `https://chennaigoldprice.com/gold-rates/${city}`,
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "INR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "IN"
+                }
+              },
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7
+              }
             }
           })}
         </script>
