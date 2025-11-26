@@ -11,9 +11,11 @@ import { Card } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowLeft, Calendar, TrendingDown, TrendingUp } from 'lucide-react';
 import { format } from 'date-fns';
+import { formatISTDate, getISTDateForSEO } from '@/lib/date-utils';
 import { useNavigate } from 'react-router-dom';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
 import { GoldPriceComparison } from '@/components/GoldPriceComparison';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 interface GoldPrice {
   date: string;
@@ -139,12 +141,13 @@ const ModernGoldRates = () => {
   const change22k = calculateChange(price22k, previousPrice?.price_22k_per_gram);
   const change18k = calculateChange(price18k, previousPrice ? calculate18KPrice(previousPrice.price_24k_per_gram) : undefined);
 
-  const displayDate = format(new Date(goldPrice.date), 'MMMM dd, yyyy');
+  const displayDate = formatISTDate(goldPrice.date);
+  const seoDate = getISTDateForSEO();
 
   return (
     <>
       <Helmet>
-        <title>Gold Rates Tamil Nadu - Live Gold Prices Across All Cities | {displayDate}</title>
+        <title>TN Gold {seoDate} 22K₹{price22k} 24K₹{price24k} Live</title>
         <meta 
           name="description" 
           content={`Live gold rates across Tamil Nadu cities. Current 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram. Compare prices in Chennai, Coimbatore, Madurai, and 35 more cities.`}
@@ -288,8 +291,15 @@ const ModernGoldRates = () => {
       
       <div className="min-h-screen bg-background">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 py-6 sm:py-8">
+          
+          {/* Breadcrumb Navigation */}
+          <Breadcrumb 
+            items={[
+              { label: 'Tamil Nadu Gold Rates', path: '/rates' }
+            ]}
+          />
         
-        {/* Header */}
+          {/* Header */}
         <button 
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"

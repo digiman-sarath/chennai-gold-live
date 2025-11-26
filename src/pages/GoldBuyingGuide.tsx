@@ -8,14 +8,17 @@ import { Badge } from '@/components/ui/badge';
 import { Calculator, Shield, TrendingDown, AlertCircle, CheckCircle, Calendar, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { Breadcrumb } from '@/components/Breadcrumb';
+import { getISTDateForSEO } from '@/lib/date-utils';
 
 const GoldBuyingGuide = () => {
   const navigate = useNavigate();
+  const seoDate = getISTDateForSEO();
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Complete Gold Buying Guide 2024 - Purity, Making Charges, GST & Best Times | Chennai Gold Rates</title>
+        <title>Gold Buying Guide {seoDate} - Purity GST & Tips</title>
         <meta 
           name="description" 
           content="Expert gold buying guide covering purity hallmarks, making charge calculations, GST rates, best buying times, and tips to get the best value when purchasing gold jewelry in India."
@@ -57,6 +60,13 @@ const GoldBuyingGuide = () => {
       <Header />
 
       <div className="container mx-auto px-4 py-12 max-w-6xl">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb 
+          items={[
+            { label: 'Gold Buying Guide', path: '/buying-guide' }
+          ]}
+        />
+        
         {/* Hero Section */}
         <div className="text-center mb-12">
           <Badge className="mb-4">Expert Guide</Badge>
