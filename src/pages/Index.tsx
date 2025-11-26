@@ -163,6 +163,7 @@ const Index = () => {
     "name": "22 Karat Gold",
     "description": `22 Karat gold rate in Chennai - ${price22k} per gram as of ${displayDate}`,
     "category": "Precious Metals",
+    "image": "https://chennaigoldprice.com/gold-hero.jpg",
     "brand": {
       "@type": "Brand",
       "name": "Chennai Gold Market"
@@ -173,7 +174,24 @@ const Index = () => {
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
       "priceValidUntil": goldPrice?.date || new Date().toISOString().split('T')[0],
-      "url": "https://chennaigoldprice.com"
+      "url": "https://chennaigoldprice.com",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "INR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "IN"
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7
+      }
     }
   };
 
@@ -183,6 +201,7 @@ const Index = () => {
     "name": "24 Karat Gold",
     "description": `24 Karat gold rate in Chennai - ${price24k} per gram as of ${displayDate}`,
     "category": "Precious Metals",
+    "image": "https://chennaigoldprice.com/gold-hero.jpg",
     "brand": {
       "@type": "Brand",
       "name": "Chennai Gold Market"
@@ -193,7 +212,24 @@ const Index = () => {
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
       "priceValidUntil": goldPrice?.date || new Date().toISOString().split('T')[0],
-      "url": "https://chennaigoldprice.com"
+      "url": "https://chennaigoldprice.com",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "INR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "IN"
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7
+      }
     }
   };
 
