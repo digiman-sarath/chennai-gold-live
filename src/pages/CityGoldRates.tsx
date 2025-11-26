@@ -18,6 +18,10 @@ import RecentArticles from '@/components/RecentArticles';
 import AdDisplay from '@/components/AdDisplay';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
 import { GoldPriceComparison } from '@/components/GoldPriceComparison';
+import { Last10DaysTable } from '@/components/Last10DaysTable';
+import { AverageGoldRateComparison } from '@/components/AverageGoldRateComparison';
+import { MonthlyPriceHistory } from '@/components/MonthlyPriceHistory';
+import { OnThisPage } from '@/components/OnThisPage';
 import { generateFAQSchema } from '@/lib/faq-schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
 
@@ -570,43 +574,46 @@ const CityGoldRates = () => {
       </div>
 
       <div className="min-h-screen bg-background">
-        <div className="container mx-auto max-w-6xl p-6">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb 
-            items={[
-              { label: 'Tamil Nadu Rates', path: '/rates' },
-              { label: `${cityName} Gold Rates`, path: `/gold-rates/${city}` }
-            ]}
-          />
+        <div className="container mx-auto max-w-7xl p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-3 space-y-8">
+              {/* Breadcrumb Navigation */}
+              <Breadcrumb 
+                items={[
+                  { label: 'Tamil Nadu Rates', path: '/rates' },
+                  { label: `${cityName} Gold Rates`, path: `/gold-rates/${city}` }
+                ]}
+              />
 
-          {/* Header */}
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
-          >
-            <ArrowLeft className="h-5 w-5" />
-            <span className="font-medium">Back to Home</span>
-          </button>
+              {/* Header */}
+              <button
+                onClick={() => navigate('/')}
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft className="h-5 w-5" />
+                <span className="font-medium">Back to Home</span>
+              </button>
 
-          <div className="mb-6">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-              Gold Rate in {cityName} Today
-            </h1>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="h-4 w-4" />
-              <time className="text-lg font-medium">
-                {displayDate}
-              </time>
-            </div>
-          </div>
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2" id="current-rates">
+                  Gold Rate in {cityName} Today
+                </h1>
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Calendar className="h-4 w-4" />
+                  <time className="text-lg font-medium">
+                    {displayDate}
+                  </time>
+                </div>
+              </div>
 
-          {/* City Selector */}
-          <div className="mb-8 flex items-center gap-3">
-            <MapPin className="h-5 w-5 text-primary" />
-            <Select value={city} onValueChange={handleCityChange}>
-              <SelectTrigger className="w-64 border-border">
-                <SelectValue />
-              </SelectTrigger>
+              {/* City Selector */}
+              <div className="flex items-center gap-3">
+                <MapPin className="h-5 w-5 text-primary" />
+                <Select value={city} onValueChange={handleCityChange}>
+                  <SelectTrigger className="w-64 border-border">
+                    <SelectValue />
+                  </SelectTrigger>
               <SelectContent>
                 <SelectItem value="ariyalur">Ariyalur</SelectItem>
                 <SelectItem value="chengalpattu">Chengalpattu</SelectItem>
@@ -650,89 +657,94 @@ const CityGoldRates = () => {
             </Select>
           </div>
 
-          {/* Price Cards */}
-          <div className="grid md:grid-cols-3 gap-4 mb-8">
-            <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
-              <div className="space-y-3">
-                <div className="text-lg font-semibold text-foreground">
-                  24K Gold <span className="text-sm font-normal text-muted-foreground">/gram</span>
-                </div>
-                <div className="text-3xl font-bold text-primary">
-                  ₹{price24k.toLocaleString('en-IN')}
-                </div>
-                <div className={`flex items-center gap-1 text-sm font-medium ${change24k.isPositive ? 'text-red-600' : 'text-green-600'}`}>
-                  {change24k.isPositive ? (
-                    <TrendingUp className="h-4 w-4" />
-                  ) : (
-                    <TrendingDown className="h-4 w-4" />
-                  )}
-                  {change24k.isPositive ? '+' : '-'} ₹{Math.round(change24k.amount)} ({change24k.percentage.toFixed(2)}%)
-                </div>
+              {/* Price Cards */}
+              <div className="grid md:grid-cols-3 gap-4">
+                <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+                  <div className="space-y-3">
+                    <div className="text-lg font-semibold text-foreground">
+                      24K Gold <span className="text-sm font-normal text-muted-foreground">/gram</span>
+                    </div>
+                    <div className="text-3xl font-bold text-primary">
+                      ₹{price24k.toLocaleString('en-IN')}
+                    </div>
+                    <div className={`flex items-center gap-1 text-sm font-medium ${change24k.isPositive ? 'text-red-600' : 'text-green-600'}`}>
+                      {change24k.isPositive ? (
+                        <TrendingUp className="h-4 w-4" />
+                      ) : (
+                        <TrendingDown className="h-4 w-4" />
+                      )}
+                      {change24k.isPositive ? '+' : '-'} ₹{Math.round(change24k.amount)} ({change24k.percentage.toFixed(2)}%)
+                    </div>
+                  </div>
+                </Card>
+
+                <Card className="p-6 bg-gradient-to-br from-accent/10 to-accent/5 border-accent/20">
+                  <div className="space-y-3">
+                    <div className="text-lg font-semibold text-foreground">
+                      22K Gold <span className="text-sm font-normal text-muted-foreground">/gram</span>
+                    </div>
+                    <div className="text-3xl font-bold text-primary">
+                      ₹{price22k.toLocaleString('en-IN')}
+                    </div>
+                    <div className={`flex items-center gap-1 text-sm font-medium ${change22k.isPositive ? 'text-red-600' : 'text-green-600'}`}>
+                      {change22k.isPositive ? (
+                        <TrendingUp className="h-4 w-4" />
+                      ) : (
+                        <TrendingDown className="h-4 w-4" />
+                      )}
+                      {change22k.isPositive ? '+' : '-'} ₹{Math.round(change22k.amount)} ({change22k.percentage.toFixed(2)}%)
+                    </div>
+                  </div>
+                </Card>
+
+                <Card className="p-6 bg-gradient-to-br from-secondary/10 to-secondary/5 border-secondary/20">
+                  <div className="space-y-3">
+                    <div className="text-lg font-semibold text-foreground">
+                      18K Gold <span className="text-sm font-normal text-muted-foreground">/gram</span>
+                    </div>
+                    <div className="text-3xl font-bold text-primary">
+                      ₹{price18k.toLocaleString('en-IN')}
+                    </div>
+                    <div className={`flex items-center gap-1 text-sm font-medium ${change18k.isPositive ? 'text-red-600' : 'text-green-600'}`}>
+                      {change18k.isPositive ? (
+                        <TrendingUp className="h-4 w-4" />
+                      ) : (
+                        <TrendingDown className="h-4 w-4" />
+                      )}
+                      {change18k.isPositive ? '+' : '-'} ₹{Math.round(change18k.amount)} ({change18k.percentage.toFixed(2)}%)
+                    </div>
+                  </div>
+                </Card>
               </div>
-          </Card>
 
-          {/* Gold Calculator */}
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Gold Price Calculator</h2>
-            <GoldCalculator price22k={price22k} price24k={price24k} />
-          </div>
+              {/* TL;DR Summary */}
+              <GoldRateSummary
+                price24k={price24k} 
+                price22k={price22k}
+                city={cityName}
+              />
 
-            <Card className="p-6 bg-gradient-to-br from-accent/10 to-accent/5 border-accent/20">
-              <div className="space-y-3">
-                <div className="text-lg font-semibold text-foreground">
-                  22K Gold <span className="text-sm font-normal text-muted-foreground">/gram</span>
-                </div>
-                <div className="text-3xl font-bold text-primary">
-                  ₹{price22k.toLocaleString('en-IN')}
-                </div>
-                <div className={`flex items-center gap-1 text-sm font-medium ${change22k.isPositive ? 'text-red-600' : 'text-green-600'}`}>
-                  {change22k.isPositive ? (
-                    <TrendingUp className="h-4 w-4" />
-                  ) : (
-                    <TrendingDown className="h-4 w-4" />
-                  )}
-                  {change22k.isPositive ? '+' : '-'} ₹{Math.round(change22k.amount)} ({change22k.percentage.toFixed(2)}%)
-                </div>
+              {/* Historical Price Comparison */}
+              <GoldPriceComparison />
+
+              {/* Last 10 Days Table */}
+              <div id="last-10-days">
+                <Last10DaysTable city={cityName} />
               </div>
-            </Card>
 
-            <Card className="p-6 bg-gradient-to-br from-secondary/10 to-secondary/5 border-secondary/20">
-              <div className="space-y-3">
-                <div className="text-lg font-semibold text-foreground">
-                  18K Gold <span className="text-sm font-normal text-muted-foreground">/gram</span>
-                </div>
-                <div className="text-3xl font-bold text-primary">
-                  ₹{price18k.toLocaleString('en-IN')}
-                </div>
-                <div className={`flex items-center gap-1 text-sm font-medium ${change18k.isPositive ? 'text-red-600' : 'text-green-600'}`}>
-                  {change18k.isPositive ? (
-                    <TrendingUp className="h-4 w-4" />
-                  ) : (
-                    <TrendingDown className="h-4 w-4" />
-                  )}
-                  {change18k.isPositive ? '+' : '-'} ₹{Math.round(change18k.amount)} ({change18k.percentage.toFixed(2)}%)
-                </div>
+              {/* Average Gold Rate Comparison */}
+              <div id="average-comparison">
+                <AverageGoldRateComparison city={cityName} />
               </div>
-            </Card>
-          </div>
 
-          {/* TL;DR Summary - Bottom of Hero */}
-          <div className="mb-8">
-            <GoldRateSummary 
-              price24k={price24k} 
-              price22k={price22k}
-              city={cityName}
-            />
-          </div>
+              {/* Monthly Price History */}
+              <div id="historical-price">
+                <MonthlyPriceHistory city={cityName} />
+              </div>
 
-          {/* Historical Price Comparison */}
-          <div className="mb-8">
-            <GoldPriceComparison />
-          </div>
-
-          {/* City Description */}
-          <Card className="p-6 mb-8">
-            <h2 className="text-2xl font-bold text-foreground mb-4">About {cityName} Gold Market</h2>
+              {/* City Description */}
+              <Card className="p-6">
+                <h2 className="text-2xl font-bold text-foreground mb-4">About {cityName} Gold Market</h2>
             <div className="space-y-4 text-muted-foreground">
               <p className="leading-relaxed">{cityInfo.description}</p>
               <p className="leading-relaxed">{cityInfo.marketInfo}</p>
@@ -760,43 +772,44 @@ const CityGoldRates = () => {
                     ))}
                   </ul>
                 </div>
+                </div>
               </div>
+            </Card>
+
+
+              {/* Price Breakdown Table */}
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Gold Price Breakdown - {cityName}</h2>
+                <GoldPriceTable />
+                
+                <div className="mt-6 p-4 sm:p-6 bg-card rounded-xl border-l-4 border-primary">
+                  <p className="text-sm sm:text-base text-muted-foreground">
+                    <strong className="text-foreground">Related Pages:</strong> <a href="/" className="text-primary hover:underline font-medium mx-2">Chennai Gold Rates</a> | <a href="/rates" className="text-primary hover:underline font-medium mx-2">Compare All Tamil Nadu Cities</a> | <a href="/gold-rates/coimbatore" className="text-primary hover:underline font-medium mx-2">Coimbatore Prices</a> | <a href="https://consumeraffairs.nic.in" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium mx-2">Consumer Affairs India<span className="sr-only"> (opens in new tab)</span></a> | <a href="https://www.goodreturns.in/gold-rates/" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium mx-2">Gold Rate Reference<span className="sr-only"> (opens in new tab)</span></a>
+                  </p>
+                </div>
+              </div>
+
+              {/* In-Content Ad */}
+              <AdDisplay position="in_content" />
+
+              {/* Data Source Info */}
+              <Card className="p-4 bg-muted/30">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-sm">
+                  <span className="text-muted-foreground">
+                    Source: <strong className="text-primary">GoldAPI.io</strong> - Live Market Rates
+                  </span>
+                  <span className="text-muted-foreground">
+                    Last Updated: <strong className="text-foreground">{format(new Date(goldPrice.updated_at), 'h:mm a, MMM dd')}</strong>
+                  </span>
+                </div>
+              </Card>
             </div>
-          </Card>
 
-
-          {/* Price Breakdown Table */}
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Gold Price Breakdown - {cityName}</h2>
-            <GoldPriceTable />
-            
-            <div className="mt-6 p-4 sm:p-6 bg-card rounded-xl border-l-4 border-primary">
-              <p className="text-sm sm:text-base text-muted-foreground">
-                <strong className="text-foreground">Related Pages:</strong> <a href="/" className="text-primary hover:underline font-medium mx-2">Chennai Gold Rates</a> | <a href="/rates" className="text-primary hover:underline font-medium mx-2">Compare All Tamil Nadu Cities</a> | <a href="/gold-rates/coimbatore" className="text-primary hover:underline font-medium mx-2">Coimbatore Prices</a> | <a href="https://consumeraffairs.nic.in" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium mx-2">Consumer Affairs India<span className="sr-only"> (opens in new tab)</span></a> | <a href="https://www.goodreturns.in/gold-rates/" target="_blank" rel="nofollow noopener noreferrer" className="text-primary hover:underline font-medium mx-2">Gold Rate Reference<span className="sr-only"> (opens in new tab)</span></a>
-              </p>
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <OnThisPage city={cityName} />
             </div>
           </div>
-
-          {/* In-Content Ad */}
-          <AdDisplay position="in_content" />
-
-          {/* Gold Calculator */}
-          <GoldCalculator 
-            price22k={goldPrice.price_22k_per_gram} 
-            price24k={goldPrice.price_24k_per_gram} 
-          />
-
-          {/* Data Source Info */}
-          <Card className="p-4 bg-muted/30">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-sm">
-              <span className="text-muted-foreground">
-                Source: <strong className="text-primary">GoldAPI.io</strong> - Live Market Rates
-              </span>
-              <span className="text-muted-foreground">
-                Last Updated: <strong className="text-foreground">{format(new Date(goldPrice.updated_at), 'h:mm a, MMM dd')}</strong>
-              </span>
-            </div>
-          </Card>
         </div>
       </div>
 

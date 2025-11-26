@@ -19,6 +19,9 @@ import AdDisplay from '@/components/AdDisplay';
 import { formatDistanceToNow } from 'date-fns';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
 import { GoldPriceComparison } from '@/components/GoldPriceComparison';
+import { Last10DaysTable } from '@/components/Last10DaysTable';
+import { AverageGoldRateComparison } from '@/components/AverageGoldRateComparison';
+import { MonthlyPriceHistory } from '@/components/MonthlyPriceHistory';
 import { generateFAQSchema } from '@/lib/faq-schema';
 
 interface GoldPrice {
@@ -441,6 +444,27 @@ const Index = () => {
         <section className="py-12 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <GoldPriceComparison />
+          </div>
+        </section>
+
+        {/* Last 10 Days Table */}
+        <section id="last-10-days" className="py-12 bg-muted/30">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <Last10DaysTable city="Chennai" />
+          </div>
+        </section>
+
+        {/* Average Gold Rate Comparison */}
+        <section id="average-comparison" className="py-12 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AverageGoldRateComparison city="Chennai" />
+          </div>
+        </section>
+
+        {/* Monthly Price History */}
+        <section id="historical-price" className="py-12 bg-muted/30">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <MonthlyPriceHistory city="Chennai" />
           </div>
         </section>
 
