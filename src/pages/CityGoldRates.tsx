@@ -596,8 +596,8 @@ const CityGoldRates = () => {
               </button>
 
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2" id="current-rates">
-                  Gold Rate in {cityName} Today
+                <h1 className="seo-h1 text-foreground mb-3" id="current-rates">
+                  Gold Rate in <span className="seo-h1-keywords">{cityName}</span> Today - Live 22K & 24K Price Per Gram
                 </h1>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Calendar className="h-4 w-4" />

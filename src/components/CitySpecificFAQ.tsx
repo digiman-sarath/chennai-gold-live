@@ -138,18 +138,18 @@ const CitySpecificFAQ = ({ city }: CitySpecificFAQProps) => {
   const faqs = generateCityFAQs(city);
 
   return (
-    <section className="py-8 sm:py-12 lg:py-16 bg-muted/30">
+    <section className="content-section bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="mb-8 sm:mb-12 text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 mb-3 sm:mb-4">
               <HelpCircle className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2 sm:mb-3 px-4">
-              Frequently Asked Questions About Gold Rates in {city}
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-3 sm:mb-4 px-4 leading-tight">
+              {city} Gold Rate FAQs - 22K & 24K Gold Price Questions Answered
             </h2>
-            <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4">
-              Everything you need to know about buying and investing in gold in {city}
+            <p className="readable-text px-4">
+              Comprehensive answers about gold rates, buying tips, hallmark verification, and investment options in {city}.
             </p>
           </div>
 
@@ -158,23 +158,23 @@ const CitySpecificFAQ = ({ city }: CitySpecificFAQProps) => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="border border-border rounded-lg px-4 sm:px-6 bg-card shadow-sm hover:shadow-md transition-shadow"
+                className="border border-border rounded-xl px-4 sm:px-6 bg-card shadow-sm hover:shadow-md transition-shadow"
               >
-                <AccordionTrigger className="text-left hover:no-underline py-3 sm:py-4">
-                  <span className="text-sm sm:text-base font-semibold text-foreground pr-4">
+                <AccordionTrigger className="text-left hover:no-underline py-4 sm:py-5">
+                  <span className="text-sm sm:text-base font-semibold text-foreground pr-4 leading-relaxed">
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-xs sm:text-sm text-muted-foreground pb-3 sm:pb-4 leading-relaxed">
+                <AccordionContent className="readable-text pb-4 sm:pb-5">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
 
-          <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-primary/5 rounded-lg border border-primary/20 text-center">
-            <p className="text-xs sm:text-sm text-muted-foreground">
-              <strong className="text-foreground">Have more questions about gold rates in {city}?</strong> Visit our jewelers in {city} for personalized assistance and expert guidance on gold investments.
+          <div className="mt-8 sm:mt-10 p-4 sm:p-6 bg-primary/5 rounded-xl border border-primary/20 text-center">
+            <p className="readable-text">
+              <strong className="text-foreground">Have more questions about gold rates in {city}?</strong> Visit trusted jewelers in {city} for personalized assistance and expert guidance on gold investments.
             </p>
           </div>
         </div>
