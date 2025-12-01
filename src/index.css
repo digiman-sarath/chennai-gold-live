@@ -112,5 +112,78 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* SEO & LLMO Content Typography */
+  .prose-content {
+    @apply leading-relaxed;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+  }
+
+  .prose-content p {
+    @apply mb-5 text-base sm:text-lg;
+    word-spacing: 0.05em;
+  }
+
+  .prose-content h2 {
+    @apply text-2xl sm:text-3xl font-bold mb-6 mt-10 text-foreground;
+    line-height: 1.3;
+  }
+
+  .prose-content h3 {
+    @apply text-xl sm:text-2xl font-semibold mb-4 mt-8 text-foreground;
+    line-height: 1.4;
+  }
+
+  .prose-content h4 {
+    @apply text-lg sm:text-xl font-semibold mb-3 mt-6 text-foreground;
+    line-height: 1.4;
+  }
+
+  .prose-content ul, .prose-content ol {
+    @apply mb-6 space-y-3 pl-6;
+  }
+
+  .prose-content li {
+    @apply text-base sm:text-lg leading-relaxed;
+    line-height: 1.7;
+  }
+
+  /* Section Spacing for LLMO */
+  .content-section {
+    @apply py-8 sm:py-12 lg:py-16;
+  }
+
+  .content-card {
+    @apply rounded-xl sm:rounded-2xl bg-card p-5 sm:p-7 lg:p-9 shadow-elegant;
+  }
+
+  /* SEO H1 Styles */
+  .seo-h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+    line-height: 1.2;
+  }
+
+  .seo-h1-keywords {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  /* Paragraph Readability */
+  .readable-text {
+    @apply text-muted-foreground;
+    line-height: 1.85;
+    letter-spacing: 0.015em;
+    word-spacing: 0.06em;
+  }
+
+  .readable-text-lg {
+    @apply text-base sm:text-lg text-muted-foreground;
+    line-height: 1.9;
+    letter-spacing: 0.02em;
   }
 }

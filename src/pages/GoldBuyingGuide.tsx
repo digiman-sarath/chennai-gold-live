@@ -70,11 +70,11 @@ const GoldBuyingGuide = () => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <Badge className="mb-4">Expert Guide</Badge>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Complete Gold Buying Guide
+          <h1 className="seo-h1 text-foreground mb-5">
+            Gold Buying Guide India - How to Check Purity, Calculate GST & Making Charges
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Everything you need to know before buying gold jewelry - from checking purity to calculating final costs
+          <p className="readable-text-lg max-w-3xl mx-auto">
+            Complete expert guide for buying gold jewelry in India - learn to verify BIS hallmarks, negotiate making charges, calculate GST, and find the best times to purchase gold.
           </p>
         </div>
 
@@ -107,13 +107,13 @@ const GoldBuyingGuide = () => {
         {/* Main Content Sections */}
         <div className="space-y-8">
           {/* Section 1: Gold Purity Checking */}
-          <Card className="p-8">
+          <Card className="content-card">
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="h-8 w-8 text-primary" />
-              <h2 className="text-3xl font-bold text-foreground">1. Checking Gold Purity</h2>
+              <Shield className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground leading-tight">Gold Purity Checking - BIS Hallmark Guide India</h2>
             </div>
 
-            <div className="space-y-6">
+            <div className="prose-content">
               <div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">Understanding Karat System</h3>
                 <div className="grid md:grid-cols-3 gap-4">
@@ -181,15 +181,15 @@ const GoldBuyingGuide = () => {
           </Card>
 
           {/* Section 2: Making Charges */}
-          <Card className="p-8">
+          <Card className="content-card">
             <div className="flex items-center gap-3 mb-6">
-              <Calculator className="h-8 w-8 text-primary" />
-              <h2 className="text-3xl font-bold text-foreground">2. Understanding Making Charges</h2>
+              <Calculator className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground leading-tight">Gold Making Charges Explained - How to Calculate & Negotiate</h2>
             </div>
 
-            <div className="space-y-6">
-              <p className="text-muted-foreground">
-                Making charges are fees charged by jewelers for crafting gold jewelry. They vary based on design complexity, brand, and negotiation.
+            <div className="prose-content">
+              <p className="readable-text-lg">
+                Making charges are fees charged by jewelers for crafting gold jewelry. They vary based on design complexity, brand reputation, and your negotiation skills. Understanding these charges helps you get better value.
               </p>
 
               <div>
@@ -256,15 +256,15 @@ const GoldBuyingGuide = () => {
           </Card>
 
           {/* Section 3: GST Calculations */}
-          <Card className="p-8">
+          <Card className="content-card">
             <div className="flex items-center gap-3 mb-6">
-              <TrendingDown className="h-8 w-8 text-primary" />
-              <h2 className="text-3xl font-bold text-foreground">3. GST on Gold Jewelry</h2>
+              <TrendingDown className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground leading-tight">GST on Gold Jewelry India - Tax Calculation Guide</h2>
             </div>
 
-            <div className="space-y-6">
-              <p className="text-muted-foreground">
-                GST (Goods and Services Tax) on gold jewelry is 3% on the total value including making charges.
+            <div className="prose-content">
+              <p className="readable-text-lg">
+                GST (Goods and Services Tax) on gold jewelry in India is 3% calculated on the total value including making charges. Understanding GST helps you accurately estimate final purchase costs.
               </p>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -312,15 +312,15 @@ const GoldBuyingGuide = () => {
           </Card>
 
           {/* Section 4: Best Times to Buy */}
-          <Card className="p-8">
+          <Card className="content-card">
             <div className="flex items-center gap-3 mb-6">
-              <Calendar className="h-8 w-8 text-primary" />
-              <h2 className="text-3xl font-bold text-foreground">4. Best Times to Buy Gold</h2>
+              <Calendar className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground leading-tight">Best Time to Buy Gold in India - Auspicious Days & Price Trends</h2>
             </div>
 
-            <div className="space-y-6">
-              <p className="text-muted-foreground">
-                Timing your gold purchase can save you money through both price fluctuations and special offers from jewelers.
+            <div className="prose-content">
+              <p className="readable-text-lg">
+                Timing your gold purchase strategically can save you significant money through price fluctuations and special offers from jewelers during festivals and auspicious occasions.
               </p>
 
               <div>

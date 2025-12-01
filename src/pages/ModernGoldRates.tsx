@@ -308,8 +308,8 @@ const ModernGoldRates = () => {
           <span className="font-medium">Gold Rates</span>
         </button>
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Gold Rate in Chennai
+        <h1 className="seo-h1 text-foreground mb-5">
+          Tamil Nadu Gold Rate Today - Live 22K & 24K Gold Price Per Gram
         </h1>
 
         <div className="flex flex-wrap items-center gap-2 text-muted-foreground mb-6">
@@ -448,8 +448,8 @@ const ModernGoldRates = () => {
           </div>
 
           {/* Description */}
-          <div className="text-muted-foreground leading-relaxed space-y-4">
-            <p>
+          <div className="prose-content space-y-5">
+            <p className="readable-text-lg">
               The price of gold in Chennai today is <strong className="text-foreground">₹{price24k.toLocaleString('en-IN')}</strong> per gram for 24 karat gold, <strong className="text-foreground">₹{price22k.toLocaleString('en-IN')}</strong> per gram for 22 karat gold and <strong className="text-foreground">₹{price18k.toLocaleString('en-IN')}</strong> per gram for 18 karat gold (also called 999 gold, 916 gold, and 750 gold respectively).
             </p>
             <div className="mt-4 p-4 bg-muted/50 rounded-lg border-l-4 border-primary">

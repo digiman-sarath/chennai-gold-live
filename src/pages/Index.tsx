@@ -316,11 +316,12 @@ const Index = () => {
                   Live Gold Rates - Updated Daily
                 </div>
                 
-                <h1 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-foreground px-4">
-                  Today's Gold Rate in{' '}
-                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+                <h1 className="seo-h1 text-foreground px-4 mb-4">
+                  Today Gold Rate in{' '}
+                  <span className="seo-h1-keywords animate-gradient">
                     Chennai
                   </span>
+                  {' '}- Live 22K & 24K Gold Price Per Gram
                 </h1>
                 
                 {goldPrice && (

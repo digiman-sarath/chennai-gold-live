@@ -32,9 +32,9 @@ export const GoldRateSummary = ({ price24k, price22k, city = "Chennai" }: GoldRa
   }
 
   return (
-    <div className="bg-gradient-to-r from-primary/5 to-accent/5 border border-border rounded-lg p-6">
-      <h2 className="text-lg font-semibold mb-3 text-foreground">TL;DR</h2>
-      <p className="text-foreground/90 leading-relaxed">
+    <div className="bg-gradient-to-r from-primary/5 to-accent/5 border border-border rounded-xl p-6 sm:p-8">
+      <h2 className="text-xl font-semibold mb-4 text-foreground">TL;DR - {city} Gold Rate Summary</h2>
+      <p className="readable-text-lg">
         {summaryText}
       </p>
     </div>

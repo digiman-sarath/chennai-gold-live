@@ -7,15 +7,15 @@ interface ComprehensiveGoldGuideProps {
 
 const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProps) => {
   return (
-    <article className="space-y-12 py-16">
+    <article className="space-y-12 content-section">
       {/* Complete Investment Guide */}
-      <section className="rounded-2xl bg-card p-8 shadow-elegant">
-        <h2 className="mb-6 text-3xl font-bold text-foreground flex items-center gap-3">
-          <BookOpen className="h-8 w-8 text-primary" />
-          Complete Gold Investment Guide for {city} Residents - 2025 Edition
+      <section className="content-card">
+        <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-3 leading-tight">
+          <BookOpen className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+          Complete Gold Investment Guide for {city} - 22K & 24K Gold Buying Tips 2025
         </h2>
-        <div className="space-y-6 text-muted-foreground leading-relaxed">
-          <p className="text-lg">
+        <div className="prose-content">
+          <p className="readable-text-lg">
             Gold investment in {city} represents one of the most time-tested and reliable wealth preservation strategies available to Indian investors. This comprehensive guide explores every aspect of gold investment, from understanding market dynamics to implementing sophisticated portfolio strategies that can help you build and protect wealth across generations.
           </p>
           
@@ -79,14 +79,14 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
       </section>
 
       {/* Market Analysis and Trends */}
-      <section className="rounded-2xl bg-card p-8 shadow-elegant">
-        <h2 className="mb-6 text-3xl font-bold text-foreground flex items-center gap-3">
-          <BarChart3 className="h-8 w-8 text-primary" />
-          Gold Market Analysis and Price Trends in {city}
+      <section className="content-card">
+        <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-3 leading-tight">
+          <BarChart3 className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+          Gold Market Analysis and Price Trends in {city} - Live Rate Factors
         </h2>
-        <div className="space-y-6 text-muted-foreground leading-relaxed">
-          <p>
-            Understanding gold market dynamics is crucial for making informed investment decisions in {city}. The gold market operates on complex interactions between global economic factors, local demand patterns, government policies, and seasonal variations. This section provides deep insights into these factors and how they specifically affect {city}'s gold market.
+        <div className="prose-content">
+          <p className="readable-text-lg">
+            Understanding gold market dynamics is crucial for making informed investment decisions in {city}. The gold market operates on complex interactions between global economic factors, local demand patterns, government policies, and seasonal variations. This section provides deep insights into these factors and how they specifically affect {city}&apos;s gold market.
           </p>
 
           <div className="bg-muted/30 p-6 rounded-lg">
@@ -145,13 +145,13 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
       </section>
 
       {/* Tax Implications */}
-      <section className="rounded-2xl bg-card p-8 shadow-elegant">
-        <h2 className="mb-6 text-3xl font-bold text-foreground flex items-center gap-3">
-          <Scale className="h-8 w-8 text-primary" />
-          Comprehensive Tax Guide for Gold Investors in {city}
+      <section className="content-card">
+        <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-3 leading-tight">
+          <Scale className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+          Gold Tax Guide for {city} Investors - GST, Capital Gains & Exemptions
         </h2>
-        <div className="space-y-6 text-muted-foreground leading-relaxed">
-          <p>
+        <div className="prose-content">
+          <p className="readable-text-lg">
             Understanding tax implications is crucial for {city} gold investors to maximize returns and ensure compliance with Indian tax laws. This comprehensive guide covers all tax aspects of gold ownership, from purchase to sale, and provides strategies for tax-efficient gold investing.
           </p>
 
