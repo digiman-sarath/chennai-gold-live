@@ -79,7 +79,7 @@ const AdminPanel = () => {
           </div>
 
           <Tabs defaultValue="ads" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4 lg:w-auto">
+            <TabsList className="grid w-full grid-cols-6 lg:w-auto">
               <TabsTrigger value="ads">
                 <DollarSign className="h-4 w-4 mr-2" />
                 Ads
@@ -87,6 +87,10 @@ const AdminPanel = () => {
               <TabsTrigger value="stats">
                 <TrendingUp className="h-4 w-4 mr-2" />
                 Stats
+              </TabsTrigger>
+              <TabsTrigger value="content">
+                <FileText className="h-4 w-4 mr-2" />
+                Content
               </TabsTrigger>
               <TabsTrigger value="users">
                 <Users className="h-4 w-4 mr-2" />
@@ -104,6 +108,37 @@ const AdminPanel = () => {
 
             <TabsContent value="stats">
               <AdAnalytics />
+            </TabsContent>
+
+            <TabsContent value="content">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/admin/blog-posts')}>
+                  <CardHeader>
+                    <CardTitle>Blog Posts</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">Generate automated SEO blog posts for all cities</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/admin/site-files')}>
+                  <CardHeader>
+                    <CardTitle>Site Files</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">Manage sitemap.xml, robots.txt, llms.txt</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/admin/indexing')}>
+                  <CardHeader>
+                    <CardTitle>Indexing Queue</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">Google Search Console indexing requests</p>
+                  </CardContent>
+                </Card>
+              </div>
             </TabsContent>
 
             <TabsContent value="users">

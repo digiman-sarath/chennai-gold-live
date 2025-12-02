@@ -17,6 +17,9 @@ import Article from "./pages/Article";
 import ArticleManagement from "./pages/ArticleManagement";
 import ArticleEditor from "./pages/ArticleEditor";
 import DistrictContentManager from "./pages/DistrictContentManager";
+import BlogPostManagement from "./pages/BlogPostManagement";
+import SiteFilesManager from "./pages/SiteFilesManager";
+import IndexingQueue from "./pages/IndexingQueue";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +47,9 @@ function App() {
             <Route path="/admin/articles/new" element={<ArticleEditor />} />
             <Route path="/admin/articles/edit/:id" element={<ArticleEditor />} />
             <Route path="/admin/district-content" element={<DistrictContentManager />} />
+            <Route path="/admin/blog-posts" element={<BlogPostManagement />} />
+            <Route path="/admin/site-files" element={<SiteFilesManager />} />
+            <Route path="/admin/indexing" element={<IndexingQueue />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
