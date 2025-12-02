@@ -6,3 +6,15 @@ verify_jwt = false
 [functions.scheduled-gold-update.schedule]
 # Run every day at 9:00 AM IST (3:30 AM UTC)
 cron = "30 3 * * *"
+
+[functions.generate-blog-post]
+verify_jwt = true
+
+[functions.request-indexing]
+verify_jwt = true
+
+[functions.update-site-files]
+verify_jwt = false
+
+[functions.generate-rss-feed]
+verify_jwt = false

@@ -151,6 +151,72 @@ export type Database = {
         }
         Relationships: []
       }
+      automated_blog_posts: {
+        Row: {
+          city: string | null
+          content: string
+          created_at: string | null
+          excerpt: string | null
+          featured_image_url: string | null
+          gold_price_18k: number | null
+          gold_price_22k: number | null
+          gold_price_24k: number | null
+          id: string
+          indexing_requested_at: string | null
+          is_indexed: boolean | null
+          is_published: boolean | null
+          publish_date: string | null
+          seo_description: string | null
+          seo_keywords: string | null
+          seo_title: string | null
+          slug: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          city?: string | null
+          content: string
+          created_at?: string | null
+          excerpt?: string | null
+          featured_image_url?: string | null
+          gold_price_18k?: number | null
+          gold_price_22k?: number | null
+          gold_price_24k?: number | null
+          id?: string
+          indexing_requested_at?: string | null
+          is_indexed?: boolean | null
+          is_published?: boolean | null
+          publish_date?: string | null
+          seo_description?: string | null
+          seo_keywords?: string | null
+          seo_title?: string | null
+          slug: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          city?: string | null
+          content?: string
+          created_at?: string | null
+          excerpt?: string | null
+          featured_image_url?: string | null
+          gold_price_18k?: number | null
+          gold_price_22k?: number | null
+          gold_price_24k?: number | null
+          id?: string
+          indexing_requested_at?: string | null
+          is_indexed?: boolean | null
+          is_published?: boolean | null
+          publish_date?: string | null
+          seo_description?: string | null
+          seo_keywords?: string | null
+          seo_title?: string | null
+          slug?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       district_content_variations: {
         Row: {
           created_at: string
@@ -189,6 +255,7 @@ export type Database = {
           created_at: string
           date: string
           id: string
+          price_18k_per_gram: number | null
           price_22k_per_gram: number
           price_24k_per_gram: number
           updated_at: string
@@ -197,6 +264,7 @@ export type Database = {
           created_at?: string
           date: string
           id?: string
+          price_18k_per_gram?: number | null
           price_22k_per_gram: number
           price_24k_per_gram: number
           updated_at?: string
@@ -205,9 +273,37 @@ export type Database = {
           created_at?: string
           date?: string
           id?: string
+          price_18k_per_gram?: number | null
           price_22k_per_gram?: number
           price_24k_per_gram?: number
           updated_at?: string
+        }
+        Relationships: []
+      }
+      indexing_queue: {
+        Row: {
+          completed_at: string | null
+          error_message: string | null
+          id: string
+          requested_at: string | null
+          status: string | null
+          url: string
+        }
+        Insert: {
+          completed_at?: string | null
+          error_message?: string | null
+          id?: string
+          requested_at?: string | null
+          status?: string | null
+          url: string
+        }
+        Update: {
+          completed_at?: string | null
+          error_message?: string | null
+          id?: string
+          requested_at?: string | null
+          status?: string | null
+          url?: string
         }
         Relationships: []
       }
@@ -256,6 +352,33 @@ export type Database = {
           specialties?: string[] | null
           updated_at?: string
           website?: string | null
+        }
+        Relationships: []
+      }
+      site_files: {
+        Row: {
+          auto_update: boolean | null
+          content: string
+          created_at: string | null
+          file_name: string
+          id: string
+          last_updated: string | null
+        }
+        Insert: {
+          auto_update?: boolean | null
+          content: string
+          created_at?: string | null
+          file_name: string
+          id?: string
+          last_updated?: string | null
+        }
+        Update: {
+          auto_update?: boolean | null
+          content?: string
+          created_at?: string | null
+          file_name?: string
+          id?: string
+          last_updated?: string | null
         }
         Relationships: []
       }
