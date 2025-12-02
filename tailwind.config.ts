@@ -72,6 +72,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        elegant: "0 4px 20px rgba(0, 0, 0, 0.08)",
+        gold: "0 10px 40px -10px hsl(var(--primary) / 0.4)",
+      },
       keyframes: {
         "accordion-down": {
           from: {
