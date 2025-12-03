@@ -48,6 +48,8 @@ serve(async (req) => {
       timeZone: 'Asia/Kolkata'
     });
 
+    const citySlug = city.toLowerCase().replace(/\s+/g, '-');
+    
     const prompt = `Write a comprehensive 5000+ word SEO-optimized blog post about gold prices in ${city}, Tamil Nadu for ${currentDate}.
 
 Current Gold Prices:
@@ -58,7 +60,7 @@ Current Gold Prices:
 Requirements:
 1. Use LLMO (Long-form, Location-based, Modular, Optimized) strategy
 2. Include AEO (Answer Engine Optimization) elements
-3. SEO Title: Exactly 60 characters including "${currentDate}"
+3. SEO Title: Exactly 60 characters including the date
 4. Meta Description: 155 characters max
 5. Keywords: gold rate, ${city}, Tamil Nadu, today's price, 22K, 24K, 18K
 6. Include sections on:
@@ -67,8 +69,13 @@ Requirements:
    - Investment advice
    - Comparison with other Tamil Nadu cities
    - Best time to buy analysis
-7. Natural internal linking opportunities to other city pages
-8. Format output as JSON with: title, seo_title, seo_description, seo_keywords, excerpt (200 chars), content (full HTML)`;
+7. IMPORTANT: Include internal links in the HTML content using these exact URLs:
+   - Link to ${city} gold rates page: <a href="/gold-rates/${citySlug}" rel="dofollow">${city} Gold Rates</a>
+   - Link to homepage: <a href="/" rel="dofollow">Chennai Gold Price</a>
+   - Link to buying guide: <a href="/buying-guide" rel="dofollow">Gold Buying Guide</a>
+   - Link to related cities like <a href="/gold-rates/chennai" rel="dofollow">Chennai</a>, <a href="/gold-rates/coimbatore" rel="dofollow">Coimbatore</a>
+8. Add at least 5 internal links naturally throughout the content
+9. Format output as JSON with: title, seo_title, seo_description, seo_keywords, excerpt (200 chars), content (full HTML with internal links)`;
 
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     if (!LOVABLE_API_KEY) {

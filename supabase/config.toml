@@ -7,6 +7,13 @@ verify_jwt = false
 # Run every day at 9:00 AM IST (3:30 AM UTC)
 cron = "30 3 * * *"
 
+[functions.scheduled-blog-generation]
+verify_jwt = false
+
+[functions.scheduled-blog-generation.schedule]
+# Run every day at midnight IST (6:30 PM UTC previous day)
+cron = "30 18 * * *"
+
 [functions.generate-blog-post]
 verify_jwt = true
 

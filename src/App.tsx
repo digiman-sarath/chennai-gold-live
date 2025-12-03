@@ -20,6 +20,8 @@ import DistrictContentManager from "./pages/DistrictContentManager";
 import BlogPostManagement from "./pages/BlogPostManagement";
 import SiteFilesManager from "./pages/SiteFilesManager";
 import IndexingQueue from "./pages/IndexingQueue";
+import BlogPost from "./pages/BlogPost";
+import BlogList from "./pages/BlogList";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +42,8 @@ function App() {
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articles/:slug" element={<Article />} />
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin-panel" element={<AdminPanel />} />

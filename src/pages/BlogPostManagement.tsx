@@ -4,8 +4,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
-import { Loader2, Plus, RefreshCw } from "lucide-react";
+import { Loader2, Plus, RefreshCw, Edit, Trash2, Eye } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import BlogPostEditor from "@/components/admin/BlogPostEditor";
 
 const TAMIL_NADU_DISTRICTS = [
   'Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Salem',
@@ -20,6 +22,7 @@ const TAMIL_NADU_DISTRICTS = [
 
 const BlogPostManagement = () => {
   const [selectedCity, setSelectedCity] = useState<string>("");
+  const [editingPost, setEditingPost] = useState<any>(null);
   const queryClient = useQueryClient();
 
   const { data: blogPosts, isLoading } = useQuery({
@@ -128,6 +131,23 @@ const BlogPostManagement = () => {
     }
   });
 
+  const deleteMutation = useMutation({
+    mutationFn: async (postId: string) => {
+      const { error } = await supabase
+        .from('automated_blog_posts')
+        .delete()
+        .eq('id', postId);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['automated-blog-posts'] });
+      toast.success('Blog post deleted successfully!');
+    },
+    onError: (error: Error) => {
+      toast.error(`Failed to delete: ${error.message}`);
+    }
+  });
+
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
@@ -194,7 +214,7 @@ const BlogPostManagement = () => {
           </div>
         ) : (
           <div className="space-y-4">
-            {blogPosts?.map(post => (
+              {blogPosts?.map(post => (
               <div key={post.id} className="border rounded-lg p-4">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -206,19 +226,58 @@ const BlogPostManagement = () => {
                       <span>Indexed: {post.is_indexed ? '✓' : '✗'}</span>
                     </div>
                   </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
-                  >
-                    View
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
+                    >
+                      <Eye className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setEditingPost(post)}
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button variant="outline" size="sm" className="text-destructive">
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Delete Blog Post</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            Are you sure you want to delete "{post.title}"? This action cannot be undone.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => deleteMutation.mutate(post.id)}
+                            className="bg-destructive text-destructive-foreground"
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         )}
       </Card>
+
+      <BlogPostEditor 
+        post={editingPost} 
+        open={!!editingPost} 
+        onClose={() => setEditingPost(null)} 
+      />
     </div>
   );
 };
