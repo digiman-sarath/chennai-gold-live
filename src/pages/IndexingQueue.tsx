@@ -5,6 +5,8 @@ import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Loader2, RefreshCw, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SearchConsoleSetup from "@/components/admin/SearchConsoleSetup";
 
 const IndexingQueue = () => {
   const queryClient = useQueryClient();
@@ -77,10 +79,12 @@ const IndexingQueue = () => {
     }
   };
 
+  const hasCredentials = queueItems?.some(i => !i.error_message?.includes('Credentials not configured')) ?? false;
+
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Indexing Queue</h1>
+        <h1 className="text-3xl font-bold">Indexing & Search Console</h1>
         <Button
           onClick={() => processAllPendingMutation.mutate()}
           disabled={processAllPendingMutation.isPending || !queueItems?.some(i => i.status === 'pending')}
@@ -91,7 +95,14 @@ const IndexingQueue = () => {
         </Button>
       </div>
 
-      <Card className="p-6">
+      <Tabs defaultValue="queue">
+        <TabsList>
+          <TabsTrigger value="queue">Indexing Queue</TabsTrigger>
+          <TabsTrigger value="setup">Search Console Setup</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="queue">
+          <Card className="p-6">
         <div className="space-y-2 mb-4">
           <h2 className="text-xl font-semibold">Queue Status</h2>
           <div className="flex gap-4 text-sm">
@@ -140,8 +151,14 @@ const IndexingQueue = () => {
               </div>
             ))}
           </div>
-        )}
-      </Card>
+          )}
+        </Card>
+      </TabsContent>
+
+      <TabsContent value="setup">
+        <SearchConsoleSetup hasCredentials={hasCredentials} />
+      </TabsContent>
+      </Tabs>
     </div>
   );
 };

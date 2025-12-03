@@ -24,6 +24,7 @@ import { MonthlyPriceHistory } from '@/components/MonthlyPriceHistory';
 import { OnThisPage } from '@/components/OnThisPage';
 import { generateFAQSchema } from '@/lib/faq-schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import BlogSection from '@/components/BlogSection';
 
 
 interface GoldPrice {
