@@ -26,7 +26,7 @@ const BlogSection = ({
     queryFn: async () => {
       let query = supabase
         .from('automated_blog_posts')
-        .select('id, title, slug, excerpt, city, publish_date, gold_price_22k, gold_price_24k')
+        .select('id, title, slug, excerpt, city, publish_date, gold_price_22k, gold_price_24k, featured_image_url')
         .eq('is_published', true)
         .order('publish_date', { ascending: false })
         .limit(limit + 1);
@@ -92,7 +92,18 @@ const BlogSection = ({
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {posts.map(post => (
           <Link key={post.id} to={`/blog/${post.slug}`}>
-            <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50 group">
+            <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50 group overflow-hidden">
+              {/* Featured Image */}
+              {post.featured_image_url && (
+                <div className="aspect-video w-full overflow-hidden">
+                  <img 
+                    src={post.featured_image_url} 
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              )}
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
                   <Calendar className="h-3 w-3" />

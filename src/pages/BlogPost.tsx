@@ -190,6 +190,17 @@ const BlogPost = () => {
             </div>
           ) : post ? (
             <article className="max-w-4xl mx-auto">
+              {/* Featured Image */}
+              {post.featured_image_url && (
+                <div className="mb-8 rounded-xl overflow-hidden">
+                  <img 
+                    src={post.featured_image_url} 
+                    alt={`Gold rates in ${post.city} - Featured Image`}
+                    className="w-full h-auto max-h-[400px] object-cover"
+                  />
+                </div>
+              )}
+
               {/* Header */}
               <header className="mb-8">
                 <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
