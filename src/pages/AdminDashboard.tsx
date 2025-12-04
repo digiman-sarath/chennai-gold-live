@@ -20,7 +20,7 @@ import SearchConsoleSetup from '@/components/admin/SearchConsoleSetup';
 import { 
   DollarSign, TrendingUp, FileText, Settings, Loader2, Plus, 
   RefreshCw, Edit, Trash2, Eye, Search, Globe, Rss, MapPin,
-  BarChart3, Newspaper, Clock, CheckCircle, XCircle, ExternalLink
+  BarChart3, Newspaper, Clock, CheckCircle, XCircle, ExternalLink, Image
 } from 'lucide-react';
 
 const TAMIL_NADU_DISTRICTS = [
@@ -219,6 +219,23 @@ const AdminDashboard = () => {
     }
   });
 
+  const generateImageMutation = useMutation({
+    mutationFn: async ({ city, blogPostId }: { city: string, blogPostId: string }) => {
+      const { data, error } = await supabase.functions.invoke('generate-blog-image', {
+        body: { city, blogPostId }
+      });
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['automated-blog-posts'] });
+      toast.success('Image generated!');
+    },
+    onError: (error: Error) => {
+      toast.error(`Image generation failed: ${error.message}`);
+    }
+  });
+
   const processIndexingMutation = useMutation({
     mutationFn: async (id: string) => {
       const { data, error } = await supabase.functions.invoke('request-indexing', {
@@ -374,7 +391,22 @@ const AdminDashboard = () => {
                     <div className="flex justify-center py-8"><Loader2 className="h-8 w-8 animate-spin" /></div>
                   ) : (
                     blogPosts?.map(post => (
-                      <div key={post.id} className="border rounded-lg p-4 flex items-start justify-between gap-4">
+                      <div key={post.id} className="border rounded-lg p-4 flex items-start gap-4">
+                        {/* Thumbnail */}
+                        <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-muted">
+                          {post.featured_image_url ? (
+                            <img 
+                              src={post.featured_image_url} 
+                              alt={post.title}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <Image className="h-6 w-6 text-muted-foreground" />
+                            </div>
+                          )}
+                        </div>
+                        
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold truncate">{post.title}</h3>
                           <p className="text-sm text-muted-foreground truncate">{post.excerpt}</p>
@@ -384,9 +416,23 @@ const AdminDashboard = () => {
                               {post.is_indexed ? <CheckCircle className="h-3 w-3 mr-1" /> : <Clock className="h-3 w-3 mr-1" />}
                               {post.is_indexed ? 'Indexed' : 'Pending'}
                             </Badge>
+                            {post.featured_image_url ? (
+                              <Badge variant="outline" className="text-green-600"><Image className="h-3 w-3 mr-1" />Has Image</Badge>
+                            ) : (
+                              <Badge variant="outline" className="text-yellow-600">No Image</Badge>
+                            )}
                           </div>
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 flex-shrink-0">
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            onClick={() => generateImageMutation.mutate({ city: post.city || 'Chennai', blogPostId: post.id })}
+                            disabled={generateImageMutation.isPending}
+                            title="Generate Image"
+                          >
+                            {generateImageMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Image className="h-4 w-4" />}
+                          </Button>
                           <Button variant="ghost" size="icon" onClick={() => window.open(`/blog/${post.slug}`, '_blank')}>
                             <Eye className="h-4 w-4" />
                           </Button>

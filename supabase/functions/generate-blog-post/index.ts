@@ -165,6 +165,40 @@ OUTPUT FORMAT - Return valid JSON only:
     // Generate slug
     const slug = `${city.toLowerCase().replace(/\s+/g, '-')}-gold-rate-${new Date().toISOString().split('T')[0]}`;
 
+    // Generate featured image
+    console.log('Generating featured image...');
+    let featuredImageUrl = null;
+    
+    try {
+      const imagePrompt = `Professional, elegant gold jewelry photography for ${city}, Tamil Nadu, India. 
+      Beautiful 22K and 24K gold ornaments, traditional South Indian gold jewelry designs, gold coins and bars. 
+      Golden warm lighting, premium luxury aesthetic, clean background. 
+      High quality editorial photograph for gold price website. 16:9 aspect ratio.`;
+
+      const imageResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'google/gemini-2.5-flash-image-preview',
+          messages: [{ role: 'user', content: imagePrompt }],
+          modalities: ['image', 'text']
+        }),
+      });
+
+      if (imageResponse.ok) {
+        const imageData = await imageResponse.json();
+        featuredImageUrl = imageData.choices?.[0]?.message?.images?.[0]?.image_url?.url;
+        console.log('Featured image generated successfully');
+      } else {
+        console.log('Image generation skipped - continuing without image');
+      }
+    } catch (imgError) {
+      console.log('Image generation error (non-fatal):', imgError);
+    }
+
     // Insert blog post
     const { data: blogPost, error: insertError } = await supabase
       .from('automated_blog_posts')
@@ -180,6 +214,7 @@ OUTPUT FORMAT - Return valid JSON only:
         gold_price_22k: gold_prices.price_22k,
         gold_price_24k: gold_prices.price_24k,
         gold_price_18k: gold_prices.price_18k,
+        featured_image_url: featuredImageUrl,
         is_published: true,
         publish_date: new Date().toISOString(),
       })
@@ -205,7 +240,7 @@ OUTPUT FORMAT - Return valid JSON only:
       JSON.stringify({ 
         success: true, 
         blogPost,
-        message: 'Blog post generated and queued for indexing' 
+        message: 'Blog post generated with featured image and queued for indexing' 
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );

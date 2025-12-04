@@ -17,6 +17,9 @@ cron = "30 18 * * *"
 [functions.generate-blog-post]
 verify_jwt = true
 
+[functions.generate-blog-image]
+verify_jwt = true
+
 [functions.request-indexing]
 verify_jwt = true
 
