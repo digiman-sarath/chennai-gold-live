@@ -23,7 +23,7 @@ import { Last10DaysTable } from '@/components/Last10DaysTable';
 import { AverageGoldRateComparison } from '@/components/AverageGoldRateComparison';
 import { MonthlyPriceHistory } from '@/components/MonthlyPriceHistory';
 import { generateFAQSchema } from '@/lib/faq-schema';
-import BlogSection from '@/components/BlogSection';
+import RecentBlogInsights from '@/components/RecentBlogInsights';
 
 interface GoldPrice {
   date: string;
@@ -529,10 +529,10 @@ const Index = () => {
         {/* Recent Articles */}
         <RecentArticles />
 
-        {/* Latest Blog Posts */}
-        <section className="py-12 bg-muted/30">
+        {/* Latest Blog Posts - Fast Loading */}
+        <section className="py-8 bg-muted/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <BlogSection title="Latest Gold Rate Insights" limit={6} />
+            <RecentBlogInsights limit={4} />
           </div>
         </section>
 

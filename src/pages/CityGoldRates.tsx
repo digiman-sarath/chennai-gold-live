@@ -24,7 +24,7 @@ import { MonthlyPriceHistory } from '@/components/MonthlyPriceHistory';
 import { OnThisPage } from '@/components/OnThisPage';
 import { generateFAQSchema } from '@/lib/faq-schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
-import BlogSection from '@/components/BlogSection';
+import RecentBlogInsights from '@/components/RecentBlogInsights';
 
 
 interface GoldPrice {
@@ -824,6 +824,13 @@ const CityGoldRates = () => {
       </section>
 
       <CitySpecificFAQ city={cityName} />
+
+      {/* Latest Gold Rate Insights */}
+      <section className="py-8 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <RecentBlogInsights city={cityName} limit={4} />
+        </div>
+      </section>
 
       {/* Recent Articles */}
       <RecentArticles />

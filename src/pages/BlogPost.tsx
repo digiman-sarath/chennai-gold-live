@@ -5,10 +5,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, ArrowLeft, Share2 } from "lucide-react";
+import { Calendar, MapPin, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import BlogSection from "@/components/BlogSection";
+import { Helmet } from "react-helmet";
+import RecentBlogInsights from "@/components/RecentBlogInsights";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -26,7 +27,8 @@ const BlogPost = () => {
       if (error) throw error;
       return data;
     },
-    enabled: !!slug
+    enabled: !!slug,
+    staleTime: 5 * 60 * 1000,
   });
 
   const handleShare = async () => {
@@ -54,9 +56,9 @@ const BlogPost = () => {
         <main className="min-h-screen bg-background py-12">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-2xl font-bold text-foreground mb-4">Blog Post Not Found</h1>
-            <p className="text-muted-foreground mb-6">The blog post you're looking for doesn't exist or has been removed.</p>
+            <p className="text-muted-foreground mb-6">The blog post you're looking for doesn't exist.</p>
             <Link to="/">
-              <Button><ArrowLeft className="mr-2 h-4 w-4" /> Back to Home</Button>
+              <Button>Back to Home</Button>
             </Link>
           </div>
         </main>
@@ -65,53 +67,66 @@ const BlogPost = () => {
     );
   }
 
-  const currentDate = new Date().toLocaleDateString('en-IN', {
-    year: 'numeric',
-    month: 'long', 
-    day: 'numeric',
-    timeZone: 'Asia/Kolkata'
-  });
-
-  const seoTitle = post?.seo_title || `${post?.title} - Chennai Gold Price`;
-  const seoDescription = post?.seo_description || post?.excerpt || `Gold rates in ${post?.city} today. Current 22K, 24K, 18K gold prices.`;
+  // Primary SEO keywords for blog
+  const primaryKeywords = post?.city 
+    ? `gold rate ${post.city}, ${post.city} gold price today, ${post.city} gold rate today, 22K gold ${post.city}, 24K gold price ${post.city}`
+    : 'gold rate Tamil Nadu, gold price today, 22K gold rate, 24K gold rate';
+  
+  const seoTitle = post?.seo_title || `${post?.title}`.substring(0, 60);
+  const seoDescription = post?.seo_description || 
+    `Today's gold rate in ${post?.city}: 22K ₹${post?.gold_price_22k}/g, 24K ₹${post?.gold_price_24k}/g. Live prices, market analysis & buying tips.`;
+  const seoKeywords = post?.seo_keywords || primaryKeywords;
 
   return (
     <>
       {post && (
-        <>
+        <Helmet>
           <title>{seoTitle}</title>
           <meta name="description" content={seoDescription} />
-          <meta name="keywords" content={post.seo_keywords || `gold rate, ${post.city}, Tamil Nadu, today price`} />
+          <meta name="keywords" content={seoKeywords} />
           <link rel="canonical" href={`https://chennaigoldprice.com/blog/${slug}`} />
           
-          {/* Open Graph */}
+          {/* Primary Meta Tags */}
+          <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+          <meta name="author" content="Chennai Gold Price" />
+          <meta name="language" content="English" />
+          <meta name="geo.region" content="IN-TN" />
+          <meta name="geo.placename" content={post.city || 'Tamil Nadu'} />
+          
+          {/* Open Graph - Primary */}
+          <meta property="og:type" content="article" />
           <meta property="og:title" content={seoTitle} />
           <meta property="og:description" content={seoDescription} />
           <meta property="og:url" content={`https://chennaigoldprice.com/blog/${slug}`} />
-          <meta property="og:type" content="article" />
           <meta property="og:site_name" content="Chennai Gold Price" />
+          <meta property="og:locale" content="en_IN" />
           {post.featured_image_url && <meta property="og:image" content={post.featured_image_url} />}
           
-          {/* Twitter */}
+          {/* Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={seoTitle} />
           <meta name="twitter:description" content={seoDescription} />
+          {post.featured_image_url && <meta name="twitter:image" content={post.featured_image_url} />}
           
-          {/* Article metadata */}
+          {/* Article Metadata */}
           <meta property="article:published_time" content={post.publish_date} />
           <meta property="article:modified_time" content={post.updated_at} />
           <meta property="article:section" content="Gold Prices" />
           <meta property="article:tag" content={`Gold Rate ${post.city}`} />
+          <meta property="article:tag" content="Gold Price Today" />
+          <meta property="article:tag" content="Tamil Nadu Gold Market" />
           
-          {/* JSON-LD Structured Data */}
+          {/* JSON-LD Article Schema */}
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
               "headline": post.title,
               "description": seoDescription,
+              "keywords": seoKeywords,
               "datePublished": post.publish_date,
               "dateModified": post.updated_at,
+              "image": post.featured_image_url || "https://chennaigoldprice.com/gold-hero.jpg",
               "author": {
                 "@type": "Organization",
                 "name": "Chennai Gold Price",
@@ -144,28 +159,13 @@ const BlogPost = () => {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://chennaigoldprice.com"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Blog",
-                  "item": "https://chennaigoldprice.com/blog"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": post.title,
-                  "item": `https://chennaigoldprice.com/blog/${slug}`
-                }
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chennaigoldprice.com" },
+                { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://chennaigoldprice.com/blog" },
+                { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://chennaigoldprice.com/blog/${slug}` }
               ]
             })}
           </script>
-        </>
+        </Helmet>
       )}
       
       <Header />
@@ -293,14 +293,13 @@ const BlogPost = () => {
             </article>
           ) : null}
 
-          {/* Related Blog Posts */}
+          {/* Related Blog Posts - Fast Loading */}
           {post && (
-            <div className="mt-16">
-              <BlogSection 
+            <div className="mt-12">
+              <RecentBlogInsights 
                 excludeSlug={slug} 
-                city={post.city} 
-                title="Related Articles"
-                limit={3}
+                city={post.city || undefined} 
+                limit={4}
               />
             </div>
           )}
