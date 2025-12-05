@@ -63,16 +63,21 @@ CONTENT REQUIREMENTS:
 3. Use short paragraphs (2-3 sentences max) for better readability
 4. Include bullet points and numbered lists for easy scanning
 
-SEO OPTIMIZATION:
-1. SEO Title: Exactly 60 characters including the date
-2. Meta Description: 155 characters max with call-to-action
-3. Primary Keywords: gold rate ${city}, ${city} gold price today, gold rate in ${city} Tamil Nadu
-4. Secondary Keywords: gold jewelry price, gold ornaments rate, gold bar price, gold coin rate
+SEO OPTIMIZATION - PRIMARY KEYWORDS (Must appear in title, H1, first paragraph):
+1. SEO Title: MUST include "${city} gold rate today" - exactly 60 characters
+2. Meta Description: MUST include "gold rate ${city}" and "${city} gold price" - 155 chars max
+3. H1 Primary Keywords: gold rate ${city}, ${city} gold price today, today gold rate ${city}
+4. Secondary Keywords: gold jewelry price ${city}, gold ornaments rate, gold bar price, gold coin rate
 5. Semantic/LSI Keywords: yellow metal, precious metal investment, bullion, hallmarked gold, BIS gold, 916 gold, 750 gold
 6. Long-tail Keywords: best time to buy gold in ${city}, gold rate forecast ${city}, cheap gold shops ${city}
 
+IMPORTANT SEO TITLE FORMAT:
+- Must be: "${city} Gold Rate Today ${currentDate.split(',')[0]} - 22K ₹X | 24K ₹Y"
+- Replace X and Y with actual prices
+- Keep under 60 characters
+
 CONTENT STRUCTURE (Include ALL sections):
-1. **Introduction** - Hook readers with current market sentiment
+1. **Introduction** - Start with primary keyword "${city} gold rate today"
 2. **Today's Gold Rate Summary** - Quick reference table format
 3. **Live Price Analysis** - Why prices are at current levels
 4. **${city} Gold Market Overview** - Local market characteristics
@@ -113,11 +118,11 @@ LLM & AI READABILITY:
 
 OUTPUT FORMAT - Return valid JSON only:
 {
-  "title": "Full blog title with city name and date",
-  "seo_title": "60 char max SEO title with date",
-  "seo_description": "155 char meta description with CTA",
-  "seo_keywords": "comma separated keywords",
-  "excerpt": "200 char excerpt for previews",
+  "title": "Full blog title with city name and date - include primary keyword",
+  "seo_title": "${city} Gold Rate Today [Date] - 22K ₹[price] 24K ₹[price]",
+  "seo_description": "Today's gold rate in ${city}: 22K ₹X/gram, 24K ₹Y/gram. Live ${city} gold price with market analysis & buying tips.",
+  "seo_keywords": "gold rate ${city}, ${city} gold price today, today gold rate ${city}, 22K gold ${city}, 24K gold price ${city}, ${city} gold market",
+  "excerpt": "200 char excerpt starting with ${city} gold rate",
   "content": "Full HTML content with all sections, FAQs, and internal links",
   "faqs": [{"question": "FAQ question", "answer": "Detailed answer"}]
 }`;
