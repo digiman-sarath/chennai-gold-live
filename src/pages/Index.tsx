@@ -4,17 +4,12 @@ import Footer from '@/components/Footer';
 import { format } from 'date-fns';
 import { formatISTDate, getISTDateForSEO } from '@/lib/date-utils';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Shield, TrendingUp, Calendar, RefreshCw, Database, Sparkles, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import GoldPriceTable from '@/components/GoldPriceTable';
-import GoldInfo from '@/components/GoldInfo';
-import GoldFAQ, { goldFAQData } from '@/components/GoldFAQ';
-import RecentArticles from '@/components/RecentArticles';
-import TamilNaduCities from '@/components/TamilNaduCities';
-import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
 import AdDisplay from '@/components/AdDisplay';
 import { formatDistanceToNow } from 'date-fns';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
@@ -23,7 +18,16 @@ import { Last10DaysTable } from '@/components/Last10DaysTable';
 import { AverageGoldRateComparison } from '@/components/AverageGoldRateComparison';
 import { MonthlyPriceHistory } from '@/components/MonthlyPriceHistory';
 import { generateFAQSchema } from '@/lib/faq-schema';
-import RecentBlogInsights from '@/components/RecentBlogInsights';
+import { goldFAQData } from '@/components/GoldFAQ';
+import { LazyComponent } from '@/hooks/use-lazy-load';
+
+// Lazy load below-the-fold heavy components
+const GoldInfo = lazy(() => import('@/components/GoldInfo'));
+const GoldFAQ = lazy(() => import('@/components/GoldFAQ'));
+const RecentArticles = lazy(() => import('@/components/RecentArticles'));
+const TamilNaduCities = lazy(() => import('@/components/TamilNaduCities'));
+const ComprehensiveGoldGuide = lazy(() => import('@/components/ComprehensiveGoldGuide'));
+const RecentBlogInsights = lazy(() => import('@/components/RecentBlogInsights'));
 
 interface GoldPrice {
   date: string;
@@ -489,19 +493,40 @@ const Index = () => {
         </section>
 
         {/* Tamil Nadu Cities */}
-        <TamilNaduCities />
+        <LazyComponent 
+          fallback={<div className="py-12 bg-muted/30 animate-pulse h-48" />}
+          rootMargin="300px"
+        >
+          <Suspense fallback={<div className="py-12 bg-muted/30 animate-pulse h-48" />}>
+            <TamilNaduCities />
+          </Suspense>
+        </LazyComponent>
 
         {/* Comprehensive Content - 5000+ words */}
-        <section className="bg-background">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-6xl">
-              <ComprehensiveGoldGuide city="Chennai" />
+        <LazyComponent 
+          fallback={<div className="py-12 bg-background animate-pulse h-96" />}
+          rootMargin="300px"
+        >
+          <section className="bg-background">
+            <div className="container mx-auto px-4">
+              <div className="mx-auto max-w-6xl">
+                <Suspense fallback={<div className="animate-pulse h-96 bg-muted rounded-lg" />}>
+                  <ComprehensiveGoldGuide city="Chennai" />
+                </Suspense>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </LazyComponent>
 
         {/* Gold Info */}
-        <GoldInfo />
+        <LazyComponent 
+          fallback={<div className="py-12 animate-pulse h-48" />}
+          rootMargin="200px"
+        >
+          <Suspense fallback={<div className="py-12 animate-pulse h-48" />}>
+            <GoldInfo />
+          </Suspense>
+        </LazyComponent>
 
         {/* Quick Link to Buying Guide */}
         <section className="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
@@ -524,17 +549,38 @@ const Index = () => {
         </section>
 
         {/* FAQ Section */}
-        <GoldFAQ />
+        <LazyComponent 
+          fallback={<div className="py-12 animate-pulse h-48" />}
+          rootMargin="200px"
+        >
+          <Suspense fallback={<div className="py-12 animate-pulse h-48" />}>
+            <GoldFAQ />
+          </Suspense>
+        </LazyComponent>
 
         {/* Recent Articles */}
-        <RecentArticles />
+        <LazyComponent 
+          fallback={<div className="py-8 animate-pulse h-32" />}
+          rootMargin="200px"
+        >
+          <Suspense fallback={<div className="py-8 animate-pulse h-32" />}>
+            <RecentArticles />
+          </Suspense>
+        </LazyComponent>
 
         {/* Latest Blog Posts - Fast Loading */}
-        <section className="py-8 bg-muted/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <RecentBlogInsights limit={4} />
-          </div>
-        </section>
+        <LazyComponent 
+          fallback={<div className="py-8 bg-muted/30 animate-pulse h-32" />}
+          rootMargin="200px"
+        >
+          <section className="py-8 bg-muted/30">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <Suspense fallback={<div className="animate-pulse h-32" />}>
+                <RecentBlogInsights limit={4} />
+              </Suspense>
+            </div>
+          </section>
+        </LazyComponent>
 
         {/* Bottom Banner Ad */}
         <div className="bg-muted/30 py-4 sm:py-8">
