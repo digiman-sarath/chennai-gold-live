@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -12,9 +12,7 @@ import { format } from 'date-fns';
 import { formatISTDate, getISTDateForSEO } from '@/lib/date-utils';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import GoldCalculator from '@/components/GoldCalculator';
-import ComprehensiveGoldGuide from '@/components/ComprehensiveGoldGuide';
-import CitySpecificFAQ, { generateCityFAQs } from '@/components/CitySpecificFAQ';
-import RecentArticles from '@/components/RecentArticles';
+import { generateCityFAQs } from '@/components/CitySpecificFAQ';
 import AdDisplay from '@/components/AdDisplay';
 import { GoldRateSummary } from '@/components/GoldRateSummary';
 import { GoldPriceComparison } from '@/components/GoldPriceComparison';
@@ -24,7 +22,13 @@ import { MonthlyPriceHistory } from '@/components/MonthlyPriceHistory';
 import { OnThisPage } from '@/components/OnThisPage';
 import { generateFAQSchema } from '@/lib/faq-schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
-import RecentBlogInsights from '@/components/RecentBlogInsights';
+import { LazyComponent } from '@/hooks/use-lazy-load';
+
+// Lazy load heavy below-the-fold components
+const ComprehensiveGoldGuide = lazy(() => import('@/components/ComprehensiveGoldGuide'));
+const CitySpecificFAQ = lazy(() => import('@/components/CitySpecificFAQ'));
+const RecentArticles = lazy(() => import('@/components/RecentArticles'));
+const RecentBlogInsights = lazy(() => import('@/components/RecentBlogInsights'));
 
 
 interface GoldPrice {
@@ -815,25 +819,53 @@ const CityGoldRates = () => {
       </div>
 
       {/* Comprehensive SEO Content - 5000+ words */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-6xl">
-            <ComprehensiveGoldGuide city={cityName} />
+      <LazyComponent 
+        fallback={<div className="py-16 bg-muted/30 animate-pulse h-96" />}
+        rootMargin="300px"
+      >
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-6xl">
+              <Suspense fallback={<div className="animate-pulse h-96 bg-muted rounded-lg" />}>
+                <ComprehensiveGoldGuide city={cityName} />
+              </Suspense>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </LazyComponent>
 
-      <CitySpecificFAQ city={cityName} />
+      <LazyComponent 
+        fallback={<div className="py-12 animate-pulse h-48" />}
+        rootMargin="200px"
+      >
+        <Suspense fallback={<div className="py-12 animate-pulse h-48" />}>
+          <CitySpecificFAQ city={cityName} />
+        </Suspense>
+      </LazyComponent>
 
       {/* Latest Gold Rate Insights */}
-      <section className="py-8 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <RecentBlogInsights city={cityName} limit={4} />
-        </div>
-      </section>
+      <LazyComponent 
+        fallback={<div className="py-8 bg-muted/30 animate-pulse h-32" />}
+        rootMargin="200px"
+      >
+        <section className="py-8 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <Suspense fallback={<div className="animate-pulse h-32" />}>
+              <RecentBlogInsights city={cityName} limit={4} />
+            </Suspense>
+          </div>
+        </section>
+      </LazyComponent>
 
       {/* Recent Articles */}
-      <RecentArticles />
+      <LazyComponent 
+        fallback={<div className="py-8 animate-pulse h-32" />}
+        rootMargin="200px"
+      >
+        <Suspense fallback={<div className="py-8 animate-pulse h-32" />}>
+          <RecentArticles />
+        </Suspense>
+      </LazyComponent>
 
       {/* Bottom Banner Ad */}
       <div className="bg-muted/30 py-8">
