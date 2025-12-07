@@ -186,4 +186,70 @@ All colors MUST be HSL.
     line-height: 1.9;
     letter-spacing: 0.02em;
   }
+
+  /* FAQ Box Styling */
+  .faq-card {
+    @apply relative overflow-hidden;
+  }
+
+  .faq-card::before {
+    content: '';
+    @apply absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary via-accent to-primary opacity-0 transition-opacity;
+  }
+
+  .faq-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted/30 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+  }
+
+  /* Responsive Grid Cards */
+  .responsive-grid {
+    @apply grid gap-4 sm:gap-6;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  /* SEO Content Containers */
+  .seo-content-block {
+    @apply prose-content bg-card rounded-2xl p-6 sm:p-8 shadow-elegant border border-border/50;
+  }
+
+  /* User Intent Highlighting */
+  .user-intent-highlight {
+    @apply bg-gradient-to-r from-primary/10 to-accent/10 px-4 py-3 rounded-xl border-l-4 border-primary;
+  }
+
+  /* AEO Answer Boxes */
+  .aeo-answer-box {
+    @apply bg-muted/30 p-5 sm:p-6 rounded-xl border border-border;
+  }
+
+  .aeo-answer-box h4 {
+    @apply text-lg font-semibold text-foreground mb-3 flex items-center gap-2;
+  }
+
+  .aeo-answer-box p {
+    @apply text-muted-foreground leading-relaxed;
+  }
+
+  /* Keyword Density Optimized Text */
+  .keyword-rich-text {
+    @apply readable-text;
+    word-spacing: 0.08em;
+  }
+
+  .keyword-rich-text strong {
+    @apply text-foreground font-semibold;
+  }
 }
