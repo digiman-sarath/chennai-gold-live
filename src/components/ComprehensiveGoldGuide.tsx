@@ -7,72 +7,94 @@ interface ComprehensiveGoldGuideProps {
 
 const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProps) => {
   return (
-    <article className="space-y-12 content-section">
+    <article className="space-y-8 content-section">
       {/* Complete Investment Guide */}
       <section className="content-card">
-        <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-3 leading-tight">
-          <BookOpen className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
-          Complete Gold Investment Guide for {city} - 22K & 24K Gold Buying Tips 2025
+        <h2 className="mb-4 text-lg sm:text-xl font-medium text-foreground flex items-center gap-2 leading-tight">
+          <BookOpen className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
+          Complete Gold Investment Guide for {city} - 22K & 24K Buying Tips 2025
         </h2>
         <div className="prose-content">
-          <p className="readable-text-lg">
+          <p className="readable-text">
             Gold investment in {city} represents one of the most time-tested and reliable wealth preservation strategies available to Indian investors. This comprehensive guide explores every aspect of gold investment, from understanding market dynamics to implementing sophisticated portfolio strategies that can help you build and protect wealth across generations.
           </p>
           
-          <div className="bg-muted/30 p-6 rounded-lg border-l-4 border-primary">
-            <h3 className="text-xl font-semibold text-foreground mb-4">Understanding Gold as an Asset Class</h3>
-            <p className="mb-4">
+          <div className="bg-muted/30 p-4 sm:p-5 rounded-lg border-l-3 border-primary mt-4">
+            <h3 className="text-base sm:text-lg font-medium text-foreground mb-3">Understanding Gold as an Asset Class</h3>
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
               Gold occupies a unique position in the investment universe. Unlike stocks or bonds, gold is a tangible asset with intrinsic value that has been recognized across civilizations for thousands of years. In {city}'s investment landscape, gold serves multiple roles: it acts as a hedge against inflation, provides portfolio diversification, offers protection during economic uncertainty, and holds deep cultural significance that enhances its long-term value proposition.
             </p>
-            <p className="mb-4">
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
               The historical performance of gold in the Indian market demonstrates its resilience. Over the past two decades, gold prices have appreciated significantly, providing returns that have often outpaced inflation and matched or exceeded many traditional investment instruments. For {city} investors, this track record makes gold an essential component of a well-balanced investment portfolio.
             </p>
-            <p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
               What sets gold apart is its negative correlation with many other asset classes. When equity markets experience turbulence, gold often maintains or increases its value, providing a crucial stabilizing force in investment portfolios. This characteristic makes gold particularly valuable for {city} residents looking to protect their accumulated wealth while still maintaining growth potential.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gradient-to-br from-primary/5 to-accent/5 p-6 rounded-lg">
-              <h4 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-primary" />
+          <div className="grid md:grid-cols-2 gap-4 mt-5">
+            <div className="bg-gradient-to-br from-primary/5 to-accent/5 p-4 rounded-lg">
+              <h4 className="text-sm sm:text-base font-medium text-foreground mb-2 flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 text-primary" />
                 Physical Gold Investment Options
               </h4>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-2 text-xs sm:text-sm">
                 <li className="flex gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span><strong>Gold Coins and Bars:</strong> Pure 24K gold in standardized weights (1g to 100g) available from banks and certified dealers in {city}. Offers highest liquidity and lowest making charges. Ideal for serious investors looking for maximum gold content per rupee invested.</span>
+                  <span className="text-primary font-medium">•</span>
+                  <span><strong className="font-medium">Gold Coins and Bars:</strong> Pure 24K gold in standardized weights (1g to 100g) available from banks and certified dealers in {city}. Offers highest liquidity and lowest making charges.</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span><strong>Gold Jewelry:</strong> Traditional 22K gold ornaments combining investment value with aesthetic appeal. Popular in {city} for weddings and occasions. Consider making charges (8-25%) and resale value when purchasing as investment.</span>
+                  <span className="text-primary font-medium">•</span>
+                  <span><strong className="font-medium">Gold Jewelry:</strong> Traditional 22K gold ornaments combining investment value with aesthetic appeal. Popular in {city} for weddings. Consider making charges (8-25%) when purchasing.</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span><strong>Gold Biscuits:</strong> Small rectangular pieces of pure gold (5g-100g) with minimal premiums over spot price. Excellent for systematic investment and easy storage. Available from reputed {city} jewelers with authenticity certificates.</span>
+                  <span className="text-primary font-medium">•</span>
+                  <span><strong className="font-medium">Gold Biscuits:</strong> Small rectangular pieces of pure gold (5g-100g) with minimal premiums over spot price. Excellent for systematic investment and easy storage.</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-accent/5 to-primary/5 p-6 rounded-lg">
-              <h4 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
-                <Wallet className="h-5 w-5 text-accent" />
+            <div className="bg-gradient-to-br from-accent/5 to-primary/5 p-4 rounded-lg">
+              <h4 className="text-sm sm:text-base font-medium text-foreground mb-2 flex items-center gap-2">
+                <Wallet className="h-4 w-4 text-accent" />
                 Paper Gold Investment Options
               </h4>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-2 text-xs sm:text-sm">
                 <li className="flex gap-2">
-                  <span className="text-accent font-bold">•</span>
-                  <span><strong>Sovereign Gold Bonds (SGBs):</strong> Government-backed securities offering 2.5% annual interest plus gold price appreciation. No storage concerns, tradable on exchanges. Ideal for long-term investors in {city} seeking inflation-protected returns.</span>
+                  <span className="text-accent font-medium">•</span>
+                  <span><strong className="font-medium">Sovereign Gold Bonds (SGBs):</strong> Government-backed securities offering 2.5% annual interest plus gold price appreciation. No storage concerns, tradable on exchanges.</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-accent font-bold">•</span>
-                  <span><strong>Gold ETFs:</strong> Exchange-traded funds representing physical gold, tradable like stocks. Extremely liquid with minimal expense ratios (0.5-1%). Perfect for {city} investors wanting gold exposure without physical possession.</span>
+                  <span className="text-accent font-medium">•</span>
+                  <span><strong className="font-medium">Gold ETFs:</strong> Exchange-traded funds representing physical gold, tradable like stocks. Extremely liquid with minimal expense ratios (0.5-1%).</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-accent font-bold">•</span>
-                  <span><strong>Digital Gold:</strong> Buy gold starting from ₹1 through mobile apps. Backed by 24K physical gold stored in secure vaults. Excellent for young {city} professionals starting their investment journey with small, regular purchases.</span>
+                  <span className="text-accent font-medium">•</span>
+                  <span><strong className="font-medium">Digital Gold:</strong> Buy gold starting from ₹1 through mobile apps. Backed by 24K physical gold stored in secure vaults. Excellent for young {city} professionals.</span>
                 </li>
               </ul>
+            </div>
+          </div>
+
+          {/* People Also Ask Section */}
+          <div className="paa-box mt-5">
+            <h4 className="flex items-center gap-2">
+              <Info className="h-4 w-4 text-primary" />
+              People Also Ask: Gold Investment in {city}
+            </h4>
+            <div className="space-y-3 mt-3">
+              <div className="border-b border-border/40 pb-2">
+                <p className="text-sm font-medium text-foreground mb-1">Is gold a good investment in {city} right now?</p>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Yes, gold remains an excellent investment option in {city} for 2025. With rising global inflation concerns, geopolitical tensions, and rupee depreciation, gold prices have shown consistent appreciation. For {city} residents, gold serves as both a cultural asset and a reliable hedge against economic uncertainty, making it a worthwhile addition to diversified portfolios.</p>
+              </div>
+              <div className="border-b border-border/40 pb-2">
+                <p className="text-sm font-medium text-foreground mb-1">What is the best form of gold to buy in {city}?</p>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">For pure investment purposes, 24K gold coins or bars from BIS-hallmarked dealers offer the best value in {city} with minimal making charges. If you prefer paper gold, Sovereign Gold Bonds provide tax-free gains at maturity plus 2.5% annual interest. For those wanting both ornamental and investment value, 22K jewelry from reputed {city} jewelers in T Nagar or Sowcarpet is recommended.</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground mb-1">How much gold should I invest in my portfolio?</p>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Financial advisors typically recommend allocating 10-15% of your investment portfolio to gold for optimal diversification. For {city} investors with moderate risk appetite, this allocation provides sufficient hedge against inflation and market volatility while leaving room for growth-oriented assets like equities and mutual funds.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -80,91 +102,102 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
 
       {/* Market Analysis and Trends */}
       <section className="content-card">
-        <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-3 leading-tight">
-          <BarChart3 className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+        <h2 className="mb-4 text-lg sm:text-xl font-medium text-foreground flex items-center gap-2 leading-tight">
+          <BarChart3 className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
           Gold Market Analysis and Price Trends in {city} - Live Rate Factors
         </h2>
         <div className="prose-content">
-          <p className="readable-text-lg">
-            Understanding gold market dynamics is crucial for making informed investment decisions in {city}. The gold market operates on complex interactions between global economic factors, local demand patterns, government policies, and seasonal variations. This section provides deep insights into these factors and how they specifically affect {city}&apos;s gold market.
+          <p className="readable-text">
+            Understanding gold market dynamics is crucial for making informed investment decisions in {city}. The gold market operates on complex interactions between global economic factors, local demand patterns, government policies, and seasonal variations that specifically affect {city}&apos;s gold market.
           </p>
 
-          <div className="bg-muted/30 p-6 rounded-lg">
-            <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-              <Globe className="h-6 w-6 text-primary" />
+          <div className="bg-muted/30 p-4 sm:p-5 rounded-lg mt-4">
+            <h3 className="text-base sm:text-lg font-medium text-foreground mb-3 flex items-center gap-2">
+              <Globe className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
               Global Factors Affecting {city} Gold Prices
             </h3>
-            <div className="space-y-4">
-              <p>
-                <strong className="text-foreground">International Gold Prices and LBMA Benchmarks:</strong> The London Bullion Market Association (LBMA) sets global gold price benchmarks twice daily through electronic auctions. These prices, quoted in US dollars per troy ounce, form the foundation for all gold pricing worldwide, including {city}. Any movement in LBMA gold prices directly translates to changes in local rates, typically reflected within 24 hours. {city} jewelers and dealers closely monitor these international prices to adjust their rates accordingly.
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p className="leading-relaxed">
+                <strong className="text-foreground font-medium">International Gold Prices:</strong> The London Bullion Market Association (LBMA) sets global gold price benchmarks twice daily. These prices, quoted in US dollars per troy ounce, form the foundation for all gold pricing worldwide, including {city}. Any movement in LBMA prices directly translates to changes in local rates within 24 hours.
               </p>
-              <p>
-                <strong className="text-foreground">US Dollar Exchange Rate Dynamics:</strong> Since gold is priced globally in US dollars, the Indian Rupee-US Dollar exchange rate significantly impacts {city} gold prices. When the rupee weakens against the dollar, gold becomes more expensive in India even if international prices remain stable. For example, if international gold price is $2,000 per ounce and the rupee weakens from ₹82 to ₹83 per dollar, the rupee price increases proportionally. {city} investors must factor currency movements into their gold investment timing decisions.
+              <p className="leading-relaxed">
+                <strong className="text-foreground font-medium">US Dollar Exchange Rate:</strong> Since gold is priced globally in US dollars, the INR-USD exchange rate significantly impacts {city} gold prices. When the rupee weakens against the dollar, gold becomes more expensive in India even if international prices remain stable.
               </p>
-              <p>
-                <strong className="text-foreground">Central Bank Gold Reserves and Policies:</strong> Global central banks, including the Reserve Bank of India, hold substantial gold reserves. Their buying or selling activities influence international gold prices. When central banks increase gold purchases (as many have been doing recently), it signals confidence in gold as a reserve asset and typically supports higher prices. These activities indirectly affect {city} gold market sentiment and pricing.
+              <p className="leading-relaxed">
+                <strong className="text-foreground font-medium">Central Bank Policies:</strong> Global central banks, including RBI, hold substantial gold reserves. Their buying or selling activities influence international gold prices. When central banks increase gold purchases, it signals confidence in gold and typically supports higher prices.
               </p>
-              <p>
-                <strong className="text-foreground">Geopolitical Events and Economic Uncertainty:</strong> Gold serves as a "safe haven" asset during times of geopolitical tension, economic instability, or financial market turmoil. Events such as wars, trade disputes, political uncertainty, or banking crises often trigger increased gold demand globally, pushing prices higher. {city} investors often observe gold prices rising during such periods as investors worldwide seek safety in precious metals.
+              <p className="leading-relaxed">
+                <strong className="text-foreground font-medium">Geopolitical Events:</strong> Gold serves as a "safe haven" asset during times of geopolitical tension or economic instability. Events like wars, trade disputes, or banking crises often trigger increased gold demand globally, pushing prices higher.
               </p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4">
-            <Card className="border-primary/20">
-              <CardContent className="pt-6">
-                <Calendar className="h-8 w-8 text-primary mb-3" />
-                <h4 className="font-semibold text-foreground mb-2">Seasonal Demand Patterns</h4>
-                <p className="text-sm">
-                  {city} experiences distinct seasonal demand spikes during wedding seasons (November-January, April-May), festivals like Diwali, Pongal, Akshaya Tritiya, and Navaratri. Prices may increase by 2-5% during peak seasons due to heightened demand from buyers purchasing jewelry for weddings and auspicious occasions.
+          <div className="grid md:grid-cols-3 gap-3 mt-4">
+            <Card className="border-primary/20 compact-card">
+              <CardContent className="pt-4 p-4">
+                <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-primary mb-2" />
+                <h4 className="font-medium text-foreground mb-1 text-sm">Seasonal Demand Patterns</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {city} experiences distinct seasonal demand spikes during wedding seasons (November-January, April-May), and festivals like Diwali, Pongal, and Akshaya Tritiya. Prices may increase by 2-5% during peak seasons due to heightened demand.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20">
-              <CardContent className="pt-6">
-                <DollarSign className="h-8 w-8 text-primary mb-3" />
-                <h4 className="font-semibold text-foreground mb-2">Import Duties Impact</h4>
-                <p className="text-sm">
-                  India imports approximately 800-900 tonnes of gold annually. Import duties (currently around 15%) significantly affect retail prices in {city}. Government changes to import duties immediately impact local gold rates. For instance, a 5% increase in import duty typically translates to a 5% increase in gold prices.
+            <Card className="border-primary/20 compact-card">
+              <CardContent className="pt-4 p-4">
+                <DollarSign className="h-5 w-5 sm:h-6 sm:w-6 text-primary mb-2" />
+                <h4 className="font-medium text-foreground mb-1 text-sm">Import Duties Impact</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  India imports approximately 800-900 tonnes of gold annually. Import duties (currently around 15%) significantly affect retail prices in {city}. Government changes to import duties immediately impact local gold rates.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20">
-              <CardContent className="pt-6">
-                <Building2 className="h-8 w-8 text-primary mb-3" />
-                <h4 className="font-semibold text-foreground mb-2">Local Market Dynamics</h4>
-                <p className="text-sm">
-                  {city}'s gold market is characterized by high competition among jewelers in areas like T Nagar, George Town, and Sowcarpet. This competition generally ensures competitive pricing. However, making charges can vary significantly (8-25%), making it crucial to compare total costs across multiple {city} jewelers.
+            <Card className="border-primary/20 compact-card">
+              <CardContent className="pt-4 p-4">
+                <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary mb-2" />
+                <h4 className="font-medium text-foreground mb-1 text-sm">Local Market Dynamics</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {city}'s gold market is characterized by high competition among jewelers in T Nagar, George Town, and Sowcarpet. Making charges can vary significantly (8-25%), making it crucial to compare total costs.
                 </p>
               </CardContent>
             </Card>
+          </div>
+
+          {/* User Intent Section */}
+          <div className="user-intent-section mt-5">
+            <h3 className="flex items-center gap-2">
+              <Target className="h-4 w-4 text-primary" />
+              When is the Best Time to Buy Gold in {city}?
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+              Based on historical trends, the best times to buy gold in {city} are typically during the monsoon months (July-August) when demand is lower, and prices tend to be 3-5% below peak levels. Additionally, buying on auspicious days like Akshaya Tritiya may offer promotional discounts from jewelers. Avoid purchasing during peak wedding season (November-February) when demand drives prices higher. Monitor international gold prices and USD-INR exchange rates for optimal timing.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Tax Implications */}
       <section className="content-card">
-        <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-3 leading-tight">
-          <Scale className="h-7 w-7 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+        <h2 className="mb-4 text-lg sm:text-xl font-medium text-foreground flex items-center gap-2 leading-tight">
+          <Scale className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
           Gold Tax Guide for {city} Investors - GST, Capital Gains & Exemptions
         </h2>
         <div className="prose-content">
-          <p className="readable-text-lg">
-            Understanding tax implications is crucial for {city} gold investors to maximize returns and ensure compliance with Indian tax laws. This comprehensive guide covers all tax aspects of gold ownership, from purchase to sale, and provides strategies for tax-efficient gold investing.
+          <p className="readable-text">
+            Understanding tax implications is crucial for {city} gold investors to maximize returns and ensure compliance with Indian tax laws. This guide covers all tax aspects of gold ownership, from purchase to sale, with strategies for tax-efficient investing.
           </p>
 
-          <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-6 rounded-lg border border-primary/20">
-            <h3 className="text-xl font-semibold text-foreground mb-4">Goods and Services Tax (GST) on Gold</h3>
-            <p className="mb-4">
+          <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-4 sm:p-5 rounded-lg border border-primary/20 mt-4">
+            <h3 className="text-base sm:text-lg font-medium text-foreground mb-3">Goods and Services Tax (GST) on Gold</h3>
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
               All gold purchases in {city}, including jewelry, coins, and bars, attract 3% GST on the total value. This GST is calculated on the combined amount of gold price plus making charges. For example, if you purchase gold jewelry worth ₹100,000 (including ₹85,000 gold value and ₹15,000 making charges), the GST would be ₹3,000 (3% of ₹100,000), bringing the total to ₹103,000.
             </p>
-            <p className="mb-4">
-              <strong className="text-foreground">Important Note:</strong> GST paid on gold purchases is not refundable and cannot be claimed as input tax credit for individuals. The 3% GST applies uniformly across all {city} jewelers and cannot be avoided or negotiated. Always ensure your bill clearly mentions the GST component separately for record-keeping and potential future audits.
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+              <strong className="text-foreground font-medium">Important:</strong> GST paid on gold purchases is not refundable and cannot be claimed as input tax credit for individuals. The 3% GST applies uniformly across all {city} jewelers.
             </p>
-            <p>
-              For investors comparing physical gold versus paper gold (ETFs, SGBs), it's important to note that Sovereign Gold Bonds are exempt from GST, making them more tax-efficient at the point of purchase. Gold ETFs incur minimal expense ratios but no GST on transactions, though brokerage and securities transaction tax (STT) may apply.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Sovereign Gold Bonds are exempt from GST, making them more tax-efficient at the point of purchase. Gold ETFs incur minimal expense ratios but no GST on transactions.
             </p>
           </div>
 
@@ -290,23 +323,23 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
       </section>
 
       {/* Gold Loan Guide */}
-      <section className="rounded-2xl bg-card p-8 shadow-elegant">
-        <h2 className="mb-6 text-3xl font-bold text-foreground flex items-center gap-3">
-          <Landmark className="h-8 w-8 text-primary" />
+      <section className="content-card">
+        <h2 className="mb-4 text-lg sm:text-xl font-medium text-foreground flex items-center gap-2 leading-tight">
+          <Landmark className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
           Complete Guide to Gold Loans in {city}
         </h2>
-        <div className="space-y-6 text-muted-foreground leading-relaxed">
-          <p>
-            Gold loans represent one of the most popular and accessible forms of secured credit in {city}. With numerous banks and Non-Banking Financial Companies (NBFCs) offering competitive gold loan products, understanding this financing option can help you leverage your gold assets effectively during financial needs while retaining ownership.
+        <div className="prose-content">
+          <p className="readable-text">
+            Gold loans represent one of the most popular and accessible forms of secured credit in {city}. With numerous banks and NBFCs offering competitive products, understanding this financing option can help you leverage your gold assets effectively while retaining ownership.
           </p>
 
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-6 rounded-lg border border-primary/20">
-            <h3 className="text-xl font-semibold text-foreground mb-4">What are Gold Loans?</h3>
-            <p className="mb-4">
-              Gold loans are secured loans where you pledge your gold jewelry, coins, or bars as collateral to borrow money from banks or NBFCs. The gold remains with the lender in secure vaults during the loan tenure, and upon full repayment with interest, your gold is returned. This makes gold loans different from selling gold, as you retain ownership and get your gold back after loan closure.
+          <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-4 sm:p-5 rounded-lg border border-primary/20 mt-4">
+            <h3 className="text-base sm:text-lg font-medium text-foreground mb-3">What are Gold Loans?</h3>
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+              Gold loans are secured loans where you pledge your gold jewelry, coins, or bars as collateral to borrow money from banks or NBFCs. The gold remains with the lender in secure vaults during the loan tenure, and upon full repayment with interest, your gold is returned.
             </p>
-            <p>
-              In {city}, gold loans are particularly popular due to the cultural affinity for gold ownership and the need for quick liquidity without liquidating precious assets. Whether for medical emergencies, business needs, education expenses, or any other financial requirement, gold loans provide fast access to funds without complex documentation or long processing times.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              In {city}, gold loans are particularly popular due to the cultural affinity for gold ownership and the need for quick liquidity without liquidating precious assets. Whether for medical emergencies, business needs, or education expenses, gold loans provide fast access to funds without complex documentation.
             </p>
           </div>
 
@@ -435,27 +468,45 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
       </section>
 
       {/* Cultural and Historical Perspective */}
-      <section className="rounded-2xl bg-card p-8 shadow-elegant">
-        <h2 className="mb-6 text-3xl font-bold text-foreground flex items-center gap-3">
-          <Users2 className="h-8 w-8 text-primary" />
+      <section className="content-card">
+        <h2 className="mb-4 text-lg sm:text-xl font-medium text-foreground flex items-center gap-2 leading-tight">
+          <Users2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
           Gold in {city}'s Cultural Heritage and Modern Society
         </h2>
-        <div className="space-y-6 text-muted-foreground leading-relaxed">
-          <p className="text-lg">
+        <div className="prose-content">
+          <p className="readable-text">
             {city}'s relationship with gold extends far beyond economics and investment. It is deeply woven into the cultural, religious, and social fabric of Tamil Nadu society. Understanding this cultural context provides valuable insights into why gold remains such a crucial asset for {city} families across all economic strata.
           </p>
 
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-6 rounded-lg">
-            <h3 className="text-xl font-semibold text-foreground mb-4">Historical Significance</h3>
-            <p className="mb-4">
-              Tamil Nadu's golden heritage dates back over 2,000 years. The ancient Tamil kingdoms - Chola, Chera, and Pandya dynasties - were renowned for their gold reserves and exquisite temple jewelry. {city} (formerly Madras), as the capital, inherited this rich tradition. The city's historic temples, particularly the Kapaleeshwarar Temple in Mylapore and Parthasarathy Temple in Triplicane, house priceless collections of antique gold jewelry and artifacts that testify to centuries of golden artistry.
+          <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-4 sm:p-5 rounded-lg mt-4">
+            <h3 className="text-base sm:text-lg font-medium text-foreground mb-3">Historical Significance</h3>
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+              Tamil Nadu's golden heritage dates back over 2,000 years. The ancient Tamil kingdoms - Chola, Chera, and Pandya dynasties - were renowned for their gold reserves and exquisite temple jewelry. {city}, as the capital, inherited this rich tradition with historic temples housing priceless collections of antique gold jewelry and artifacts.
             </p>
-            <p className="mb-4">
-              The Chola period (9th-13th centuries) marked the zenith of South Indian gold craftsmanship. Temple jewelry from this era, characterized by intricate deity motifs, kundan work, and elaborate designs, continues to inspire {city}'s modern jewelers. Today's temple jewelry sold in George Town and T Nagar carries forward these ancient design traditions, connecting contemporary buyers with historical heritage.
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+              The Chola period (9th-13th centuries) marked the zenith of South Indian gold craftsmanship. Temple jewelry from this era, characterized by intricate deity motifs and kundan work, continues to inspire {city}'s modern jewelers. Today's temple jewelry in George Town and T Nagar carries forward these ancient design traditions.
             </p>
-            <p>
-              During the colonial era, {city} emerged as a major trading port, with gold being one of the primary commodities. The city's famous markets - George Town, Sowcarpet, and later T Nagar - developed as gold trading centers. This commercial legacy continues today, with {city} remaining one of India's largest gold consumption markets, processing hundreds of tonnes annually.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              During the colonial era, {city} emerged as a major trading port with gold as a primary commodity. The city's famous markets - George Town, Sowcarpet, and T Nagar - developed as gold trading centers. This commercial legacy continues today, with {city} remaining one of India's largest gold consumption markets.
             </p>
+          </div>
+
+          {/* People Also Ask - Cultural Section */}
+          <div className="paa-box mt-5">
+            <h4 className="flex items-center gap-2">
+              <Info className="h-4 w-4 text-primary" />
+              People Also Ask: Gold Culture in {city}
+            </h4>
+            <div className="space-y-3 mt-3">
+              <div className="border-b border-border/40 pb-2">
+                <p className="text-sm font-medium text-foreground mb-1">Why is gold so important in Tamil culture?</p>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Gold holds profound cultural significance in Tamil Nadu as a symbol of prosperity, security, and divine blessings. It is considered auspicious (Lakshmi) and essential for weddings, religious ceremonies, and family milestones. Beyond cultural value, gold serves as a financial safety net for families across all economic levels in {city}.</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground mb-1">What is the significance of temple jewelry in {city}?</p>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Temple jewelry, originating from the Chola dynasty era, features intricate designs inspired by temple architecture and deities. In {city}, temple jewelry is worn during weddings, classical dance performances (Bharatanatyam), and religious ceremonies. It represents the finest South Indian goldsmithing traditions passed down through generations.</p>
+              </div>
+            </div>
           </div>
 
           <div className="space-y-4">
