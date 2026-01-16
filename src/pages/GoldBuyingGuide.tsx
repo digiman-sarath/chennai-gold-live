@@ -23,7 +23,29 @@ const GoldBuyingGuide = () => {
           name="description" 
           content="Expert gold buying guide covering purity hallmarks, making charge calculations, GST rates, best buying times, and tips to get the best value when purchasing gold jewelry in India."
         />
-        <meta name="keywords" content="gold buying guide, gold purity check, hallmark gold, making charges, GST on gold, when to buy gold, gold purchasing tips, BIS hallmark" />
+        <meta name="keywords" content="gold buying guide, gold purity check, hallmark gold, making charges, GST on gold, when to buy gold, gold purchasing tips, BIS hallmark, 22K gold, 24K gold, gold jewellery India, gold investment guide, hallmark verification, gold calculation, Chennai gold buying, Tamil Nadu gold purchase, gold rate calculator, jewellery making charges" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://chennaigoldprice.com/buying-guide" />
+        <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/buying-guide" />
+        <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/buying-guide" />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="language" content="English" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai, Tamil Nadu" />
+        <meta name="revisit-after" content="3 days" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`Gold Buying Guide ${seoDate} - Purity GST & Tips`} />
+        <meta property="og:description" content="Expert gold buying guide covering purity hallmarks, making charges, GST rates, and best buying times in India." />
+        <meta property="og:url" content="https://chennaigoldprice.com/buying-guide" />
+        <meta property="og:site_name" content="Chennai Gold Price" />
+        <meta property="og:locale" content="en_IN" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`Gold Buying Guide ${seoDate} - Purity GST & Tips`} />
+        <meta name="twitter:description" content="Expert gold buying guide covering purity hallmarks, making charges, and GST rates in India." />
         
         <script type="application/ld+json">
           {JSON.stringify({
@@ -50,11 +72,6 @@ const GoldBuyingGuide = () => {
             ]
           })}
         </script>
-        
-        <link rel="canonical" href="https://chennaigoldprice.com/buying-guide" />
-        <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/buying-guide" />
-        <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/buying-guide" />
-        {/* Add Tamil version when available: <link rel="alternate" hrefLang="ta" href="https://chennaigoldprice.com/ta/buying-guide" /> */}
       </Helmet>
 
       <Header />
