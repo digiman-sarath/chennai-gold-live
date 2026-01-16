@@ -53,13 +53,32 @@ const Articles = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Articles | Chennai Gold Price</title>
+        <title>Gold Rate Articles & Insights | Chennai Gold Price</title>
         <meta
           name="description"
-          content="Read the latest articles about gold rates, investment tips, and market insights from Chennai Gold Price."
+          content="Read expert articles on gold rates, investment tips, market analysis, and buying guides. Stay informed with Chennai Gold Price insights on 22K, 24K gold prices in Tamil Nadu."
         />
-        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="gold rate articles, gold investment tips, gold market insights, gold buying guide, Chennai gold price, Tamil Nadu gold rate, 22K gold, 24K gold, gold jewellery tips, gold market analysis, gold price trends, gold investment India" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href="https://chennaigoldprice.com/articles" />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="language" content="English" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai, Tamil Nadu" />
+        <meta name="revisit-after" content="1 days" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Gold Rate Articles & Insights | Chennai Gold Price" />
+        <meta property="og:description" content="Read expert articles on gold rates, investment tips, market analysis, and buying guides for Tamil Nadu." />
+        <meta property="og:url" content="https://chennaigoldprice.com/articles" />
+        <meta property="og:site_name" content="Chennai Gold Price" />
+        <meta property="og:locale" content="en_IN" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Gold Rate Articles & Insights | Chennai Gold Price" />
+        <meta name="twitter:description" content="Expert articles on gold rates, investment tips, and market insights." />
       </Helmet>
 
       <Header />

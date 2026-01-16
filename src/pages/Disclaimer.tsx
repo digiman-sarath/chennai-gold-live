@@ -8,15 +8,33 @@ const Disclaimer = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Disclaimer | Chennai Gold Price</title>
+        <title>Disclaimer | Chennai Gold Price - Gold Rate Information</title>
         <meta 
           name="description" 
-          content="Disclaimer for Chennai Gold Price. Important information about gold rate accuracy, investment advice, and usage of our gold price tracking service."
+          content="Disclaimer for Chennai Gold Price. Important information about gold rate accuracy, investment advice, liability limitations, and usage terms for our gold price tracking service."
         />
-        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="gold price disclaimer, Chennai gold rate terms, gold investment disclaimer, gold rate accuracy, gold price liability, gold market disclaimer, gold trading terms, financial disclaimer India, gold buying disclaimer" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href="https://chennaigoldprice.com/disclaimer" />
         <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/disclaimer" />
         <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/disclaimer" />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="language" content="English" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="revisit-after" content="7 days" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Disclaimer | Chennai Gold Price" />
+        <meta property="og:description" content="Important disclaimer about gold rate accuracy and investment advice for Chennai Gold Price." />
+        <meta property="og:url" content="https://chennaigoldprice.com/disclaimer" />
+        <meta property="og:site_name" content="Chennai Gold Price" />
+        <meta property="og:locale" content="en_IN" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Disclaimer | Chennai Gold Price" />
+        <meta name="twitter:description" content="Important disclaimer about gold rate accuracy and investment advice." />
         
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
