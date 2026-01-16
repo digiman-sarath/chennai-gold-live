@@ -9,6 +9,7 @@ import { Calendar, MapPin } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const BlogList = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,34 +35,50 @@ const BlogList = () => {
   );
 
   const seoTitle = "Gold Rate Blog - Tamil Nadu Gold Price Insights | Chennai Gold Price";
-  const seoDescription = "Latest gold rate insights, price analysis, and market trends for all Tamil Nadu districts. Expert guides on gold investment and buying tips.";
+  const seoDescription = "Latest gold rate insights, price analysis, and market trends for all Tamil Nadu districts. Expert guides on gold investment, buying tips, and daily gold price updates.";
 
   return (
     <>
-      <title>{seoTitle}</title>
-      <meta name="description" content={seoDescription} />
-      <meta name="keywords" content="gold rate blog, Tamil Nadu gold prices, gold market analysis, gold investment tips" />
-      <link rel="canonical" href="https://chennaigoldprice.com/blog" />
-      
-      <meta property="og:title" content={seoTitle} />
-      <meta property="og:description" content={seoDescription} />
-      <meta property="og:url" content="https://chennaigoldprice.com/blog" />
-      <meta property="og:type" content="website" />
-      
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Blog",
-          "name": "Chennai Gold Price Blog",
-          "description": seoDescription,
-          "url": "https://chennaigoldprice.com/blog",
-          "publisher": {
-            "@type": "Organization",
-            "name": "Chennai Gold Price",
-            "url": "https://chennaigoldprice.com"
-          }
-        })}
-      </script>
+      <Helmet>
+        <title>{seoTitle}</title>
+        <meta name="description" content={seoDescription} />
+        <meta name="keywords" content="gold rate blog, Tamil Nadu gold prices, gold market analysis, gold investment tips, Chennai gold rate, gold price today, 22K gold rate, 24K gold rate, gold buying guide, gold jewellery prices, gold market trends, gold price insights, daily gold rate, gold rate update" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://chennaigoldprice.com/blog" />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="language" content="English" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Tamil Nadu, India" />
+        <meta name="revisit-after" content="1 days" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="blog" />
+        <meta property="og:title" content={seoTitle} />
+        <meta property="og:description" content={seoDescription} />
+        <meta property="og:url" content="https://chennaigoldprice.com/blog" />
+        <meta property="og:site_name" content="Chennai Gold Price" />
+        <meta property="og:locale" content="en_IN" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content="Latest gold rate insights and market trends for Tamil Nadu districts." />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "Chennai Gold Price Blog",
+            "description": seoDescription,
+            "url": "https://chennaigoldprice.com/blog",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Chennai Gold Price",
+              "url": "https://chennaigoldprice.com"
+            }
+          })}
+        </script>
+      </Helmet>
       
       <Header />
       <main className="min-h-screen bg-background">
