@@ -8,15 +8,33 @@ const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Privacy Policy | Chennai Gold Price</title>
+        <title>Privacy Policy | Chennai Gold Price - Data Protection</title>
         <meta 
           name="description" 
-          content="Privacy Policy for Chennai Gold Price. Learn how we collect, use, and protect your personal information when you use our gold rate tracking service."
+          content="Privacy Policy for Chennai Gold Price. Learn how we collect, use, and protect your personal information. Our commitment to data security and user privacy for our gold rate tracking service."
         />
-        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="privacy policy, data protection, Chennai gold price privacy, user data security, cookie policy, personal information protection, gold rate website privacy, data collection policy, GDPR compliance, user rights" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href="https://chennaigoldprice.com/privacy-policy" />
         <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/privacy-policy" />
         <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/privacy-policy" />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="language" content="English" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="revisit-after" content="7 days" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Privacy Policy | Chennai Gold Price" />
+        <meta property="og:description" content="Learn how Chennai Gold Price protects your personal information and data privacy." />
+        <meta property="og:url" content="https://chennaigoldprice.com/privacy-policy" />
+        <meta property="og:site_name" content="Chennai Gold Price" />
+        <meta property="og:locale" content="en_IN" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Privacy Policy | Chennai Gold Price" />
+        <meta name="twitter:description" content="Our commitment to protecting your personal information and data privacy." />
         
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">

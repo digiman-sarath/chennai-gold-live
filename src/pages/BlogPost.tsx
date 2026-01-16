@@ -86,13 +86,16 @@ const BlogPost = () => {
         <Helmet>
           <title>{seoTitle}</title>
           <meta name="description" content={seoDescription} />
-          <meta name="keywords" content={seoKeywords} />
+          <meta name="keywords" content={`${seoKeywords}, gold rate today, gold price per gram, 22 karat gold, 24 karat gold, gold jewellery price, gold market analysis, gold investment tips, gold buying guide, hallmark gold, BIS certified gold`} />
           <link rel="canonical" href={`https://chennaigoldprice.com/blog/${slug}`} />
           
           {/* Primary Meta Tags */}
-          <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
           <meta name="author" content="Chennai Gold Price" />
           <meta name="language" content="English" />
+          <meta name="revisit-after" content="1 days" />
+          <meta name="distribution" content="global" />
+          <meta name="rating" content="general" />
           <meta name="geo.region" content="IN-TN" />
           <meta name="geo.placename" content={post.city || 'Tamil Nadu'} />
           
