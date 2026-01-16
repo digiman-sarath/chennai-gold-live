@@ -44,23 +44,61 @@ serve(async (req) => {
       'Dharmapuri', 'Thiruvarur', 'Tiruvallur'
     ];
 
+    const currentDate = new Date().toISOString();
+    
     let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://chennaigoldprice.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <lastmod>${new Date().toISOString()}</lastmod>
+    <lastmod>${currentDate}</lastmod>
+  </url>
+  <url>
+    <loc>https://chennaigoldprice.com/rates</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <lastmod>${currentDate}</lastmod>
+  </url>
+  <url>
+    <loc>https://chennaigoldprice.com/buying-guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>${currentDate}</lastmod>
+  </url>
+  <url>
+    <loc>https://chennaigoldprice.com/blog</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>${currentDate}</lastmod>
+  </url>
+  <url>
+    <loc>https://chennaigoldprice.com/articles</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>${currentDate}</lastmod>
+  </url>
+  <url>
+    <loc>https://chennaigoldprice.com/privacy-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>${currentDate}</lastmod>
+  </url>
+  <url>
+    <loc>https://chennaigoldprice.com/disclaimer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>${currentDate}</lastmod>
   </url>`;
 
     // Add district pages
     districts.forEach(district => {
       sitemapXml += `
   <url>
-    <loc>https://chennaigoldprice.com/gold-rate/${district.toLowerCase().replace(/\s+/g, '-')}</loc>
+    <loc>https://chennaigoldprice.com/gold-rates/${district.toLowerCase().replace(/\s+/g, '-')}</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <lastmod>${new Date().toISOString()}</lastmod>
+    <lastmod>${currentDate}</lastmod>
   </url>`;
     });
 
@@ -71,7 +109,7 @@ serve(async (req) => {
     <loc>https://chennaigoldprice.com/blog/${post.slug}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <lastmod>${post.publish_date}</lastmod>
+    <lastmod>${post.publish_date || currentDate}</lastmod>
   </url>`;
     });
 
@@ -79,10 +117,10 @@ serve(async (req) => {
     articles?.forEach(article => {
       sitemapXml += `
   <url>
-    <loc>https://chennaigoldprice.com/article/${article.slug}</loc>
+    <loc>https://chennaigoldprice.com/articles/${article.slug}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>${article.published_at}</lastmod>
+    <lastmod>${article.published_at || currentDate}</lastmod>
   </url>`;
     });
 

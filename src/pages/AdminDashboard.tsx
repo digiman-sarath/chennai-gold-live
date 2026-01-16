@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 import { supabase } from '@/integrations/supabase/client';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -12,6 +13,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import AdManagement from '@/components/admin/AdManagement';
 import AdAnalytics from '@/components/admin/AdAnalytics';
@@ -20,7 +22,8 @@ import SearchConsoleSetup from '@/components/admin/SearchConsoleSetup';
 import { 
   DollarSign, TrendingUp, FileText, Settings, Loader2, Plus, 
   RefreshCw, Edit, Trash2, Eye, Search, Globe, Rss, MapPin,
-  BarChart3, Newspaper, Clock, CheckCircle, XCircle, ExternalLink, Image
+  BarChart3, Newspaper, Clock, CheckCircle, XCircle, ExternalLink, Image,
+  Sparkles, LogOut
 } from 'lucide-react';
 
 const TAMIL_NADU_DISTRICTS = [
@@ -41,6 +44,11 @@ const AdminDashboard = () => {
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [editingPost, setEditingPost] = useState<any>(null);
   const [editingFile, setEditingFile] = useState<any>(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [manualDate, setManualDate] = useState(new Date().toISOString().split('T')[0]);
+  const [manualPrice22k, setManualPrice22k] = useState('');
+  const [manualPrice24k, setManualPrice24k] = useState('');
+  const [submittingManual, setSubmittingManual] = useState(false);
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -236,6 +244,51 @@ const AdminDashboard = () => {
     }
   });
 
+  const handleRefreshLivePrices = async () => {
+    setRefreshing(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('update-gold-price', {
+        body: {},
+      });
+      if (error) throw error;
+      toast.success('Live gold prices fetched and updated from GoldAPI.io');
+      queryClient.invalidateQueries({ queryKey: ['gold-prices-latest'] });
+    } catch (error: any) {
+      toast.error(error.message || 'Failed to fetch live prices');
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
+  const handleManualSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmittingManual(true);
+    try {
+      const { error } = await supabase
+        .from('gold_prices')
+        .upsert({
+          date: manualDate,
+          price_22k_per_gram: parseFloat(manualPrice22k),
+          price_24k_per_gram: parseFloat(manualPrice24k),
+        }, { onConflict: 'date' });
+      if (error) throw error;
+      toast.success('Gold prices updated successfully');
+      queryClient.invalidateQueries({ queryKey: ['gold-prices-latest'] });
+      setManualDate(new Date().toISOString().split('T')[0]);
+      setManualPrice22k('');
+      setManualPrice24k('');
+    } catch (error: any) {
+      toast.error(error.message);
+    } finally {
+      setSubmittingManual(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate('/');
+  };
+
   const processIndexingMutation = useMutation({
     mutationFn: async (id: string) => {
       const { data, error } = await supabase.functions.invoke('request-indexing', {
@@ -269,12 +322,24 @@ const AdminDashboard = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Admin Dashboard | Chennai Gold Price</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="description" content="Admin dashboard for managing Chennai Gold Price website content, blogs, and settings." />
+      </Helmet>
+      
       <Header />
       <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8">
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-foreground mb-2">Admin Dashboard</h1>
-            <p className="text-muted-foreground">All-in-one management for Chennai Gold Price</p>
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">Admin Dashboard</h1>
+              <p className="text-muted-foreground">All-in-one management for Chennai Gold Price</p>
+            </div>
+            <Button variant="outline" onClick={handleSignOut}>
+              <LogOut className="mr-2 h-4 w-4" />
+              Sign Out
+            </Button>
           </div>
 
           {/* Quick Stats */}
@@ -564,6 +629,100 @@ const AdminDashboard = () => {
 
             {/* SETTINGS TAB */}
             <TabsContent value="settings" className="space-y-6">
+              {/* Price Update Section */}
+              <div className="grid gap-6 md:grid-cols-2">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Sparkles className="h-5 w-5 text-primary" />
+                      Fetch Live Gold Prices
+                    </CardTitle>
+                    <CardDescription>Get real-time gold rates from GoldAPI.io</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button 
+                      onClick={handleRefreshLivePrices} 
+                      disabled={refreshing}
+                      className="w-full"
+                      size="lg"
+                    >
+                      {refreshing ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Fetching...
+                        </>
+                      ) : (
+                        <>
+                          <RefreshCw className="mr-2 h-5 w-5" />
+                          Fetch Live Prices
+                        </>
+                      )}
+                    </Button>
+                    {goldPrices && (
+                      <div className="mt-4 p-3 bg-muted rounded-lg text-sm">
+                        <p><strong>Current:</strong> 22K ₹{goldPrices.price_22k_per_gram} | 24K ₹{goldPrices.price_24k_per_gram}</p>
+                        <p className="text-muted-foreground">Date: {goldPrices.date}</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+                
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-primary" />
+                      Manual Price Update
+                    </CardTitle>
+                    <CardDescription>Manually set daily gold rates</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <form onSubmit={handleManualSubmit} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="manual-date">Date</Label>
+                        <Input
+                          id="manual-date"
+                          type="date"
+                          value={manualDate}
+                          onChange={(e) => setManualDate(e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="space-y-2">
+                          <Label htmlFor="manual-22k">22K (₹/g)</Label>
+                          <Input
+                            id="manual-22k"
+                            type="number"
+                            step="0.01"
+                            placeholder="5850.00"
+                            value={manualPrice22k}
+                            onChange={(e) => setManualPrice22k(e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="manual-24k">24K (₹/g)</Label>
+                          <Input
+                            id="manual-24k"
+                            type="number"
+                            step="0.01"
+                            placeholder="6380.00"
+                            value={manualPrice24k}
+                            onChange={(e) => setManualPrice24k(e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <Button type="submit" className="w-full" disabled={submittingManual}>
+                        {submittingManual && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                        Update Prices
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </div>
+              
+              {/* Navigation Cards */}
               <div className="grid gap-6 md:grid-cols-2">
                 <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate('/admin/articles')}>
                   <CardHeader>

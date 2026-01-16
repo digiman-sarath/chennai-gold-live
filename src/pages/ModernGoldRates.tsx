@@ -152,7 +152,31 @@ const ModernGoldRates = () => {
           name="description" 
           content={`Live gold rates across Tamil Nadu cities. Current 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram. Compare prices in Chennai, Coimbatore, Madurai, and 35 more cities.`}
         />
-        <meta name="keywords" content="tamil nadu gold rates, gold price comparison, chennai coimbatore madurai gold rates, live gold prices tamil nadu, gold rate today all cities" />
+        <meta name="keywords" content="tamil nadu gold rates, gold price comparison, chennai coimbatore madurai gold rates, live gold prices tamil nadu, gold rate today all cities, 22K gold rate, 24K gold rate, gold price per gram, gold jewellery price, gold investment Tamil Nadu, district gold rates" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://chennaigoldprice.com/rates" />
+        <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/rates" />
+        <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/rates" />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="language" content="English" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Tamil Nadu, India" />
+        <meta name="revisit-after" content="1 days" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`Tamil Nadu Gold Rate Today - 22K ₹${price22k} | 24K ₹${price24k}`} />
+        <meta property="og:description" content={`Live gold rates across Tamil Nadu cities. 22K: ₹${price22k.toLocaleString('en-IN')}/g, 24K: ₹${price24k.toLocaleString('en-IN')}/g`} />
+        <meta property="og:url" content="https://chennaigoldprice.com/rates" />
+        <meta property="og:site_name" content="Chennai Gold Price" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:image" content="https://chennaigoldprice.com/gold-hero.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`TN Gold Rate Today - 22K ₹${price22k} | 24K ₹${price24k}`} />
+        <meta name="twitter:description" content={`Live gold rates across Tamil Nadu. Compare 38 districts.`} />
+        <meta name="twitter:image" content="https://chennaigoldprice.com/gold-hero.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify({
@@ -207,11 +231,6 @@ const ModernGoldRates = () => {
             ]
           })}
         </script>
-        
-        <link rel="canonical" href="https://chennaigoldprice.com/rates" />
-        <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com/rates" />
-        <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com/rates" />
-        {/* Add Tamil version when available: <link rel="alternate" hrefLang="ta" href="https://chennaigoldprice.com/ta/rates" /> */}
         
         <script type="application/ld+json">
           {JSON.stringify({
