@@ -188,15 +188,22 @@ const Article = () => {
       <Helmet>
         <title>{`${seoTitle} | Chennai Gold Price`}</title>
         <meta name="description" content={seoDescription} />
-        {article.seo_keywords && <meta name="keywords" content={article.seo_keywords} />}
-        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content={`${article.seo_keywords || ''}, gold rate article, Chennai gold price, gold market insights, gold investment tips, gold jewellery guide, Tamil Nadu gold rate, gold buying tips, gold price analysis`.replace(/^, /, '')} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href={`https://chennaigoldprice.com/articles/${article.slug}`} />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="language" content="English" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai, Tamil Nadu" />
+        <meta name="revisit-after" content="3 days" />
         
         {/* Open Graph */}
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
-        <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://chennaigoldprice.com/articles/${article.slug}`} />
+        <meta property="og:site_name" content="Chennai Gold Price" />
+        <meta property="og:locale" content="en_IN" />
         {article.featured_image_url && (
           <meta property="og:image" content={article.featured_image_url} />
         )}
@@ -208,6 +215,13 @@ const Article = () => {
         {article.featured_image_url && (
           <meta name="twitter:image" content={article.featured_image_url} />
         )}
+        
+        {/* Article Metadata */}
+        <meta property="article:published_time" content={publishedDate} />
+        <meta property="article:modified_time" content={article.updated_at} />
+        <meta property="article:section" content="Gold Rates" />
+        <meta property="article:tag" content="Gold Price" />
+        <meta property="article:tag" content="Gold Rate India" />
         
         {/* Article Schema */}
         <script type="application/ld+json">
