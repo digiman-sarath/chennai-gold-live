@@ -439,15 +439,24 @@ const CityGoldRates = () => {
         <title>{`${cityName} Gold ${seoDate} 22K₹${price22k} 24K₹${price24k}`}</title>
         <meta
           name="description" 
-          content={`Current gold rate in ${cityName} today ${displayDate}. Live 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram. Get accurate ${cityName} gold prices with daily updates from GoldAPI.io.`}
+          content={`Current gold rate in ${cityName} today ${displayDate}. Live 22K gold: ₹${price22k.toLocaleString('en-IN')}/gram, 24K gold: ₹${price24k.toLocaleString('en-IN')}/gram. Get accurate ${cityName} gold prices with daily updates.`}
         />
-        <meta name="keywords" content={`gold rate ${cityName.toLowerCase()}, ${cityName} gold price today, 22k gold ${cityName}, 24k gold ${cityName}, gold rate today ${cityName}, ${cityName} jewellery rates`} />
+        <meta name="keywords" content={`gold rate ${cityName.toLowerCase()}, ${cityName.toLowerCase()} gold price today, 22k gold rate ${cityName.toLowerCase()}, 24k gold rate ${cityName.toLowerCase()}, today gold rate ${cityName.toLowerCase()}, ${cityName.toLowerCase()} jewellery rates, gold price per gram ${cityName.toLowerCase()}, ${cityName.toLowerCase()} gold market, buy gold ${cityName.toLowerCase()}, gold investment ${cityName.toLowerCase()}, tamil nadu gold rate`} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="last-modified" content={goldPrice.updated_at} />
         
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Chennai Gold Price" />
         <meta property="og:title" content={`${cityName} Gold Rate Today - ${displayDate} | Live Prices`} />
-        <meta property="og:description" content={`Live gold rates in ${cityName}. 22K: ₹${price22k.toLocaleString('en-IN')}, 24K: ₹${price24k.toLocaleString('en-IN')} per gram.`} />
+        <meta property="og:description" content={`Live gold rates in ${cityName}. 22K: ₹${price22k.toLocaleString('en-IN')}, 24K: ₹${price24k.toLocaleString('en-IN')} per gram. Updated daily.`} />
+        <meta property="og:url" content={`https://chennaigoldprice.com/gold-rates/${city}`} />
+        <meta property="og:image" content="https://chennaigoldprice.com/gold-hero.jpg" />
         
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${cityName} Gold Rate ${displayDate}`} />
         <meta name="twitter:description" content={`22K: ₹${price22k.toLocaleString('en-IN')}, 24K: ₹${price24k.toLocaleString('en-IN')}/gram`} />
+        <meta name="twitter:image" content="https://chennaigoldprice.com/gold-hero.jpg" />
         
         {/* FAQ Schema - Generated from actual page content */}
         <script type="application/ld+json">
@@ -564,9 +573,6 @@ const CityGoldRates = () => {
         <link rel="canonical" href={`https://chennaigoldprice.com/gold-rates/${city}`} />
         <link rel="alternate" hrefLang="en" href={`https://chennaigoldprice.com/gold-rates/${city}`} />
         <link rel="alternate" hrefLang="x-default" href={`https://chennaigoldprice.com/gold-rates/${city}`} />
-        {/* Add Tamil version when available: <link rel="alternate" hrefLang="ta" href={`https://chennaigoldprice.com/ta/gold-rates/${city}`} /> */}
-        
-        <link rel="canonical" href={`https://chennai-gold-rates.lovable.app/gold-rates/${city}`} />
       </Helmet>
 
       <Header />

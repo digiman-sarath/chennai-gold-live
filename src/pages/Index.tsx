@@ -258,18 +258,27 @@ const Index = () => {
         <title>{`Chennai Gold Rate ${seoDate} 22K₹${price22k} 24K₹${price24k}`}</title>
         <meta
           name="description" 
-          content={`Current gold rate in Chennai today ${displayDate} from GoldAPI.io. Live 22K gold: ₹${price22k}/gram, 24K gold: ₹${price24k}/gram. Real-time updates for accurate gold price tracking in Chennai market.`}
+          content={`Current gold rate in Chennai today ${displayDate}. Live 22K gold: ₹${price22k}/gram, 24K gold: ₹${price24k}/gram. Real-time updates for accurate gold price tracking in Chennai market.`}
         />
-        <meta name="keywords" content={`gold rate chennai ${displayDate}, today gold price chennai, 22k gold rate ${price22k}, 24k gold rate ${price24k}, chennai gold price, gold rate today, live gold rates`} />
+        <meta name="keywords" content={`gold rate chennai today, chennai gold price ${displayDate}, 22k gold rate chennai, 24k gold rate chennai, today gold rate in chennai, gold price per gram chennai, tamil nadu gold rate, chennai jewellery gold rate, buy gold chennai, gold investment india, live gold rates`} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="author" content="Chennai Gold Price" />
+        <meta name="last-modified" content={goldPrice?.updated_at || new Date().toISOString()} />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
         
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Chennai Gold Price" />
         <meta property="og:title" content={`Today Gold Rate in Chennai - ${displayDate} | 22K ₹${price22k} & 24K ₹${price24k}`} />
-        <meta property="og:description" content={`Live gold rates in Chennai updated daily from GoldAPI.io. 22K: ₹${price22k}/gram, 24K: ₹${price24k}/gram. Get current gold prices per gram.`} />
+        <meta property="og:description" content={`Live gold rates in Chennai updated daily. 22K: ₹${price22k}/gram, 24K: ₹${price24k}/gram. Get current gold prices per gram.`} />
         <meta property="og:url" content="https://chennaigoldprice.com" />
+        <meta property="og:image" content="https://chennaigoldprice.com/gold-hero.jpg" />
+        <meta property="og:locale" content="en_IN" />
         
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`Chennai Gold Rate ${displayDate} | 22K ₹${price22k} 24K ₹${price24k}`} />
-        <meta name="twitter:description" content={`Live gold rates in Chennai updated from GoldAPI.io. 22K: ₹${price22k}, 24K: ₹${price24k} per gram.`} />
+        <meta name="twitter:description" content={`Live gold rates in Chennai. 22K: ₹${price22k}, 24K: ₹${price24k} per gram.`} />
+        <meta name="twitter:image" content="https://chennaigoldprice.com/gold-hero.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify(faqStructuredData)}
@@ -293,10 +302,6 @@ const Index = () => {
         <link rel="canonical" href="https://chennaigoldprice.com" />
         <link rel="alternate" hrefLang="en" href="https://chennaigoldprice.com" />
         <link rel="alternate" hrefLang="x-default" href="https://chennaigoldprice.com" />
-        {/* Add Tamil version when available: <link rel="alternate" hrefLang="ta" href="https://chennaigoldprice.com/ta" /> */}
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Chennai Gold Price" />
-        <meta name="last-modified" content={goldPrice?.updated_at || new Date().toISOString()} />
       </Helmet>
 
       {/* Header */}

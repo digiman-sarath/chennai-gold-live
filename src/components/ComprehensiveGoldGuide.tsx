@@ -201,70 +201,92 @@ const ComprehensiveGoldGuide = ({ city = "Chennai" }: ComprehensiveGoldGuideProp
             </p>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-foreground">Capital Gains Tax on Gold Sales</h3>
-            <p>
-              When {city} investors sell gold, capital gains tax applies based on the holding period. Understanding these rules is essential for tax planning:
+          <div className="space-y-3 mt-4">
+            <h3 className="text-base sm:text-lg font-medium text-foreground">Capital Gains Tax on Gold Sales</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              When {city} investors sell gold, capital gains tax applies based on the holding period:
             </p>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-muted/30 p-6 rounded-lg border-l-4 border-primary">
-                <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                  <AlertCircle className="h-5 w-5 text-primary" />
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-muted/30 p-4 rounded-lg border-l-4 border-primary">
+                <h4 className="font-medium text-foreground mb-2 flex items-center gap-2 text-sm">
+                  <AlertCircle className="h-4 w-4 text-primary" />
                   Short-Term Capital Gains (STCG)
                 </h4>
-                <p className="text-sm mb-3">
-                  <strong>Holding Period:</strong> Less than 36 months (3 years)
+                <p className="text-xs sm:text-sm text-muted-foreground mb-2">
+                  <strong className="font-medium">Holding Period:</strong> Less than 36 months
                 </p>
-                <p className="text-sm mb-3">
-                  <strong>Tax Rate:</strong> Added to your total income and taxed according to your income tax slab (5%, 20%, 30%, or more)
+                <p className="text-xs sm:text-sm text-muted-foreground mb-2">
+                  <strong className="font-medium">Tax Rate:</strong> Added to total income, taxed per your slab (5-30%)
                 </p>
-                <p className="text-sm">
-                  <strong>Example:</strong> If a {city} investor in the 30% tax bracket sells gold held for 2 years at ₹200,000 profit, they'll pay ₹60,000 in taxes (30% of ₹200,000), plus applicable cess.
+                <p className="text-xs sm:text-sm text-muted-foreground">
+                  <strong className="font-medium">Example:</strong> 30% bracket investor selling at ₹2L profit = ₹60,000 tax
                 </p>
               </div>
 
-              <div className="bg-muted/30 p-6 rounded-lg border-l-4 border-accent">
-                <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                  <AlertCircle className="h-5 w-5 text-accent" />
+              <div className="bg-muted/30 p-4 rounded-lg border-l-4 border-accent">
+                <h4 className="font-medium text-foreground mb-2 flex items-center gap-2 text-sm">
+                  <AlertCircle className="h-4 w-4 text-accent" />
                   Long-Term Capital Gains (LTCG)
                 </h4>
-                <p className="text-sm mb-3">
-                  <strong>Holding Period:</strong> More than 36 months (3 years)
+                <p className="text-xs sm:text-sm text-muted-foreground mb-2">
+                  <strong className="font-medium">Holding Period:</strong> More than 36 months
                 </p>
-                <p className="text-sm mb-3">
-                  <strong>Tax Rate:</strong> 20% with indexation benefit (adjusts purchase price for inflation)
+                <p className="text-xs sm:text-sm text-muted-foreground mb-2">
+                  <strong className="font-medium">Tax Rate:</strong> 20% with indexation benefit
                 </p>
-                <p className="text-sm">
-                  <strong>Example:</strong> Gold purchased in {city} for ₹300,000 in 2020 and sold for ₹500,000 in 2025. With indexation, purchase price might adjust to ₹385,000, making taxable gain ₹115,000. Tax = ₹23,000 (20% of ₹115,000).
+                <p className="text-xs sm:text-sm text-muted-foreground">
+                  <strong className="font-medium">Benefit:</strong> Indexation adjusts purchase price for inflation, reducing taxable gains
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-muted/30 p-6 rounded-lg">
-            <h3 className="text-xl font-semibold text-foreground mb-4">Special Provisions for Sovereign Gold Bonds</h3>
-            <p className="mb-4">
-              Sovereign Gold Bonds (SGBs) offer significant tax advantages for {city} investors, making them one of the most tax-efficient gold investment options available:
+          <div className="bg-muted/30 p-4 sm:p-5 rounded-lg mt-4">
+            <h3 className="text-base sm:text-lg font-medium text-foreground mb-3">Special Provisions for Sovereign Gold Bonds</h3>
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+              SGBs offer significant tax advantages for {city} investors:
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li className="flex gap-2">
-                <span className="text-primary font-bold">•</span>
-                <span><strong className="text-foreground">Interest Income:</strong> 2.5% annual interest is taxable as per your income tax slab. This interest is paid semi-annually directly to your bank account.</span>
+                <span className="text-primary font-medium">•</span>
+                <span><strong className="text-foreground font-medium">Interest Income:</strong> 2.5% annual interest taxable per your slab, paid semi-annually.</span>
               </li>
               <li className="flex gap-2">
-                <span className="text-primary font-bold">•</span>
-                <span><strong className="text-foreground">Redemption After 8 Years:</strong> Capital gains on redemption after 8 years are completely tax-exempt. This is a unique benefit not available with any other form of gold investment.</span>
+                <span className="text-primary font-medium">•</span>
+                <span><strong className="text-foreground font-medium">8-Year Redemption:</strong> Capital gains completely tax-exempt on maturity.</span>
               </li>
               <li className="flex gap-2">
-                <span className="text-primary font-bold">•</span>
-                <span><strong className="text-foreground">Early Redemption (After 5 Years):</strong> If sold on stock exchanges before 8 years but after 5 years, long-term capital gains tax applies (20% with indexation).</span>
+                <span className="text-primary font-medium">•</span>
+                <span><strong className="text-foreground font-medium">5-8 Year Exit:</strong> LTCG tax (20% with indexation) if sold on exchange.</span>
               </li>
               <li className="flex gap-2">
-                <span className="text-primary font-bold">•</span>
-                <span><strong className="text-foreground">No GST:</strong> Unlike physical gold, no GST is charged on SGB purchases, providing immediate savings of 3% compared to physical gold.</span>
+                <span className="text-primary font-medium">•</span>
+                <span><strong className="text-foreground font-medium">No GST:</strong> Save 3% compared to physical gold.</span>
               </li>
             </ul>
+          </div>
+
+          {/* People Also Ask - Tax Section */}
+          <div className="paa-box mt-5">
+            <h4 className="flex items-center gap-2">
+              <Info className="h-4 w-4 text-primary" />
+              People Also Ask: Gold Tax in India
+            </h4>
+            <div className="space-y-3 mt-3">
+              <div className="border-b border-border/40 pb-2">
+                <p className="text-sm font-medium text-foreground mb-1">Is there GST on gold jewelry in {city}?</p>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Yes, all gold jewelry purchases in {city} attract 3% GST on the total value (gold price + making charges). This GST is non-refundable for individual buyers and applies uniformly across all jewelers in Tamil Nadu.</p>
+              </div>
+              <div className="border-b border-border/40 pb-2">
+                <p className="text-sm font-medium text-foreground mb-1">How to avoid tax on gold investment?</p>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">To minimize taxes, hold physical gold for more than 3 years (LTCG with indexation) or invest in Sovereign Gold Bonds which offer complete tax exemption on capital gains after 8 years. SGBs also provide 2.5% annual interest and save 3% GST at purchase.</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground mb-1">Is inherited gold taxable in India?</p>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">Inherited gold is not taxable at the time of receiving. However, if you sell inherited gold, capital gains tax applies based on the holding period from the original owner's purchase date. Maintain proper documentation (will, gift deed) to prove the source.</p>
+              </div>
+            </div>
           </div>
 
           <div className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 p-6 rounded-lg border border-red-200 dark:border-red-800">
