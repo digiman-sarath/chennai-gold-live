@@ -12,7 +12,6 @@ import NotFound from "./pages/NotFound";
 
 // Lazy load non-critical pages for faster initial load
 const Auth = lazy(() => import("./pages/Auth"));
-const Admin = lazy(() => import("./pages/Admin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const ModernGoldRates = lazy(() => import("./pages/ModernGoldRates"));
 const GoldBuyingGuide = lazy(() => import("./pages/GoldBuyingGuide"));
@@ -64,7 +63,7 @@ function App() {
               <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin-panel" element={<AdminDashboard />} />
               <Route path="/admin/articles" element={<ArticleManagement />} />
               <Route path="/admin/articles/new" element={<ArticleEditor />} />
